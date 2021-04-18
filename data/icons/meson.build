@@ -1,10 +1,10 @@
 application_id = 'xyz.slothlife.diveboard'
 
 scalable_dir = join_paths('hicolor', 'scalable', 'apps')
-target_dir = join_paths('icons', 'hicolor', '48x48', 'apps')
 install_data(
   join_paths(scalable_dir, ('@0@.png').format(application_id)),
-  install_dir: join_paths(get_option('datadir'), target_dir)
+  #install_dir: join_paths(get_option('datadir'), scalable_dir)
+  install_dir: 'usr/share/icons/hicolor/48x48/apps/'
 )
 
 symbolic_dir = join_paths('hicolor', 'symbolic', 'apps')
