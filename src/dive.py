@@ -66,4 +66,4 @@ class DiveOverview(Gtk.Box):
         self.dive_site.set_text(dive.trip_name)
         self.dive_date.set_text(dive.date)
         self.max_depth.set_text(f'{dive.max_depth}{dive.max_depth_unit}')
-        self.duration.set_text(str(dive.duration))
+        self.duration.set_text(str(dive.duration) + ' mins')
