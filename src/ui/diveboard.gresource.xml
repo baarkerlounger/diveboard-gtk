@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/xyz/slothlife/diveboard">
+    <file compressed="true">about.ui</file>
+    <file compressed="true">preferences.ui</file>
+    <file compressed="true">window.ui</file>
+    <file compressed="true">dive_overview.ui</file>
+    <file>css/style.css</file>
+    <file>images/map_bg.png</file>
+    <file>images/full_diveboard_grey.png</file>
+    <file>images/logo.svg</file>
+  </gresource>
+</gresources>

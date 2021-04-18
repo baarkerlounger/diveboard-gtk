@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="diveboard">
+	<schema id="xyz.slothlife.diveboard" path="/xyz/slothlife/diveboard/">
+	  <key type="ai" name="window-size">
+        <default>[360, 720]</default>
+    </key>
+	  <key type="s" name="user-id">
+	    <default>""</default>
+	    <summary>User ID</summary>
+	    <description>User ID of logged in User</description>
+	  </key>
+	  <key type="s" name="auth-token">
+	    <default>""</default>
+	    <summary>Diveboard login auth token</summary>
+	    <description>The Auth Token generated on user login. Valid for 1 day.</description>
+    </key>
+	  <key type="i" name="units">
+        <default>0</default>
+	      <summary>Units</summary>
+	      <description>Preferred Units. 0 = Metric | 1 = Imperial</description>
+    </key>
+	</schema>
+</schemalist>

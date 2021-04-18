@@ -1,0 +1,7 @@
+data/xyz.slothlife.diveboard.desktop.in
+data/xyz.slothlife.diveboard.appdata.xml.in
+data/xyz.slothlife.diveboard.gschema.xml
+src/window.ui
+src/main.py
+src/window.py
+
