@@ -26,7 +26,7 @@
 # use or other dealings in this Software without prior written
 # authorization.
 
-from gi.repository import Gtk
+from gi.repository import Gtk, GdkPixbuf
 
 from .database_manager import DatabaseManager
 from .define import RES_PATH
@@ -62,11 +62,13 @@ class Dive():
 class DiveOverview(Gtk.Box):
     __gtype_name__ = 'DiveOverview'
 
-    dive_site = Gtk.Template.Child()
-    country   = Gtk.Template.Child()
-    dive_date = Gtk.Template.Child()
-    max_depth = Gtk.Template.Child()
-    duration  = Gtk.Template.Child()
+    dive_site     = Gtk.Template.Child()
+    country       = Gtk.Template.Child()
+    dive_date     = Gtk.Template.Child()
+    max_depth     = Gtk.Template.Child()
+    duration      = Gtk.Template.Child()
+    duration_icon = Gtk.Template.Child()
+    depth_icon    = Gtk.Template.Child()
 
     def __init__(self, dive, **kwargs):
         super().__init__(**kwargs)
@@ -75,3 +77,5 @@ class DiveOverview(Gtk.Box):
         self.dive_date.set_text(dive.date)
         self.max_depth.set_text(f'{dive.max_depth}{dive.max_depth_unit}')
         self.duration.set_text(str(dive.duration) + ' mins')
+        self.duration_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/duration.svg'))
+        self.depth_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/depth.svg'))

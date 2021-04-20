@@ -94,12 +94,14 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
+                <property name="margin-left">10</property>
                 <child>
-                  <object class="GtkImage">
+                  <object class="GtkImage" id="depth_icon">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin-left">5</property>
+                    <property name="margin-right">5</property>
                     <property name="stock">gtk-jump-to</property>
                   </object>
                   <packing>
@@ -138,6 +140,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
+                <property name="margin-left">10</property>
                 <child>
                   <object class="GtkLabel" id="duration">
                     <property name="visible">True</property>
@@ -157,11 +160,12 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkImage">
+                  <object class="GtkImage" id="duration_icon">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin-left">5</property>
+                    <property name="margin-right">5</property>
                     <property name="icon-name">document-properties</property>
                   </object>
                   <packing>

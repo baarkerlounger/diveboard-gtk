@@ -39,7 +39,6 @@ class DiveTrip():
 
     @classmethod
     def all(cls):
-        #trip_names_sql = """SELECT DISTINCT trip_name FROM dives ORDER BY DATE(dives.date) DESC"""
         all_trips = {}
         dives_sql = """SELECT * FROM dives ORDER BY DATE(dives.date) DESC"""
         dives = DatabaseManager().fetch(dives_sql)

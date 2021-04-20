@@ -12,6 +12,7 @@
         <property name="can-focus">False</property>
         <property name="halign">start</property>
         <property name="margin-left">15</property>
+        <property name="margin-top">5</property>
         <property name="label" translatable="yes">Bali (2 dives)	</property>
         <style>
           <class name="bold_header"/>

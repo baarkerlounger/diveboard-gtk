@@ -10,5 +10,7 @@
     <file>images/map_bg.png</file>
     <file>images/full_diveboard_grey.png</file>
     <file>images/logo.svg</file>
+    <file>images/duration.svg</file>
+    <file>images/depth.svg</file>
   </gresource>
 </gresources>
