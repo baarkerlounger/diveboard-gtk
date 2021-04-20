@@ -71,4 +71,4 @@ class DiveTripView(Gtk.Box):
 
         self.trip_name.set_text(name)
         for dive in dives:
-            self.dive.pack_start(dive.dive_overview(), True, True, 0)
+            self.dive.insert(dive.dive_overview(), -1)

@@ -25,10 +25,9 @@
       </packing>
     </child>
     <child>
-      <object class="GtkBox" id="dive">
+      <object class="GtkListBox" id="dive">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="orientation">vertical</property>
         <child>
           <placeholder/>
         </child>
