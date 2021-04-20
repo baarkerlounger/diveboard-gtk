@@ -37,6 +37,7 @@ from gi.repository import Gtk, Handy
 from .settings import Settings
 from .define import RES_PATH, API_KEY, API_URL
 from .dive import Dive
+from .dive_trip import DiveTrip
 
 @Gtk.Template(resource_path=f'{RES_PATH}/window.ui')
 class DiveboardWindow(Handy.ApplicationWindow):
@@ -80,7 +81,6 @@ class DiveboardWindow(Handy.ApplicationWindow):
                     Settings.get().set_auth_token(json_response['token'])
                     Settings.get().set_user_id(json_response['token'])
                     self.set_main_screen()
-                    self.get_dives(json_response['user']['all_dive_ids'])
                 else:
                     print('Credentials not accepted')
             elif response.status_code == 404:
@@ -92,26 +92,32 @@ class DiveboardWindow(Handy.ApplicationWindow):
 
     def display_logbook(self):
         self.main_stack.set_visible_child(self.logbook_screen)
+        # self.get_dives(json_response['user']['all_dive_ids'])
+        trips = DiveTrip.all()
+        for trip_name in trips:
+            trip_view = DiveTrip.dive_trip_view(trip_name, trips[trip_name])
+            self.logbook_list.insert(trip_view, -1)
+
 
     def display_login(self):
         self.main_stack.set_visible_child(self.login_screen)
 
-    def get_dives(self, dive_ids):
-        url = API_URL + 'V2/dive'
-        if (len(dive_ids) > 0):
-            for dive_id in dive_ids:
-                payload = {
-                    "arg": json.dumps({"id": str(dive_id)}),
-                    "auth_token": Settings.get().get_auth_token(),
-                    "apikey": API_KEY
-                }
-                response = requests.post(url, json=payload)
-                if response.status_code == 200:
-                    json_response = response.json()
-                    dive_overview = Dive(**json_response['result']).dive_overview()
-                    self.add_dive_overview_to_logbook_screen(dive_overview)
-                elif response.status_code == 404:
-                    print('Not Found.')
+    # def get_dives(self, dive_ids):
+    #     url = API_URL + 'V2/dive'
+    #     if (len(dive_ids) > 0):
+    #         for dive_id in dive_ids:
+    #             payload = {
+    #                 "arg": json.dumps({"id": str(dive_id)}),
+    #                 "auth_token": Settings.get().get_auth_token(),
+    #                 "apikey": API_KEY
+    #             }
+    #             response = requests.post(url, json=payload)
+    #             if response.status_code == 200:
+    #                 json_response = response.json()
+    #                 dive_overview = Dive(**json_response['result']).dive_overview()
+    #                 self.add_dive_overview_to_logbook_screen(dive_overview)
+    #             elif response.status_code == 404:
+    #                 print('Not Found.')
 
     def add_dive_overview_to_logbook_screen(self, dive_overview):
         self.logbook_list.insert(dive_overview, -1)

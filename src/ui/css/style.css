@@ -6,3 +6,12 @@
   color: white;
   background: #3c4245;
 }
+
+.bold_header{
+  font-weight: 600;
+}
+
+.details_text{
+  color: #505050;
+}
+

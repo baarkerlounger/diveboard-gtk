@@ -69,6 +69,12 @@ class DatabaseManager:
 
         return cur.lastrowid
 
+    def fetch(self, sql):
+        conn = self.create_connection()
+        curr = conn.cursor()
+        ex = curr.execute(sql)
+        return ex.fetchall()
+
 
 
 

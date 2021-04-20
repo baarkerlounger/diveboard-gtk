@@ -80,6 +80,9 @@
                 <property name="halign">start</property>
                 <property name="margin-right">5</property>
                 <property name="label" translatable="yes">19 Apr 2019</property>
+                <style>
+                  <class name="details_text"/>
+                </style>
               </object>
               <packing>
                 <property name="left-attach">0</property>
@@ -113,6 +116,9 @@
                     <property name="halign">start</property>
                     <property name="margin-right">5</property>
                     <property name="label" translatable="yes">21m</property>
+                    <style>
+                      <class name="details_text"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -139,6 +145,9 @@
                     <property name="halign">start</property>
                     <property name="margin-right">5</property>
                     <property name="label" translatable="yes">45min</property>
+                    <style>
+                      <class name="details_text"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="expand">False</property>

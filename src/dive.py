@@ -33,13 +33,21 @@ from .define import RES_PATH
 
 class Dive():
 
-    def __init__(self, **kwargs):
-        self.dive_id = kwargs["id"]
-        self.trip_name = kwargs["trip_name"]
-        self.max_depth = kwargs["maxdepth"]
-        self.max_depth_unit = kwargs["maxdepth_unit"]
-        self.duration = kwargs["duration"]
-        self.date = kwargs["date"]
+    def __init__(self, *args, **kwargs):
+        if kwargs:
+            self.dive_id = kwargs["id"]
+            self.trip_name = kwargs["trip_name"]
+            self.max_depth = kwargs["maxdepth"]
+            self.max_depth_unit = kwargs["maxdepth_unit"]
+            self.duration = kwargs["duration"]
+            self.date = kwargs["date"]
+        else:
+            self.dive_id = args[0]
+            self.trip_name = args[1]
+            self.max_depth = args[2]
+            self.max_depth_unit = args[3]
+            self.duration = args[4]
+            self.date = args[5]
 
     def dive_overview(self):
         return DiveOverview(self)
