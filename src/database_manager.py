@@ -36,8 +36,8 @@ class DatabaseManager:
     CREATE_DIVES_TABLE_SQL = """CREATE TABLE IF NOT EXISTS dives (
 	                                id integer PRIMARY KEY,
 	                                trip_name text NOT NULL,
-	                                max_depth integer,
-                                    max_depth_unit text,
+	                                maxdepth integer,
+                                    maxdepth_unit text,
                                     duration interger,
 	                                date text
                                 );"""
@@ -71,9 +71,11 @@ class DatabaseManager:
 
     def fetch(self, sql):
         conn = self.create_connection()
+        conn.row_factory = sqlite3.Row
         curr = conn.cursor()
         ex = curr.execute(sql)
-        return ex.fetchall()
+        rows = ex.fetchall()
+        return [dict(row) for row in rows]
 
 
 

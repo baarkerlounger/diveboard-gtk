@@ -44,7 +44,7 @@ class DiveTrip():
         dives = DatabaseManager().fetch(dives_sql)
 
         for d in dives:
-            dive = Dive(*d)
+            dive = Dive(**d)
             if dive.trip_name in all_trips.keys():
                 all_trips.get(dive.trip_name).append(dive)
             else:

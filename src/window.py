@@ -92,33 +92,18 @@ class DiveboardWindow(Handy.ApplicationWindow):
 
     def display_logbook(self):
         self.main_stack.set_visible_child(self.logbook_screen)
-        # self.get_dives(json_response['user']['all_dive_ids'])
         trips = DiveTrip.all()
-        for trip_name in trips:
-            trip_view = DiveTrip.dive_trip_view(trip_name, trips[trip_name])
-            self.logbook_list.insert(trip_view, -1)
+        if trips:
+            for trip_name in trips:
+                trip_view = DiveTrip.dive_trip_view(trip_name, trips[trip_name])
+                self.logbook_list.insert(trip_view, -1)
+        # else:
+            # Dive.get_online_dives(dive_ids)
 
 
     def display_login(self):
         self.main_stack.set_visible_child(self.login_screen)
 
-    # def get_dives(self, dive_ids):
-    #     url = API_URL + 'V2/dive'
-    #     if (len(dive_ids) > 0):
-    #         for dive_id in dive_ids:
-    #             payload = {
-    #                 "arg": json.dumps({"id": str(dive_id)}),
-    #                 "auth_token": Settings.get().get_auth_token(),
-    #                 "apikey": API_KEY
-    #             }
-    #             response = requests.post(url, json=payload)
-    #             if response.status_code == 200:
-    #                 json_response = response.json()
-    #                 dive_overview = Dive(**json_response['result']).dive_overview()
-    #                 self.add_dive_overview_to_logbook_screen(dive_overview)
-    #             elif response.status_code == 404:
-    #                 print('Not Found.')
 
-    def add_dive_overview_to_logbook_screen(self, dive_overview):
-        self.logbook_list.insert(dive_overview, -1)
+
         

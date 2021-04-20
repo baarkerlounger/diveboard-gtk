@@ -112,7 +112,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="max_depth">
+                  <object class="GtkLabel" id="maxdepth">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
