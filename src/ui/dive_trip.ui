@@ -5,6 +5,7 @@
   <template class="DiveTrip" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
+    <property name="margin-bottom">10</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkLabel" id="trip_name">
@@ -28,9 +29,6 @@
       <object class="GtkListBox" id="dive">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <child>
-          <placeholder/>
-        </child>
       </object>
       <packing>
         <property name="expand">True</property>
