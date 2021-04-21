@@ -210,7 +210,7 @@
                     <property name="position">2</property>
                   </packing>
                 </child>
-              </object>
+                  </object>
                 </child>
               </object>
             </child>
