@@ -101,7 +101,7 @@ class DiveOverview(Gtk.Box):
         self.dive_site.set_text(dive.trip_name)
         self.dive_date.set_text(dive.date)
         self.maxdepth.set_text(f'{round(dive.maxdepth)}{dive.maxdepth_unit}')
-        self.duration.set_text(str(round(dive.duration)) + ' mins')
+        self.duration.set_text(str(round(dive.duration)) + ' min')
         self.duration_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/duration.svg'))
         self.depth_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/depth.svg'))
 
