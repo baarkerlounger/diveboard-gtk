@@ -72,7 +72,9 @@ class Dive():
                 response = requests.post(url, json=payload)
                 if response.status_code == 200:
                     json_response = response.json()
-                    dives.append(Dive(**json_response['result']))
+                    # dives.append(Dive(**json_response['result']))
+                    dive = Dive(**json_response['result'])
+                    dive.insert_dive()
                 elif response.status_code == 404:
                     print('Not Found.')
         return dives
