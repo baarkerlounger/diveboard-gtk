@@ -23,4 +23,6 @@ sudo ninja -C builddir install
 
 ### Screenshots
 
-![Login Screen](screenshots/login.png "Login Screen")
+![Login Screen](screenshots/diveboard-login.png "Login Screen")<br />
+![Logbook Screen](screenshots/diveboard-logbook.png "Logbook Screen")<br />
+![About Screen](screenshots/diveboard-about.png "About Screen")
