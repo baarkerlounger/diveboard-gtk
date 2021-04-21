@@ -26,6 +26,8 @@ diveboard_sources = [
   'preferences.py',
   'dive.py',
   'dive_trip.py',
+  'api_manager.py',
+  'spot.py',
   'database_manager.py',
   'window.py',
 ]

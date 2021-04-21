@@ -33,8 +33,10 @@ import urllib
 from gi.repository import Gtk, GdkPixbuf, Gio
 
 from .database_manager import DatabaseManager
+from .api_manager import ApiManager
 from .define import RES_PATH, API_KEY, API_URL
 from .settings import Settings
+from .spot import Spot
 
 class Dive():
 
@@ -47,13 +49,15 @@ class Dive():
         self.duration = kwargs["duration"]
         self.date = kwargs["date"]
         self.thumbnail_image_url = kwargs["thumbnail_image_url"]
+        self.spot_id = kwargs["spot_id"]
+        self.spot = Spot(self.spot_id)
 
     def dive_overview(self):
         return DiveOverview(self)
 
     def insert_dive(self):
-        sql = """INSERT INTO dives(id,trip_name,maxdepth,maxdepth_unit,time_in,duration,date,thumbnail_image_url) VALUES(?,?,?,?,?,?,?,?)"""
-        values = (self.dive_id, self.trip_name, self.maxdepth, self.maxdepth_unit, self.time_in, self.duration, self.date, self.thumbnail_image_url)
+        sql = """INSERT OR IGNORE INTO dives(id,trip_name,maxdepth,maxdepth_unit,time_in,duration,date,thumbnail_image_url, spot_id) VALUES(?,?,?,?,?,?,?,?,?)"""
+        values = (self.dive_id, self.trip_name, self.maxdepth, self.maxdepth_unit, self.time_in, self.duration, self.date, self.thumbnail_image_url, self.spot_id)
         DatabaseManager().insert_row(sql, values)
 
     @classmethod
@@ -64,22 +68,13 @@ class Dive():
     @classmethod
     def get_online_dives(cls, dive_ids):
         dives = []
-        url = API_URL + 'V2/dive'
         if (len(dive_ids) > 0):
             for dive_id in dive_ids:
-                payload = {
-                    "arg": json.dumps({"id": str(dive_id)}),
-                    "auth_token": Settings.get().get_auth_token(),
-                    "apikey": API_KEY
-                }
-                response = requests.post(url, json=payload)
-                if response.status_code == 200:
-                    json_response = response.json()
-                    # dives.append(Dive(**json_response['result']))
-                    dive = Dive(**json_response['result'])
+                arg = json.dumps({"id": str(dive_id)})
+                response = ApiManager.object_request('V2/dive', arg)
+                if response:
+                    dive = Dive(**response)
                     dive.insert_dive()
-                elif response.status_code == 404:
-                    print('Not Found.')
         return dives
 
 @Gtk.Template(resource_path=f'{RES_PATH}/dive_overview.ui')
@@ -109,3 +104,6 @@ class DiveOverview(Gtk.Box):
         input_stream = Gio.MemoryInputStream.new_from_data(thumbnail.read(), None)
         pixbuf = GdkPixbuf.Pixbuf.new_from_stream(input_stream, None)
         self.thumbnail.set_from_pixbuf(pixbuf)
+
+        self.dive_site.set_text(dive.spot.location_name)
+        self.country.set_text(dive.spot.name)

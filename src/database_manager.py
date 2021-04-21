@@ -41,12 +41,34 @@ class DatabaseManager:
                                     time_in text,
                                     duration integer,
 	                                date text,
-	                                thumbnail_image_url text
+	                                thumbnail_image_url text,
+	                                spot_id integer,
+	                            UNIQUE(id)
+                                );"""
+
+    CREATE_SPOTS_TABLE_SQL = """CREATE TABLE IF NOT EXISTS spots (
+	                                id integer PRIMARY KEY,
+	                                shaken_id integer,
+	                                country_name text,
+	                                country_code text,
+                                    country_flag_big text,
+                                    country_flag_small text,
+                                    within_country_bounds boolean,
+                                    region_name text,
+	                                location_name text,
+	                                permalink text,
+	                                fullpermalink text,
+	                                staticmap text,
+	                                name text,
+	                                lat text,
+	                                lng text,
+	                            UNIQUE(id)
                                 );"""
 
     def setup_database(self):
         conn = self.create_connection()
         self.create_tables(conn, self.CREATE_DIVES_TABLE_SQL)
+        self.create_tables(conn, self.CREATE_SPOTS_TABLE_SQL)
 
     def create_connection(self):
         conn = None
