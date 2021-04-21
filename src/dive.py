@@ -43,6 +43,7 @@ class Dive():
         self.trip_name = kwargs["trip_name"]
         self.maxdepth = kwargs["maxdepth"]
         self.maxdepth_unit = kwargs["maxdepth_unit"]
+        self.time_in = kwargs["time_in"]
         self.duration = kwargs["duration"]
         self.date = kwargs["date"]
         self.thumbnail_image_url = kwargs["thumbnail_image_url"]
@@ -51,13 +52,13 @@ class Dive():
         return DiveOverview(self)
 
     def insert_dive(self):
-        sql = """INSERT INTO dives(id,trip_name,maxdepth,maxdepth_unit,duration,date,thumbnail_image_url) VALUES(?,?,?,?,?,?,?)"""
-        values = (self.dive_id, self.trip_name, self.maxdepth, self.maxdepth_unit, self.duration, self.date, self.thumbnail_image_url)
+        sql = """INSERT INTO dives(id,trip_name,maxdepth,maxdepth_unit,time_in,duration,date,thumbnail_image_url) VALUES(?,?,?,?,?,?,?,?)"""
+        values = (self.dive_id, self.trip_name, self.maxdepth, self.maxdepth_unit, self.time_in, self.duration, self.date, self.thumbnail_image_url)
         DatabaseManager().insert_row(sql, values)
 
     @classmethod
     def all_offline_dives(cls):
-        dives_sql = """SELECT * FROM dives ORDER BY DATE(dives.date) DESC"""
+        dives_sql = """SELECT * FROM dives ORDER BY DATETIME(dives.time_in) DESC"""
         return DatabaseManager().fetch(dives_sql)
 
     @classmethod

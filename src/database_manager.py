@@ -38,6 +38,7 @@ class DatabaseManager:
 	                                trip_name text NOT NULL,
 	                                maxdepth integer,
                                     maxdepth_unit text,
+                                    time_in text,
                                     duration integer,
 	                                date text,
 	                                thumbnail_image_url text
