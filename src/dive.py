@@ -32,7 +32,7 @@ import json
 from gi.repository import Gtk, GdkPixbuf
 
 from .database_manager import DatabaseManager
-from .define import RES_PATH
+from .define import RES_PATH, API_KEY, API_URL
 from .settings import Settings
 
 class Dive():
