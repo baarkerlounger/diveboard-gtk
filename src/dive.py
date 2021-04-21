@@ -49,10 +49,14 @@ class Dive():
         return DiveOverview(self)
 
     def insert_dive(self):
-        sql = """INSERT INTO dives(id,trip_name,maxdepth,maxdepth_unit,duration,date)
-              VALUES(?,?,?,?,?,?)"""
+        sql = """INSERT INTO dives(id,trip_name,maxdepth,maxdepth_unit,duration,date) VALUES(?,?,?,?,?,?)"""
         values = (self.dive_id, self.trip_name, self.maxdepth, self.maxdepth_unit, self.duration, self.date)
         DatabaseManager().insert_row(sql, values)
+
+    @classmethod
+    def all_offline_dives(cls):
+        dives_sql = """SELECT * FROM dives ORDER BY DATE(dives.date) DESC"""
+        return DatabaseManager().fetch(dives_sql)
 
     @classmethod
     def get_online_dives(cls, dive_ids):

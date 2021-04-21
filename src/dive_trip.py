@@ -40,8 +40,7 @@ class DiveTrip():
     @classmethod
     def all(cls):
         all_trips = {}
-        dives_sql = """SELECT * FROM dives ORDER BY DATE(dives.date) DESC"""
-        dives = DatabaseManager().fetch(dives_sql)
+        dives = Dive.all_offline_dives()
 
         for d in dives:
             dive = Dive(**d)

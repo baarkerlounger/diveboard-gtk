@@ -56,6 +56,8 @@ class DiveboardWindow(Handy.ApplicationWindow):
 
     logbook_list   = Gtk.Template.Child()
 
+    all_dive_ids = []
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.login_btn.connect('clicked', self.on_login_clicked)
@@ -80,6 +82,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
                 if (json_response['success'] == True):
                     Settings.get().set_auth_token(json_response['token'])
                     Settings.get().set_user_id(json_response['token'])
+                    self.all_dive_ids = json_response['user']['all_dive_ids']
                     self.set_main_screen()
                 else:
                     print('Credentials not accepted')
@@ -93,12 +96,14 @@ class DiveboardWindow(Handy.ApplicationWindow):
     def display_logbook(self):
         self.main_stack.set_visible_child(self.logbook_screen)
         trips = DiveTrip.all()
-        if trips:
-            for trip_name in trips:
-                trip_view = DiveTrip.dive_trip_view(trip_name, trips[trip_name])
-                self.logbook_list.insert(trip_view, -1)
-        # else:
-            # Dive.get_online_dives(dive_ids)
+        if not trips:
+            Dive.get_online_dives(all_dive_ids)
+            trips = DiveTrip.all()
+
+        for trip_name in trips:
+            trip_view = DiveTrip.dive_trip_view(trip_name, trips[trip_name])
+            self.logbook_list.insert(trip_view, -1)
+
 
 
     def display_login(self):
