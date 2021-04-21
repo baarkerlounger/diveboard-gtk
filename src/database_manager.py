@@ -38,8 +38,9 @@ class DatabaseManager:
 	                                trip_name text NOT NULL,
 	                                maxdepth integer,
                                     maxdepth_unit text,
-                                    duration interger,
-	                                date text
+                                    duration integer,
+	                                date text,
+	                                thumbnail_image_url text
                                 );"""
 
     def setup_database(self):

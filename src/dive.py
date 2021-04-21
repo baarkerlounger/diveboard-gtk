@@ -28,8 +28,9 @@
 
 import requests
 import json
+import urllib
 
-from gi.repository import Gtk, GdkPixbuf
+from gi.repository import Gtk, GdkPixbuf, Gio
 
 from .database_manager import DatabaseManager
 from .define import RES_PATH, API_KEY, API_URL
@@ -44,13 +45,14 @@ class Dive():
         self.maxdepth_unit = kwargs["maxdepth_unit"]
         self.duration = kwargs["duration"]
         self.date = kwargs["date"]
+        self.thumbnail_image_url = kwargs["thumbnail_image_url"]
 
     def dive_overview(self):
         return DiveOverview(self)
 
     def insert_dive(self):
-        sql = """INSERT INTO dives(id,trip_name,maxdepth,maxdepth_unit,duration,date) VALUES(?,?,?,?,?,?)"""
-        values = (self.dive_id, self.trip_name, self.maxdepth, self.maxdepth_unit, self.duration, self.date)
+        sql = """INSERT INTO dives(id,trip_name,maxdepth,maxdepth_unit,duration,date,thumbnail_image_url) VALUES(?,?,?,?,?,?,?)"""
+        values = (self.dive_id, self.trip_name, self.maxdepth, self.maxdepth_unit, self.duration, self.date, self.thumbnail_image_url)
         DatabaseManager().insert_row(sql, values)
 
     @classmethod
@@ -90,6 +92,7 @@ class DiveOverview(Gtk.Box):
     duration      = Gtk.Template.Child()
     duration_icon = Gtk.Template.Child()
     depth_icon    = Gtk.Template.Child()
+    thumbnail     = Gtk.Template.Child()
 
     def __init__(self, dive, **kwargs):
         super().__init__(**kwargs)
@@ -100,3 +103,8 @@ class DiveOverview(Gtk.Box):
         self.duration.set_text(str(dive.duration) + ' mins')
         self.duration_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/duration.svg'))
         self.depth_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/depth.svg'))
+
+        thumbnail = urllib.request.urlopen(dive.thumbnail_image_url)
+        input_stream = Gio.MemoryInputStream.new_from_data(thumbnail.read(), None)
+        pixbuf = GdkPixbuf.Pixbuf.new_from_stream(input_stream, None)
+        self.thumbnail.set_from_pixbuf(pixbuf)
