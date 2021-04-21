@@ -93,11 +93,14 @@ class DatabaseManager:
 
         return cur.lastrowid
 
-    def fetch(self, sql):
+    def fetch(self, sql, args):
         conn = self.create_connection()
         conn.row_factory = sqlite3.Row
         curr = conn.cursor()
-        ex = curr.execute(sql)
+        if args:
+            ex = curr.execute(sql, args)
+        else:
+            ex = curr.execute(sql)
         rows = ex.fetchall()
         return [dict(row) for row in rows]
 

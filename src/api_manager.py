@@ -36,10 +36,17 @@ from .settings import Settings
 class ApiManager:
 
     @classmethod
-    def object_request(cls, endpoint, arg):
+    def object_request(cls, endpoint, ids):
+        objects = []
+        if (len(ids) > 0):
+            for id in ids:
+                objects.append({"id": id})
+        else:
+            return []
+
         url = API_URL + endpoint
         payload = {
-            "arg": arg,
+            "arg": json.dumps(objects),
             "auth_token": Settings.get().get_auth_token(),
             "apikey": API_KEY
         }

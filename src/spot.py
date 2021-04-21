@@ -36,12 +36,8 @@ from .settings import Settings
 
 class Spot():
 
-    def __init__(self, id):
+    def __init__(self, *args, **kwargs):
         self.id = id
-        self.get_online_values()
-        self.insert_spot()
-
-    def set_values(self, **kwargs):
         self.shaken_id = kwargs['shaken_id']
         self.country_name = kwargs['country_name']
         self.country_code = kwargs['country_code']
@@ -57,29 +53,28 @@ class Spot():
         self.lat = kwargs['lat']
         self.lng = kwargs['lng']
 
-    def insert_spot(self):
+    @classmethod
+    def insert_spot(cls, spot):
         sql = """INSERT OR IGNORE INTO spots(id,shaken_id,country_name,country_code,country_flag_big,country_flag_small,within_country_bounds,region_name, location_name,
                              permalink, fullpermalink, staticmap, name, lat, lng)
-                 VALUES(?,?,?,?,?,?,?,?, ?, ?, ?, ?, ?, ?, ?)"""
-        values = (self.id, self.shaken_id, self.country_name, self.country_code, self.country_flag_big, self.country_flag_small, self.within_country_bounds,
-                  self.region_name, self.location_name, self.permalink, self.fullpermalink, self.staticmap, self.name, self.lat, self.lng)
+                 VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
+        values = (spot['id'], spot['shaken_id'], spot['country_name'], spot['country_code'], spot['country_flag_big'], spot['country_flag_small'], spot['within_country_bounds'],
+                  spot['region_name'], spot['location_name'], spot['permalink'], spot['fullpermalink'], spot['staticmap'], spot['name'], spot['lat'], spot['lng'])
         DatabaseManager().insert_row(sql, values)
 
-    def get_online_values(self):
-        arg = json.dumps({"id": str(self.id)})
-        response = ApiManager.object_request('V2/spot', arg)
-        if response:
-            self.set_values(**response)
+    @classmethod
+    def create_from_online(cls):
+        sql = """SELECT DISTINCT spot_id FROM dives"""
+        id_objects = DatabaseManager().fetch(sql, None)
+        ids = [x['spot_id'] for x in id_objects]
+        online = ApiManager.object_request('V2/spot', ids)
+        if online:
+            for spot in online:
+                Spot.insert_spot(spot)
 
     @classmethod
-    def get_online_spots(cls, spot_ids):
-        spots = []
-        if (len(spots) > 0):
-            for spot_id in spot_ids:
-                if response:
-                    spot = Spot(spot_id)
-                    spot.get_online_values()
-                    spot.insert_spot()
-        return spots
-
-        
+    def get_spot_by_id(cls, spot_id):
+        sql = """SELECT * FROM spots WHERE id in (?)"""
+        saved_spot = DatabaseManager().fetch(sql, [str(spot_id)])
+        if saved_spot:
+            return Spot(**saved_spot[0])

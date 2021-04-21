@@ -38,6 +38,7 @@ from .settings import Settings
 from .define import RES_PATH, API_KEY, API_URL
 from .dive import Dive
 from .dive_trip import DiveTrip
+from .spot import Spot
 
 @Gtk.Template(resource_path=f'{RES_PATH}/window.ui')
 class DiveboardWindow(Handy.ApplicationWindow):
@@ -97,7 +98,8 @@ class DiveboardWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.logbook_screen)
         trips = DiveTrip.all()
         if not trips:
-            Dive.get_online_dives(self.all_dive_ids)
+            Dive.create_from_online(self.all_dive_ids)
+            Spot.create_from_online()
             trips = DiveTrip.all()
 
         for trip_name in trips:

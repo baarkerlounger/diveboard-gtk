@@ -40,7 +40,7 @@ class DiveTrip():
     @classmethod
     def all(cls):
         all_trips = {}
-        dives = Dive.all_offline_dives()
+        dives = Dive.offline_dives()
 
         for d in dives:
             dive = Dive(**d)

@@ -41,7 +41,7 @@ from .spot import Spot
 class Dive():
 
     def __init__(self, *args, **kwargs):
-        self.dive_id = kwargs["id"]
+        self.id = kwargs["id"]
         self.trip_name = kwargs["trip_name"]
         self.maxdepth = kwargs["maxdepth"]
         self.maxdepth_unit = kwargs["maxdepth_unit"]
@@ -50,32 +50,28 @@ class Dive():
         self.date = kwargs["date"]
         self.thumbnail_image_url = kwargs["thumbnail_image_url"]
         self.spot_id = kwargs["spot_id"]
-        self.spot = Spot(self.spot_id)
+        self.spot = Spot.get_spot_by_id(self.spot_id)
 
     def dive_overview(self):
         return DiveOverview(self)
 
-    def insert_dive(self):
+    @classmethod
+    def insert_dive(cls, dive):
         sql = """INSERT OR IGNORE INTO dives(id,trip_name,maxdepth,maxdepth_unit,time_in,duration,date,thumbnail_image_url, spot_id) VALUES(?,?,?,?,?,?,?,?,?)"""
-        values = (self.dive_id, self.trip_name, self.maxdepth, self.maxdepth_unit, self.time_in, self.duration, self.date, self.thumbnail_image_url, self.spot_id)
+        values = (dive['id'], dive['trip_name'], dive['maxdepth'], dive['maxdepth_unit'], dive['time_in'], dive['duration'], dive['date'], dive['thumbnail_image_url'], dive['spot_id'])
         DatabaseManager().insert_row(sql, values)
 
     @classmethod
-    def all_offline_dives(cls):
+    def offline_dives(cls):
         dives_sql = """SELECT * FROM dives ORDER BY DATETIME(dives.time_in) DESC"""
-        return DatabaseManager().fetch(dives_sql)
+        return DatabaseManager().fetch(dives_sql, None)
 
     @classmethod
-    def get_online_dives(cls, dive_ids):
-        dives = []
-        if (len(dive_ids) > 0):
-            for dive_id in dive_ids:
-                arg = json.dumps({"id": str(dive_id)})
-                response = ApiManager.object_request('V2/dive', arg)
-                if response:
-                    dive = Dive(**response)
-                    dive.insert_dive()
-        return dives
+    def create_from_online(cls, dive_ids):
+        online_dives = ApiManager.object_request('V2/dive', dive_ids)
+        if online_dives:
+            for d in online_dives:
+                Dive.insert_dive(d)
 
 @Gtk.Template(resource_path=f'{RES_PATH}/dive_overview.ui')
 class DiveOverview(Gtk.Box):
@@ -95,7 +91,7 @@ class DiveOverview(Gtk.Box):
 
         self.dive_site.set_text(dive.trip_name)
         self.dive_date.set_text(dive.date)
-        self.maxdepth.set_text(f'{round(dive.maxdepth)}{dive.maxdepth_unit}')
+        self.maxdepth.set_text(self.format_depth(dive.maxdepth, dive.maxdepth_unit))
         self.duration.set_text(str(round(dive.duration)) + ' min')
         self.duration_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/duration.svg'))
         self.depth_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/depth.svg'))
@@ -105,5 +101,17 @@ class DiveOverview(Gtk.Box):
         pixbuf = GdkPixbuf.Pixbuf.new_from_stream(input_stream, None)
         self.thumbnail.set_from_pixbuf(pixbuf)
 
-        self.dive_site.set_text(dive.spot.location_name)
-        self.country.set_text(dive.spot.name)
+        self.dive_site.set_text(dive.spot.name)
+        self.country.set_text(dive.spot.country_name)
+
+    def format_depth(self, depth, depth_unit):
+        units = Settings.get().get_units()
+        # Metric
+        if (units == 0):
+            value = depth
+            unit = depth_unit
+        #Imperial
+        elif (units == 1):
+            value = depth / 0.3048
+            unit = "ft"
+        return f'{round(value)}{unit}'
