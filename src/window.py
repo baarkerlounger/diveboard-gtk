@@ -97,7 +97,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.logbook_screen)
         trips = DiveTrip.all()
         if not trips:
-            Dive.get_online_dives(all_dive_ids)
+            Dive.get_online_dives(self.all_dive_ids)
             trips = DiveTrip.all()
 
         for trip_name in trips:
