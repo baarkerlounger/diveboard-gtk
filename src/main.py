@@ -84,7 +84,8 @@ class Application(Gtk.Application):
 
     def on_preferences(self, _action, _param):
         """ Show preferences window """
-        window = DiveboardPreferencesWindow(self.window)
+        window = DiveboardPreferencesWindow(self)
+        window.set_transient_for(self.window)
 
     def on_about(self, _action, _param):
         """ Show about dialog """
