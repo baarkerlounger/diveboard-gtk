@@ -137,8 +137,8 @@
         <child>
           <object class="HdyWindowHandle" id="logbook_screen">
             <property name="name">logbook_screen</property>
-            <property name="can-focus">False</property>
             <property name="visible">True</property>
+            <property name="can-focus">False</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
@@ -174,6 +174,7 @@
                       </object>
                       <packing>
                         <property name="pack-type">end</property>
+                        <property name="position">1</property>
                       </packing>
                     </child>
                   </object>
@@ -186,31 +187,28 @@
                 <child>
                   <object class="GtkScrolledWindow">
                     <property name="visible">True</property>
+                    <property name="can-focus">False</property>
                     <property name="hscrollbar-policy">never</property>
                     <child>
-                      <object class="GtkListBox" id="logbook_list">
+                      <object class="GtkViewport">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <child>
-                          <object class="GtkListBoxRow">
+                          <object class="GtkListBox" id="logbook_list">
                             <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <child>
+                            <property name="can-focus">False</property>
+                            <child type="placeholder">
                               <placeholder/>
                             </child>
                           </object>
                         </child>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
                     </child>
                   </object>
                   <packing>
-                    <property name="fill">True</property>
                     <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
               </object>
