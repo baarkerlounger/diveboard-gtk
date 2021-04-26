@@ -29,12 +29,14 @@
 import requests
 import json
 import urllib
+import os
+import re
 
 from gi.repository import Gtk, GdkPixbuf, Gio
 
 from .database_manager import DatabaseManager
 from .api_manager import ApiManager
-from .define import RES_PATH, API_KEY, API_URL
+from .define import RES_PATH, DATA_PATH, API_KEY, API_URL
 from .settings import Settings
 from .spot import Spot
 
@@ -51,9 +53,22 @@ class Dive():
         self.thumbnail_image_url = kwargs["thumbnail_image_url"]
         self.spot_id = kwargs["spot_id"]
         self.spot = Spot.get_spot_by_id(self.spot_id)
+        self.cache_thumbnail_path = self.cache_thumbnail()
 
     def dive_overview(self):
         return DiveOverview(self)
+
+    def cache_thumbnail(self):
+        # Match everything after last backslash
+        thumbnail_id = re.search('([^\/]+$)', self.thumbnail_image_url)[0]
+        thumbnail_path = f'{DATA_PATH}/{thumbnail_id}'
+        if not os.path.isfile(thumbnail_path):
+            file = open(thumbnail_path, 'wb')
+            thumbnail = urllib.request.urlopen(self.thumbnail_image_url)
+            file.write(thumbnail.read())
+            file.close()
+        return thumbnail_path
+
 
     @classmethod
     def insert_dive(cls, dive):
@@ -96,9 +111,7 @@ class DiveOverview(Gtk.Box):
         self.duration_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/duration.svg'))
         self.depth_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/depth.svg'))
 
-        thumbnail = urllib.request.urlopen(dive.thumbnail_image_url)
-        input_stream = Gio.MemoryInputStream.new_from_data(thumbnail.read(), None)
-        pixbuf = GdkPixbuf.Pixbuf.new_from_stream(input_stream, None)
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file(dive.cache_thumbnail_path)
         self.thumbnail.set_from_pixbuf(pixbuf)
 
         self.dive_site.set_text(dive.spot.name)

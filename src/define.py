@@ -37,4 +37,5 @@ API_URL  = 'https://www.diveboard.com/api/'
 VERSION  = '0.01'
 # /home/<user>/.var/app/xyz.slothlife.diveboard/data/diveboard.sqlite3
 DATABASE_FILE = os.path.join(xdg_data_home(), 'diveboard.sqlite3')
+DATA_PATH = xdg_data_home()
 
