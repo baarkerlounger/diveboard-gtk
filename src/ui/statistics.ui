@@ -239,7 +239,7 @@
     <section>
       <item>
         <attribute name="label" translatable="yes">Sign Out</attribute>
-        <attribute name="action">app.logout</attribute>
+        <attribute name="action">win.logout</attribute>
       </item>
     </section>
   </menu>

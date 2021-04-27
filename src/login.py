@@ -69,3 +69,11 @@ class Login(Gtk.Box):
             self.username_entry.grab_focus()
         else:
             self.password_entry.grab_focus()
+
+    def on_logout(self, _action, _param):
+        window = self.parent
+        self.username_entry.set_text("")
+        self.password_entry.set_text("")
+        Settings.get().set_auth_token("")
+        Settings.get().set_user_id("")
+        window.set_main_screen()

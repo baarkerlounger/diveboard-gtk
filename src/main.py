@@ -78,10 +78,6 @@ class Application(Gtk.Application):
         about_action.connect('activate', self.on_about)
         self.add_action(about_action)
 
-        logout_action = Gio.SimpleAction.new('logout', None)
-        logout_action.connect('activate', self.on_logout)
-        self.add_action(logout_action)
-
     def on_preferences(self, _action, _param):
         """ Show preferences window """
         window = DiveboardPreferencesWindow(self)
@@ -97,14 +93,6 @@ class Application(Gtk.Application):
         about.set_logo(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg'))
         about.connect('response', lambda dialog, response: dialog.destroy())
         about.present()
-
-    def on_logout(self, _action, _param):
-        window = self.props.active_window
-        window.login.username_entry.set_text("")
-        window.login.password_entry.set_text("")
-        Settings.get().set_auth_token("")
-        Settings.get().set_user_id("")
-        window.set_main_screen()
 
 def main(version):
     app = Application()

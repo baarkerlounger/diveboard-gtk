@@ -73,6 +73,10 @@ class DiveboardWindow(Handy.ApplicationWindow):
         screen_state_action.connect('activate', self.on_screen_state_change)
         self.add_action(screen_state_action)
 
+        logout_action = Gio.SimpleAction.new('logout', None)
+        logout_action.connect('activate', self.login.on_logout)
+        self.add_action(logout_action)
+
     def on_screen_state_change(self, action, param):
         action.set_state(param)
         screen = param.get_string()
