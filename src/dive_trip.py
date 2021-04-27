@@ -40,7 +40,7 @@ class DiveTrip():
         self.view  = DiveTripView(self)
 
     @classmethod
-    def all(cls):
+    def offline_trips(cls):
         all_trips = {}
         dives = Dive.offline_dives()
 

@@ -42,11 +42,11 @@ class Logbook(Gtk.Box):
         self.divetrips = []
 
     def populate_divetrips(self):
-        trips = DiveTrip.all()
+        trips = DiveTrip.offline_trips()
         if not trips:
             Dive.create_from_online(self.all_dive_ids)
             Spot.create_from_online()
-            trips = DiveTrip.all()
+            trips = DiveTrip.offline_trips()
 
         for trip_name in trips:
             trip = DiveTrip(**{'name': trip_name, 'dives': trips[trip_name]})
