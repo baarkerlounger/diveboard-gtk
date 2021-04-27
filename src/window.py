@@ -39,6 +39,7 @@ from .define import RES_PATH, API_KEY, API_URL
 from .dive import Dive
 from .dive_trip import DiveTrip
 from .spot import Spot
+from .logbook import Logbook
 
 @Gtk.Template(resource_path=f'{RES_PATH}/window.ui')
 class DiveboardWindow(Handy.ApplicationWindow):
@@ -46,8 +47,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
 
     main_stack     = Gtk.Template.Child()
 
-    login_screen   = Gtk.Template.Child()
-    logbook_screen = Gtk.Template.Child()
+    main_screen   = Gtk.Template.Child()
 
     menu_btn       = Gtk.Template.Child()
 
@@ -55,12 +55,12 @@ class DiveboardWindow(Handy.ApplicationWindow):
     username_entry = Gtk.Template.Child()
     password_entry = Gtk.Template.Child()
 
-    logbook_list   = Gtk.Template.Child()
-
     all_dive_ids = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.logbook = Logbook()
+        self.main_screen.add(self.logbook)
         self.login_btn.connect('clicked', self.on_login_clicked)
         self.set_main_screen()
         self.setup_actions()
@@ -112,7 +112,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
             self.password_entry.grab_focus()
 
     def display_logbook(self):
-        self.main_stack.set_visible_child(self.logbook_screen)
+        self.main_stack.set_visible_child(self.main_screen)
         trips = DiveTrip.all()
         if not trips:
             Dive.create_from_online(self.all_dive_ids)
@@ -121,7 +121,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
 
         for trip_name in trips:
             trip_view = DiveTrip.dive_trip_view(trip_name, trips[trip_name])
-            self.logbook_list.insert(trip_view, -1)
+            self.logbook.logbook_list.insert(trip_view, -1)
 
     def display_login(self):
         self.main_stack.set_visible_child(self.login_screen)
