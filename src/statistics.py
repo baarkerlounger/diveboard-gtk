@@ -29,6 +29,7 @@
 from gi.repository import Gtk
 
 from .define import RES_PATH
+from .database_manager import DatabaseManager
 
 @Gtk.Template(resource_path=f'{RES_PATH}/statistics.ui')
 class Statistics(Gtk.Box):
@@ -42,6 +43,8 @@ class Statistics(Gtk.Box):
 
     def calculate(self):
         self.dive_count.set_text(str(self.get_dive_count()))
+        print(self.get_max_depth())
+        print(round(self.get_total_time() / 60.0))
 
     def get_dive_count(self):
         divetrips = self.parent.logbook.divetrips
@@ -50,3 +53,15 @@ class Statistics(Gtk.Box):
             for dive in divetrip.dives:
                 dive_count += 1
         return dive_count
+
+    def get_max_depth(self):
+        sql = """SELECT MAX(maxdepth) FROM dives"""
+        return list(DatabaseManager().fetch(sql, None)[0].values())[0]
+
+    def get_max_time(self):
+        sql = """SELECT MAX(duration) FROM dives"""
+        return list(DatabaseManager().fetch(sql, None)[0].values())[0]
+
+    def get_total_time(self):
+        sql = """SELECT SUM(duration) FROM dives"""
+        return list(DatabaseManager().fetch(sql, None)[0].values())[0]
