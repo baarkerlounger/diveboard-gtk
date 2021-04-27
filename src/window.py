@@ -32,7 +32,7 @@ import json
 
 gi.require_version('Handy', '1')
 
-from gi.repository import Gtk, Handy
+from gi.repository import Gtk, Gio, GLib, Handy
 
 from .settings import Settings
 from .define import RES_PATH, API_KEY, API_URL
@@ -63,6 +63,23 @@ class DiveboardWindow(Handy.ApplicationWindow):
         super().__init__(**kwargs)
         self.login_btn.connect('clicked', self.on_login_clicked)
         self.set_main_screen()
+        self.setup_actions()
+
+    def setup_actions(self):
+        screen_state_action = Gio.SimpleAction.new_stateful('screen_state', GLib.VariantType.new('s'), GLib.Variant.new_string("logbook"))
+        screen_state_action.connect('activate', self.on_screen_state_change)
+        self.add_action(screen_state_action)
+
+
+    def on_screen_state_change(self, action, param):
+        action.set_state(param)
+        screen = param.get_string()
+        if screen == "statistics":
+            self.display_statistics()
+        elif screen == "wallet":
+            self.display_wallet()
+        else:
+            self.display_logbook()
 
     def set_main_screen(self):
         auth_token = Settings.get().get_auth_token()
@@ -106,10 +123,14 @@ class DiveboardWindow(Handy.ApplicationWindow):
             trip_view = DiveTrip.dive_trip_view(trip_name, trips[trip_name])
             self.logbook_list.insert(trip_view, -1)
 
-
-
     def display_login(self):
         self.main_stack.set_visible_child(self.login_screen)
+
+    def display_statistics(self):
+        print('Show Stats!')
+
+    def display_wallet(self):
+        print('Show Wallet!')
 
 
 

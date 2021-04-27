@@ -241,6 +241,24 @@
   </menu>
   <menu id="app-menu">
     <section>
+      <attribute name="id">main-screen-section</attribute>
+      <item>
+        <attribute name="label" translatable="yes">Logbook</attribute>
+        <attribute name="action">win.screen_state</attribute>
+        <attribute name="target">logbook</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Statistics</attribute>
+        <attribute name="action">win.screen_state</attribute>
+        <attribute name="target">statistics</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Wallet</attribute>
+        <attribute name="action">win.screen_state</attribute>
+        <attribute name="target">wallet</attribute>
+      </item>
+    </section>
+    <section>
       <attribute name="id">help-section</attribute>
       <item>
         <attribute name="label" translatable="yes">Preferences</attribute>
