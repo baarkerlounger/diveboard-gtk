@@ -54,9 +54,7 @@ class Dive():
         self.spot_id = kwargs["spot_id"]
         self.spot = Spot.get_spot_by_id(self.spot_id)
         self.cache_thumbnail_path = self.cache_thumbnail()
-
-    def dive_overview(self):
-        return DiveOverview(self)
+        self.overview = DiveOverview(self)
 
     def cache_thumbnail(self):
         # Match everything after last backslash

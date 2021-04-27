@@ -51,4 +51,4 @@ class Logbook(Gtk.Box):
         for trip_name in trips:
             trip = DiveTrip(**{'name': trip_name, 'dives': trips[trip_name]})
             self.divetrips.append(trip)
-            self.logbook_list.insert(trip.view(), -1)
+            self.logbook_list.insert(trip.view, -1)

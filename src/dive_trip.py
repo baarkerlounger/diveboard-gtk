@@ -37,9 +37,7 @@ class DiveTrip():
     def __init__(self, *args, **kwargs):
         self.name  = kwargs['name']
         self.dives = kwargs['dives']
-
-    def view(self):
-        return DiveTripView(self)
+        self.view  = DiveTripView(self)
 
     @classmethod
     def all(cls):
@@ -70,4 +68,4 @@ class DiveTripView(Gtk.Box):
 
         self.trip_name.set_text(divetrip.name)
         for dive in divetrip.dives:
-            self.dive.insert(dive.dive_overview(), -1)
+            self.dive.insert(dive.overview, -1)
