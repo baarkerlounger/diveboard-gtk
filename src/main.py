@@ -100,8 +100,8 @@ class Application(Gtk.Application):
 
     def on_logout(self, _action, _param):
         window = self.props.active_window
-        window.username_entry.set_text("")
-        window.password_entry.set_text("")
+        window.login.username_entry.set_text("")
+        window.login.password_entry.set_text("")
         Settings.get().set_auth_token("")
         Settings.get().set_user_id("")
         window.set_main_screen()

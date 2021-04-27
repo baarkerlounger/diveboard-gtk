@@ -27,19 +27,18 @@
 # authorization.
 
 import gi
-import requests
-import json
 
 gi.require_version('Handy', '1')
 
 from gi.repository import Gtk, Gio, GLib, Handy
 
 from .settings import Settings
-from .define import RES_PATH, API_KEY, API_URL
+from .define import RES_PATH
 from .dive import Dive
 from .dive_trip import DiveTrip
 from .spot import Spot
 from .logbook import Logbook
+from .login import Login
 
 @Gtk.Template(resource_path=f'{RES_PATH}/window.ui')
 class DiveboardWindow(Handy.ApplicationWindow):
@@ -47,21 +46,17 @@ class DiveboardWindow(Handy.ApplicationWindow):
 
     main_stack     = Gtk.Template.Child()
 
+    login_screen  = Gtk.Template.Child()
     main_screen   = Gtk.Template.Child()
-
-    menu_btn       = Gtk.Template.Child()
-
-    login_btn      = Gtk.Template.Child()
-    username_entry = Gtk.Template.Child()
-    password_entry = Gtk.Template.Child()
 
     all_dive_ids = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.login = Login(self)
         self.logbook = Logbook()
+        self.login_screen.add(self.login)
         self.main_screen.add(self.logbook)
-        self.login_btn.connect('clicked', self.on_login_clicked)
         self.set_main_screen()
         self.setup_actions()
 
@@ -69,7 +64,6 @@ class DiveboardWindow(Handy.ApplicationWindow):
         screen_state_action = Gio.SimpleAction.new_stateful('screen_state', GLib.VariantType.new('s'), GLib.Variant.new_string("logbook"))
         screen_state_action.connect('activate', self.on_screen_state_change)
         self.add_action(screen_state_action)
-
 
     def on_screen_state_change(self, action, param):
         action.set_state(param)
@@ -87,29 +81,6 @@ class DiveboardWindow(Handy.ApplicationWindow):
             self.display_logbook()
         else:
             self.display_login()
-
-    def on_login_clicked(self, widget):
-        username = self.username_entry.get_text()
-        password = self.password_entry.get_text()
-        if (username and password):
-            url = API_URL + "login_email"
-            payload = {"email": username, "password": password, "apikey": API_KEY}
-            response = requests.post(url, json=payload)
-            if response.status_code == 200:
-                json_response = response.json()
-                if (json_response['success'] == True):
-                    Settings.get().set_auth_token(json_response['token'])
-                    Settings.get().set_user_id(json_response['token'])
-                    self.all_dive_ids = json_response['user']['all_dive_ids']
-                    self.set_main_screen()
-                else:
-                    print('Credentials not accepted')
-            elif response.status_code == 404:
-                print('Not Found.')
-        elif not username:
-            self.username_entry.grab_focus()
-        else:
-            self.password_entry.grab_focus()
 
     def display_logbook(self):
         self.main_stack.set_visible_child(self.main_screen)

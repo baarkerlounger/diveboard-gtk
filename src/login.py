@@ -1,0 +1,71 @@
+# login.py
+#
+# Copyright 2021 baarkerlounger
+#
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE X CONSORTIUM BE LIABLE FOR ANY
+# CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+# Except as contained in this notice, the name(s) of the above copyright
+# holders shall not be used in advertising or otherwise to promote the sale,
+# use or other dealings in this Software without prior written
+# authorization.
+
+import requests
+import json
+
+from gi.repository import Gtk
+
+from .define import RES_PATH, API_KEY, API_URL
+from .settings import Settings
+
+@Gtk.Template(resource_path=f'{RES_PATH}/login.ui')
+class Login(Gtk.Box):
+    __gtype_name__ = 'Login'
+
+    login_btn      = Gtk.Template.Child()
+    username_entry = Gtk.Template.Child()
+    password_entry = Gtk.Template.Child()
+
+    def __init__(self, parent, **kwargs):
+        super().__init__(**kwargs)
+        self.parent = parent
+        self.login_btn.connect('clicked', self.on_login_clicked)
+
+    def on_login_clicked(self, widget):
+        username = self.username_entry.get_text()
+        password = self.password_entry.get_text()
+        if (username and password):
+            url = API_URL + "login_email"
+            payload = {"email": username, "password": password, "apikey": API_KEY}
+            response = requests.post(url, json=payload)
+            if response.status_code == 200:
+                json_response = response.json()
+                if (json_response['success'] == True):
+                    Settings.get().set_auth_token(json_response['token'])
+                    Settings.get().set_user_id(json_response['token'])
+                    self.all_dive_ids = json_response['user']['all_dive_ids']
+                    self.parent.set_main_screen()
+                else:
+                    print('Credentials not accepted')
+            elif response.status_code == 404:
+                print('Not Found.')
+        elif not username:
+            self.username_entry.grab_focus()
+        else:
+            self.password_entry.grab_focus()
