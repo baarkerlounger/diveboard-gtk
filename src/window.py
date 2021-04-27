@@ -34,9 +34,6 @@ from gi.repository import Gtk, Gio, GLib, Handy
 
 from .settings import Settings
 from .define import RES_PATH
-from .dive import Dive
-from .dive_trip import DiveTrip
-from .spot import Spot
 from .logbook import Logbook
 from .login import Login
 from .statistics import Statistics
@@ -97,15 +94,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
     def display_logbook(self):
         self.main_stack.set_visible_child(self.main_screen)
         self.screen_stack.set_visible_child(self.logbook)
-        trips = DiveTrip.all()
-        if not trips:
-            Dive.create_from_online(self.all_dive_ids)
-            Spot.create_from_online()
-            trips = DiveTrip.all()
-
-        for trip_name in trips:
-            trip_view = DiveTrip.dive_trip_view(trip_name, trips[trip_name])
-            self.logbook.logbook_list.insert(trip_view, -1)
+        self.logbook.populate_divetrips()
 
     def display_login(self):
         self.main_stack.set_visible_child(self.login_screen)

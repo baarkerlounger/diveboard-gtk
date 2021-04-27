@@ -34,8 +34,12 @@ from .define import RES_PATH
 
 class DiveTrip():
 
-    def __init__(self):
-        pass
+    def __init__(self, *args, **kwargs):
+        self.name  = kwargs['name']
+        self.dives = kwargs['dives']
+
+    def view(self):
+        return DiveTripView(self)
 
     @classmethod
     def all(cls):
@@ -51,10 +55,6 @@ class DiveTrip():
 
         return all_trips
 
-    @classmethod
-    def dive_trip_view(cls, trip_name, dives):
-        return DiveTripView(trip_name, dives)
-
 @Gtk.Template(resource_path=f'{RES_PATH}/dive_trip.ui')
 class DiveTripView(Gtk.Box):
     __gtype_name__ = 'DiveTrip'
@@ -65,9 +65,9 @@ class DiveTripView(Gtk.Box):
     trip_name = Gtk.Template.Child()
     dive      = Gtk.Template.Child()
 
-    def __init__(self, name, dives, **kwargs):
+    def __init__(self, divetrip, **kwargs):
         super().__init__(**kwargs)
 
-        self.trip_name.set_text(name)
-        for dive in dives:
+        self.trip_name.set_text(divetrip.name)
+        for dive in divetrip.dives:
             self.dive.insert(dive.dive_overview(), -1)

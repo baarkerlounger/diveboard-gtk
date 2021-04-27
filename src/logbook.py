@@ -29,6 +29,7 @@
 from gi.repository import Gtk
 
 from .define import RES_PATH
+from .dive_trip import DiveTrip
 
 @Gtk.Template(resource_path=f'{RES_PATH}/logbook.ui')
 class Logbook(Gtk.Box):
@@ -38,3 +39,16 @@ class Logbook(Gtk.Box):
 
     def __init__(self, *args, **kwargs):
         super().__init__(**kwargs)
+        self.divetrips = []
+
+    def populate_divetrips(self):
+        trips = DiveTrip.all()
+        if not trips:
+            Dive.create_from_online(self.all_dive_ids)
+            Spot.create_from_online()
+            trips = DiveTrip.all()
+
+        for trip_name in trips:
+            trip = DiveTrip(**{'name': trip_name, 'dives': trips[trip_name]})
+            self.divetrips.append(trip)
+            self.logbook_list.insert(trip.view(), -1)
