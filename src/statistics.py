@@ -34,5 +34,19 @@ from .define import RES_PATH
 class Statistics(Gtk.Box):
     __gtype_name__ = 'Statistics'
 
-    def __init__(self, *args, **kwargs):
+    dive_count = Gtk.Template.Child()
+
+    def __init__(self, parent, **kwargs):
         super().__init__(**kwargs)
+        self.parent = parent
+
+    def calculate(self):
+        self.dive_count.set_text(str(self.get_dive_count()))
+
+    def get_dive_count(self):
+        divetrips = self.parent.logbook.divetrips
+        dive_count = 0
+        for divetrip in divetrips:
+            for dive in divetrip.dives:
+                dive_count += 1
+        return dive_count

@@ -58,7 +58,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
         self.login_screen.add(self.login)
         self.logbook = Logbook()
         self.screen_stack.add(self.logbook)
-        self.statistics = Statistics()
+        self.statistics = Statistics(self)
         self.screen_stack.add(self.statistics)
         self.wallet = Wallet()
         self.screen_stack.add(self.wallet)
@@ -101,6 +101,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
 
     def display_statistics(self):
         self.screen_stack.set_visible_child(self.statistics)
+        self.statistics.calculate()
 
     def display_wallet(self):
         self.screen_stack.set_visible_child(self.wallet)
