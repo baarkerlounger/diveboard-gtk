@@ -39,6 +39,8 @@ from .dive_trip import DiveTrip
 from .spot import Spot
 from .logbook import Logbook
 from .login import Login
+from .statistics import Statistics
+from .wallet import Wallet
 
 @Gtk.Template(resource_path=f'{RES_PATH}/window.ui')
 class DiveboardWindow(Handy.ApplicationWindow):
@@ -46,17 +48,23 @@ class DiveboardWindow(Handy.ApplicationWindow):
 
     main_stack     = Gtk.Template.Child()
 
-    login_screen  = Gtk.Template.Child()
-    main_screen   = Gtk.Template.Child()
+    screen_stack    = Gtk.Template.Child()
+
+    login_screen   = Gtk.Template.Child()
+    main_screen    = Gtk.Template.Child()
 
     all_dive_ids = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.login = Login(self)
-        self.logbook = Logbook()
         self.login_screen.add(self.login)
-        self.main_screen.add(self.logbook)
+        self.logbook = Logbook()
+        self.screen_stack.add(self.logbook)
+        self.statistics = Statistics()
+        self.screen_stack.add(self.statistics)
+        self.wallet = Wallet()
+        self.screen_stack.add(self.wallet)
         self.set_main_screen()
         self.setup_actions()
 
@@ -84,6 +92,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
 
     def display_logbook(self):
         self.main_stack.set_visible_child(self.main_screen)
+        self.screen_stack.set_visible_child(self.logbook)
         trips = DiveTrip.all()
         if not trips:
             Dive.create_from_online(self.all_dive_ids)
@@ -98,10 +107,10 @@ class DiveboardWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.login_screen)
 
     def display_statistics(self):
-        print('Show Stats!')
+        self.screen_stack.set_visible_child(self.statistics)
 
     def display_wallet(self):
-        print('Show Wallet!')
+        self.screen_stack.set_visible_child(self.wallet)
 
 
 

@@ -8,6 +8,8 @@
     <file compressed="true">dive_trip.ui</file>
     <file compressed="true">logbook.ui</file>
     <file compressed="true">login.ui</file>
+    <file compressed="true">statistics.ui</file>
+    <file compressed="true">wallet.ui</file>
     <file>css/style.css</file>
     <file>images/map_bg.png</file>
     <file>images/full_diveboard_grey.png</file>
