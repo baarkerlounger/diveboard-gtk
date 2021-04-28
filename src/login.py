@@ -60,7 +60,7 @@ class Login(Gtk.Box):
                     Settings.get().set_auth_token(json_response['token'])
                     Settings.get().set_user_id(json_response['token'])
                     self.parent.logbook.dive_ids = json_response['user']['all_dive_ids']
-                    self.parent.set_main_screen()
+                    self.parent.set_main_screen('logbook')
                 else:
                     print('Credentials not accepted')
             elif response.status_code == 404:
@@ -76,4 +76,4 @@ class Login(Gtk.Box):
         self.password_entry.set_text("")
         Settings.get().set_auth_token("")
         Settings.get().set_user_id("")
-        window.set_main_screen()
+        window.set_main_screen(None)
