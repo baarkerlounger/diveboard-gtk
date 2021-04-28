@@ -34,15 +34,13 @@ class Utils:
 
     @classmethod
     def convert_m_to_ft(cls, metres):
-        if not metres:
-            return None
-        return (metres * cls.M2FT)
+        if metres is not None:
+            return (metres * cls.M2FT)
 
     @classmethod
     def convert_ft_to_m(cls, feet):
-        if not feet:
-            return None
-        return (feet / cls.M2FT)
+        if feet is not None:
+            return (feet / cls.M2FT)
 
     @classmethod
     def convert_depth_to_m(cls, depth_value, depth_units):
@@ -62,23 +60,20 @@ class Utils:
 
     @classmethod
     def format_time(cls, mins):
-        if not mins:
-            return None
-        if mins < 60:
-            return f'{mins}m'
-        return "{}h {}m".format(*divmod(mins, 60))
+        if mins is not None:
+            if mins < 60:
+                return f'{mins}m'
+            return "{}h {}m".format(*divmod(mins, 60))
 
     @classmethod
     def convert_fh_to_c(cls, fahrenheit):
-        if not fahrenheit:
-            return None
-        return ((fahrenheit - 32) / 1.8)
+        if fahrenheit is not None:
+            return ((fahrenheit - 32) / 1.8)
 
     @classmethod
     def convert_c_to_fh(cls, c):
-        if not c:
-            return None
-        return ((c * 1.8) + 32)
+        if c is not None:
+            return ((c * 1.8) + 32)
 
     @classmethod
     def convert_temp_to_c(cls, temp_value, temp_units):
@@ -94,4 +89,4 @@ class Utils:
         if (Settings.get().get_units() == 1):
             value = cls.convert_c_to_fh(temp_value)
             unit = '°F'
-        return f'{temp_value}{unit}'
+        return f'{value}{unit}'
