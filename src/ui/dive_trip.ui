@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.0"/>
+  <requires lib="gtk+" version="3.24"/>
   <template class="DiveTrip" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="margin-bottom">10</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkLabel" id="trip_name">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="halign">start</property>
-        <property name="margin-left">15</property>
-        <property name="margin-top">5</property>
-        <property name="label" translatable="yes">Bali (2 dives)	</property>
-        <style>
-          <class name="bold_header"/>
-        </style>
+        <child>
+          <object class="GtkLabel" id="trip_name">
+            <property name="name">trip_name</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Bali</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="dive_count">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="xpad">5</property>
+            <property name="label" translatable="yes">(2 dives)</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -29,6 +48,7 @@
       <object class="GtkListBox" id="dive">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="vexpand">True</property>
       </object>
       <packing>
         <property name="expand">True</property>

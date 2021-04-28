@@ -60,12 +60,15 @@ class DiveTripView(Gtk.Box):
     # Takes a Trip Name and an Array of Dive objects and creates
     # the GtkBox to be added to the list view
 
-    trip_name = Gtk.Template.Child()
-    dive      = Gtk.Template.Child()
+    trip_name  = Gtk.Template.Child()
+    dive_count = Gtk.Template.Child()
+    dive       = Gtk.Template.Child()
 
     def __init__(self, divetrip, **kwargs):
         super().__init__(**kwargs)
 
         self.trip_name.set_text(divetrip.name)
+        dive_count = len(divetrip.dives)
+        self.dive_count.set_text(f'({dive_count} dives)')
         for dive in divetrip.dives:
             self.dive.insert(dive.overview, -1)
