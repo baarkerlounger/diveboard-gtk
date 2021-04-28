@@ -29,6 +29,7 @@ diveboard_sources = [
   'logbook.py',
   'statistics.py',
   'wallet.py',
+  'utils.py',
   'login.py',
   'api_manager.py',
   'spot.py',

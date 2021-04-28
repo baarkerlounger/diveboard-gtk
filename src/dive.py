@@ -39,6 +39,7 @@ from .api_manager import ApiManager
 from .define import RES_PATH, DATA_PATH, API_KEY, API_URL
 from .settings import Settings
 from .spot import Spot
+from .utils import Utils
 
 class Dive():
 
@@ -166,7 +167,7 @@ class DiveOverview(Gtk.Box):
 
         self.dive_site.set_text(dive.trip_name)
         self.dive_date.set_text(dive.date)
-        self.maxdepth.set_text(self.format_depth(dive.maxdepth, dive.maxdepth_unit))
+        self.maxdepth.set_text(Utils.format_depth(dive.maxdepth, dive.maxdepth_unit))
         self.duration.set_text(str(round(dive.duration)) + ' min')
         self.duration_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/duration.svg'))
         self.depth_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/depth.svg'))
@@ -176,15 +177,3 @@ class DiveOverview(Gtk.Box):
 
         self.dive_site.set_text(dive.spot.name)
         self.country.set_text(dive.spot.country_name)
-
-    def format_depth(self, depth, depth_unit):
-        units = Settings.get().get_units()
-        # Metric
-        if (units == 0):
-            value = depth
-            unit = depth_unit
-        #Imperial
-        elif (units == 1):
-            value = depth / 0.3048
-            unit = "ft"
-        return f'{round(value)}{unit}'
