@@ -16,3 +16,9 @@
   font-size: 14px;
 }
 
+.stat_card{
+  background-color: white;
+  border-style: solid;
+  border-width: 0.5px;
+  border-radius: 2px;
+}
