@@ -64,4 +64,16 @@ class Statistics(Gtk.Box):
 
     def get_total_time(self):
         sql = """SELECT SUM(duration) FROM dives"""
+        mins = list(DatabaseManager().fetch(sql, None)[0].values())[0]
+        if mins:
+            return round(mins / 60.0)
+        else:
+            return 0
+
+    def get_max_temp(self):
+        sql = """SELECT MAX(temperature) FROM dives"""
+        return list(DatabaseManager().fetch(sql, None)[0].values())[0]
+
+    def get_min_temp(self):
+        sql = """SELECT MIN(temperature) FROM dives"""
         return list(DatabaseManager().fetch(sql, None)[0].values())[0]

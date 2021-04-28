@@ -33,17 +33,60 @@ from .define import DATABASE_FILE
 
 class DatabaseManager:
 
+
     CREATE_DIVES_TABLE_SQL = """CREATE TABLE IF NOT EXISTS dives (
-	                                id integer PRIMARY KEY,
-	                                trip_name text NOT NULL,
+	                                id integer,
+	                                shaken_id text PRIMARY KEY,
+	                                time_in text,
+	                                duration integer,
+	                                surface_interval text,
 	                                maxdepth integer,
-                                    maxdepth_unit text,
-                                    time_in text,
-                                    duration integer,
-	                                date text,
-	                                thumbnail_image_url text,
+	                                maxdepth_value integer,
+	                                maxdepth_unit text,
+	                                user_id integer,
 	                                spot_id integer,
-	                            UNIQUE(id)
+	                                temp_surface integer,
+	                                temp_surface_value integer,
+	                                temp_surface_unit text,
+	                                temp_bottom integer,
+	                                temp_bottom_unit text,
+	                                temp_bottom_value integer,
+	                                privacy integer,
+	                                weights integer,
+	                                weights_value integer,
+	                                weights_unit text,
+	                                safetystops text,
+	                                safetystops_unit_value text,
+	                                divetype text,
+	                                favorite text,
+	                                visibility text,
+	                                trip_name text NOT NULL,
+	                                water text,
+	                                altitude text,
+	                                fullpermalink text,
+	                                permalink text,
+	                                complete text,
+	                                thumbnail_image_url text,
+	                                thumbnail_profile_url text,
+	                                guide text,
+	                                shop_id integer,
+	                                notes text,
+	                                public_notes text,
+	                                diveshop text,
+	                                current text,
+	                                species text,
+	                                gears text,
+	                                user_gears text,
+	                                dive_gears text,
+	                                legacy_buddies_hash text,
+	                                lat text,
+	                                lng text,
+	                                date text,
+	                                time text,
+	                                buddies text,
+	                                shop text,
+	                                dive_reviews text,
+	                            UNIQUE(shaken_id)
                                 );"""
 
     CREATE_SPOTS_TABLE_SQL = """CREATE TABLE IF NOT EXISTS spots (
@@ -103,6 +146,8 @@ class DatabaseManager:
             ex = curr.execute(sql)
         rows = ex.fetchall()
         return [dict(row) for row in rows]
+
+
 
 
 

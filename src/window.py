@@ -50,8 +50,6 @@ class DiveboardWindow(Handy.ApplicationWindow):
     login_screen   = Gtk.Template.Child()
     main_screen    = Gtk.Template.Child()
 
-    all_dive_ids = []
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.login = Login(self)

@@ -43,16 +43,60 @@ from .spot import Spot
 class Dive():
 
     def __init__(self, *args, **kwargs):
-        self.id = kwargs["id"]
-        self.trip_name = kwargs["trip_name"]
-        self.maxdepth = kwargs["maxdepth"]
-        self.maxdepth_unit = kwargs["maxdepth_unit"]
-        self.time_in = kwargs["time_in"]
-        self.duration = kwargs["duration"]
-        self.date = kwargs["date"]
-        self.thumbnail_image_url = kwargs["thumbnail_image_url"]
-        self.spot_id = kwargs["spot_id"]
+        self.id                     = kwargs['id']
+        self.shaken_id              = kwargs['shaken_id']
+        self.time_in                = kwargs['time_in']
+        self.duration               = kwargs['duration']
+        self.surface_interval       = kwargs['surface_interval']
+        self.maxdepth               = kwargs['maxdepth']
+        self.maxdepth_value         = kwargs['maxdepth_value']
+        self.maxdepth_unit          = kwargs['maxdepth_unit']
+        self.user_id                = kwargs['user_id']
+        self.spot_id                = kwargs['spot_id']
+        self.temp_surface           = kwargs['temp_surface']
+        self.temp_surface_value     = kwargs['temp_surface_value']
+        self.temp_surface_unit      = kwargs['temp_surface_unit']
+        self.temp_bottom            = kwargs['temp_bottom']
+        self.temp_bottom_unit       = kwargs['temp_bottom_unit']
+        self.temp_bottom_value      = kwargs['temp_bottom_value']
+        self.privacy                = kwargs['privacy']
+        self.weights                = kwargs['weights']
+        self.weights_value          = kwargs['weights_value']
+        self.weights_unit           = kwargs['weights_unit']
+        self.safetystops            = kwargs['safetystops']
+        self.safetystops_unit_value = kwargs['safetystops_unit_value']
+        self.divetype               = json.loads(kwargs['divetype'])
+        self.favorite               = kwargs['favorite']
+        self.visibility             = kwargs['visibility']
+        self.trip_name              = kwargs['trip_name']
+        self.water                  = kwargs['water']
+        self.altitude               = kwargs['altitude']
+        self.fullpermalink          = kwargs['fullpermalink']
+        self.permalink              = kwargs['permalink']
+        self.complete               = kwargs['complete']
+        self.thumbnail_image_url    = kwargs['thumbnail_image_url']
+        self.thumbnail_profile_url  = kwargs['thumbnail_profile_url']
+        self.guide                  = kwargs['guide']
+        self.shop_id                = kwargs['shop_id']
+        self.notes                  = kwargs['notes']
+        self.public_notes           = kwargs['public_notes']
+        self.diveshop               = json.loads(kwargs['diveshop'])
+        self.current                = kwargs['current']
+        self.species                = json.loads(kwargs['species'])
+        self.gears                  = json.loads(kwargs['gears'])
+        self.user_gears             = json.loads(kwargs['user_gears'])
+        self.dive_gears             = json.loads(kwargs['dive_gears'])
+        self.legacy_buddies_hash    = json.loads(kwargs['legacy_buddies_hash'])
+        self.lat                    = kwargs['lat']
+        self.lng                    = kwargs['lng']
+        self.date                   = kwargs['date']
+        self.time                   = kwargs['time']
+        self.buddies                = json.loads(kwargs['buddies'])
+        self.shop                   = json.loads(kwargs['shop'])
+        self.dive_reviews           = json.loads(kwargs['dive_reviews'])
+
         self.spot = Spot.get_spot_by_id(self.spot_id)
+
         self.cache_thumbnail_path = self.cache_thumbnail()
         self.overview = DiveOverview(self)
 
@@ -67,11 +111,29 @@ class Dive():
             file.close()
         return thumbnail_path
 
-
     @classmethod
     def insert_dive(cls, dive):
-        sql = """INSERT OR IGNORE INTO dives(id,trip_name,maxdepth,maxdepth_unit,time_in,duration,date,thumbnail_image_url, spot_id) VALUES(?,?,?,?,?,?,?,?,?)"""
-        values = (dive['id'], dive['trip_name'], dive['maxdepth'], dive['maxdepth_unit'], dive['time_in'], dive['duration'], dive['date'], dive['thumbnail_image_url'], dive['spot_id'])
+        sql = """INSERT OR IGNORE INTO dives(
+                    id, shaken_id, time_in, duration, surface_interval, maxdepth, maxdepth_value, maxdepth_unit, user_id, spot_id,
+                    temp_surface, temp_surface_value, temp_surface_unit, temp_bottom, temp_bottom_unit, temp_bottom_value,
+                    privacy, weights, weights_value, weights_unit, safetystops, safetystops_unit_value, divetype, favorite,
+                    visibility, trip_name, water, altitude, fullpermalink, permalink, complete, thumbnail_image_url, thumbnail_profile_url,
+                    guide, shop_id, notes, public_notes, diveshop, current, species, gears, user_gears, dive_gears, legacy_buddies_hash,
+                    lat, lng, date, time, buddies, shop, dive_reviews)
+                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
+
+        values = (dive['id'], dive['shaken_id'], dive['time_in'], dive['duration'], dive['surface_interval'], dive['maxdepth'],
+                  dive['maxdepth_value'], dive['maxdepth_unit'], dive['user_id'], dive['spot_id'], dive['temp_surface'],
+                  dive['temp_surface_value'], dive['temp_surface_unit'], dive['temp_bottom'], dive['temp_bottom_unit'],
+                  dive['temp_bottom_value'], dive['privacy'], dive['weights'], dive['weights_value'], dive['weights_unit'],
+                  dive['safetystops'], dive['safetystops_unit_value'], json.dumps(dive['divetype']), dive['favorite'], dive['visibility'],
+                  dive['trip_name'], dive['water'], dive['altitude'], dive['fullpermalink'], dive['permalink'], dive['complete'],
+                  dive['thumbnail_image_url'], dive['thumbnail_profile_url'], dive['guide'], dive['shop_id'], dive['notes'],
+                  dive['public_notes'], json.dumps(dive['diveshop']), dive['current'], json.dumps(dive['species']),
+                  json.dumps(dive['gears']), json.dumps(dive['user_gears']), json.dumps(dive['dive_gears']),
+                  json.dumps(dive['legacy_buddies_hash']), dive['lat'], dive['lng'], dive['date'], dive['time'],
+                  json.dumps(dive['buddies']), json.dumps(dive['shop']), json.dumps(dive['dive_reviews']))
+        print(values)
         DatabaseManager().insert_row(sql, values)
 
     @classmethod

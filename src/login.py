@@ -59,7 +59,7 @@ class Login(Gtk.Box):
                 if (json_response['success'] == True):
                     Settings.get().set_auth_token(json_response['token'])
                     Settings.get().set_user_id(json_response['token'])
-                    self.all_dive_ids = json_response['user']['all_dive_ids']
+                    self.parent.logbook.dive_ids = json_response['user']['all_dive_ids']
                     self.parent.set_main_screen()
                 else:
                     print('Credentials not accepted')
