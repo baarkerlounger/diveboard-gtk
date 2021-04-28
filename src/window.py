@@ -60,7 +60,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
         self.screen_stack.add(self.statistics)
         self.wallet = Wallet()
         self.screen_stack.add(self.wallet)
-        self.set_main_screen()
+        self.set_main_screen(None)
         self.setup_actions()
 
     def setup_actions(self):
@@ -75,17 +75,17 @@ class DiveboardWindow(Handy.ApplicationWindow):
     def on_screen_state_change(self, action, param):
         action.set_state(param)
         screen = param.get_string()
-        if screen == "statistics":
-            self.display_statistics()
-        elif screen == "wallet":
-            self.display_wallet()
-        else:
-            self.display_logbook()
+        self.set_main_screen(screen)
 
-    def set_main_screen(self):
+    def set_main_screen(self, screen_state):
         auth_token = Settings.get().get_auth_token()
         if auth_token:
-            self.display_logbook()
+            if screen_state == "statistics":
+                self.display_statistics()
+            elif screen_state == "wallet":
+                self.display_wallet()
+            else:
+                self.display_logbook()
         else:
             self.display_login()
 

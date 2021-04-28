@@ -66,5 +66,7 @@ class DiveboardPreferencesWindow(Handy.PreferencesWindow):
         dive_trips = self.parent.props.active_window.logbook.logbook_list.get_children()
         for trip in dive_trips:
             trip.destroy()
-        self.parent.props.active_window.display_logbook()
+        screen_state = self.parent.props.active_window.get_action_state("screen_state")
+        self.parent.props.active_window.set_main_screen(screen_state)
+
 
