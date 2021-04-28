@@ -16,7 +16,8 @@
           <object class="GtkImage" id="thumbnail">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="xpad">10</property>
+            <property name="xpad">5</property>
+            <property name="ypad">2</property>
             <property name="stock">gtk-missing-image</property>
           </object>
           <packing>
@@ -36,14 +37,16 @@
       <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="margin-left">5</property>
+        <property name="margin-right">5</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkLabel" id="dive_site">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
-            <property name="hexpand">True</property>
             <property name="margin-bottom">2</property>
+            <property name="hexpand">True</property>
             <property name="label" translatable="yes">S.D.</property>
             <property name="width-chars">0</property>
           </object>
