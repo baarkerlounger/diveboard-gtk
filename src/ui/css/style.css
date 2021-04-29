@@ -16,12 +16,14 @@
 }
 
 .stat{
-  font-size: 1.5em;
+  /* font-size: 1.5em; */
+  font-size: 24px;
 }
 
 .details_text{
   color: #505050;
-  font-size: 0.9em;
+  /* font-size: 0.9em; */
+  font-size: 14px;
 }
 
 .stat_card{
