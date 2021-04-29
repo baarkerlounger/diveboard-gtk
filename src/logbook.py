@@ -47,7 +47,7 @@ class Logbook(Gtk.Box):
         self.divetrips = []
 
     def populate_divetrips(self):
-        if not self.divetrips and not self.dive_ids:
+        if not self.divetrips:
             trips = DiveTrip.offline_trips()
             if not trips:
                 Dive.create_from_online(self.dive_ids)

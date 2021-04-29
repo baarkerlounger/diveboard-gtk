@@ -134,7 +134,6 @@ class Dive():
                   json.dumps(dive['gears']), json.dumps(dive['user_gears']), json.dumps(dive['dive_gears']),
                   json.dumps(dive['legacy_buddies_hash']), dive['lat'], dive['lng'], dive['date'], dive['time'],
                   json.dumps(dive['buddies']), json.dumps(dive['shop']), json.dumps(dive['dive_reviews']))
-        print(values)
         DatabaseManager().insert_row(sql, values)
 
     @classmethod
