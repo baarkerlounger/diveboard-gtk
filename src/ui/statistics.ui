@@ -18,7 +18,6 @@
             <property name="can-focus">True</property>
             <property name="receives-default">False</property>
             <property name="direction">none</property>
-            <property name="menu_model">app-menu</property>
             <child>
               <placeholder/>
             </child>
@@ -133,10 +132,10 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-start">10</property>
+            <property name="valign">start</property>
+            <property name="margin-start">5</property>
             <property name="margin-end">5</property>
             <property name="margin-top">5</property>
-            <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">True</property>
             <child>
@@ -144,8 +143,9 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
+                <property name="valign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-top">40</property>
+                <property name="margin-top">20</property>
                 <property name="label" translatable="yes">Countries</property>
                 <style>
                   <class name="stats_header"/>
@@ -163,7 +163,7 @@
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-bottom">40</property>
+                <property name="margin-bottom">20</property>
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
@@ -189,10 +189,10 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="valign">start</property>
             <property name="margin-start">5</property>
             <property name="margin-end">10</property>
             <property name="margin-top">5</property>
-            <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">True</property>
             <child>
@@ -200,8 +200,9 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
+                <property name="valign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-top">40</property>
+                <property name="margin-top">20</property>
                 <property name="label" translatable="yes">Dive Sites</property>
                 <style>
                   <class name="stats_header"/>
@@ -219,7 +220,7 @@
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-bottom">40</property>
+                <property name="margin-bottom">20</property>
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
@@ -245,10 +246,10 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="valign">start</property>
             <property name="margin-start">10</property>
             <property name="margin-end">5</property>
             <property name="margin-top">5</property>
-            <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">True</property>
             <child>
@@ -256,8 +257,9 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
+                <property name="valign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-top">40</property>
+                <property name="margin-top">10</property>
                 <property name="label" translatable="yes">Total Time</property>
                 <style>
                   <class name="stats_header"/>
@@ -275,7 +277,7 @@
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-bottom">40</property>
+                <property name="margin-bottom">10</property>
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
@@ -301,10 +303,10 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="valign">start</property>
             <property name="margin-start">5</property>
             <property name="margin-end">10</property>
             <property name="margin-top">5</property>
-            <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">True</property>
             <child>
@@ -312,8 +314,9 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
+                <property name="valign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-top">40</property>
+                <property name="margin-top">10</property>
                 <property name="label" translatable="yes">Most Dives in</property>
                 <style>
                   <class name="stats_header"/>
@@ -331,7 +334,7 @@
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-bottom">40</property>
+                <property name="margin-bottom">10</property>
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
@@ -357,10 +360,10 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="valign">start</property>
             <property name="margin-start">10</property>
             <property name="margin-end">5</property>
             <property name="margin-top">5</property>
-            <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">True</property>
             <child>
@@ -369,7 +372,7 @@
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-top">15</property>
+                <property name="margin-top">10</property>
                 <property name="label" translatable="yes">Max Time</property>
                 <style>
                   <class name="stats_header"/>
@@ -427,7 +430,7 @@
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
-                    <property name="margin-bottom">15</property>
+                    <property name="margin-bottom">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -459,10 +462,10 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="valign">start</property>
             <property name="margin-start">5</property>
             <property name="margin-end">10</property>
             <property name="margin-top">5</property>
-            <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">True</property>
             <child>
@@ -471,7 +474,7 @@
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-top">15</property>
+                <property name="margin-top">10</property>
                 <property name="label" translatable="yes">Max Depth</property>
                 <style>
                   <class name="stats_header"/>
@@ -529,7 +532,7 @@
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
-                    <property name="margin-bottom">15</property>
+                    <property name="margin-bottom">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -561,6 +564,7 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="valign">start</property>
             <property name="margin-start">10</property>
             <property name="margin-end">5</property>
             <property name="margin-top">5</property>
@@ -573,7 +577,7 @@
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-top">15</property>
+                <property name="margin-top">10</property>
                 <property name="label" translatable="yes">Warmest Water</property>
                 <style>
                   <class name="stats_header"/>
@@ -631,7 +635,7 @@
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
-                    <property name="margin-bottom">15</property>
+                    <property name="margin-bottom">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -663,6 +667,7 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="valign">start</property>
             <property name="margin-start">5</property>
             <property name="margin-end">10</property>
             <property name="margin-top">5</property>
@@ -675,7 +680,7 @@
                 <property name="can-focus">False</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
-                <property name="margin-top">15</property>
+                <property name="margin-top">10</property>
                 <property name="label" translatable="yes">Coldest Water</property>
                 <style>
                   <class name="stats_header"/>
@@ -733,7 +738,7 @@
                     <property name="can-focus">False</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
-                    <property name="margin-bottom">15</property>
+                    <property name="margin-bottom">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -769,41 +774,4 @@
       </packing>
     </child>
   </template>
-  <menu id="app-menu">
-    <section>
-      <attribute name="id">main-screen-section</attribute>
-      <item>
-        <attribute name="label" translatable="yes">Logbook</attribute>
-        <attribute name="action">win.screen_state</attribute>
-        <attribute name="target">logbook</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">Statistics</attribute>
-        <attribute name="action">win.screen_state</attribute>
-        <attribute name="target">statistics</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">Wallet</attribute>
-        <attribute name="action">win.screen_state</attribute>
-        <attribute name="target">wallet</attribute>
-      </item>
-    </section>
-    <section>
-      <attribute name="id">help-section</attribute>
-      <item>
-        <attribute name="label" translatable="yes">Preferences</attribute>
-        <attribute name="action">app.preferences</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">About Diveboard</attribute>
-        <attribute name="action">app.about</attribute>
-      </item>
-    </section>
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">Sign Out</attribute>
-        <attribute name="action">win.logout</attribute>
-      </item>
-    </section>
-  </menu>
 </interface>

@@ -78,9 +78,6 @@ class DiveboardWindow(Handy.ApplicationWindow):
         self.set_main_screen(screen)
 
     def set_main_screen(self, screen_state):
-        # Hack to show to header bars since the margins in statistics push it off the pinephone screen even when it's not
-        # supposed to be visible on the stack
-        self.statistics.set_visible(False)
         auth_token = Settings.get().get_auth_token()
         if auth_token:
             if screen_state == "statistics":
@@ -101,7 +98,6 @@ class DiveboardWindow(Handy.ApplicationWindow):
         self.main_stack.set_visible_child(self.login_screen)
 
     def display_statistics(self):
-        self.statistics.set_visible(True)
         self.screen_stack.set_visible_child(self.statistics)
         self.statistics.calculate()
 
