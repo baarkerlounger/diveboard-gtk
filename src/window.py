@@ -58,7 +58,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
         self.screen_stack.add(self.logbook)
         self.statistics = Statistics(self)
         self.screen_stack.add(self.statistics)
-        self.wallet = Wallet()
+        self.wallet = Wallet(self)
         self.screen_stack.add(self.wallet)
         self.set_main_screen(None)
         self.setup_actions()

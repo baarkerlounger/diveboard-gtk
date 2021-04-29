@@ -26,7 +26,7 @@
 # use or other dealings in this Software without prior written
 # authorization.
 
-from gi.repository import Gtk
+from gi.repository import Gtk, GdkPixbuf
 
 from .define import RES_PATH
 
@@ -34,11 +34,48 @@ from .define import RES_PATH
 class Wallet(Gtk.Box):
     __gtype_name__ = 'Wallet'
 
+    wallet_box   = Gtk.Template.Child()
     new_cert_btn = Gtk.Template.Child()
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, parent, **kwargs):
         super().__init__(**kwargs)
+        self.parent = parent
         self.new_cert_btn.connect('clicked', self.new_cert)
 
+    def display_cert(self, filename):
+        image = Gtk.Image()
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename=filename, width=100, height=100, preserve_aspect_ratio=False)
+        image.set_from_pixbuf(pixbuf)
+        image.set_visible(True)
+        self.wallet_box.insert(image, -1)
+
+
     def new_cert(self, button):
-        print('New file needs uploading')
+        dialog = Gtk.FileChooserDialog(
+            title="Please choose a file", parent=self.parent, action=Gtk.FileChooserAction.OPEN
+        )
+        dialog.add_buttons(
+            Gtk.STOCK_CANCEL,
+            Gtk.ResponseType.CANCEL,
+            Gtk.STOCK_OPEN,
+            Gtk.ResponseType.OK,
+        )
+
+        self.add_filters(dialog)
+
+        response = dialog.run()
+        if response == Gtk.ResponseType.OK:
+            print("File selected: " + dialog.get_filename())
+            self.display_cert(dialog.get_filename())
+        elif response == Gtk.ResponseType.CANCEL:
+            print("Cancel clicked")
+
+        dialog.destroy()
+
+    def add_filters(self, dialog):
+        filter_image = Gtk.FileFilter()
+        filter_image.set_name("Image files")
+        filter_image.add_mime_type("image/*")
+        dialog.add_filter(filter_image)
+
+    
