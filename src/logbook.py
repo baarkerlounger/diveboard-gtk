@@ -38,9 +38,11 @@ class Logbook(Gtk.Box):
     __gtype_name__ = 'Logbook'
 
     logbook_list   = Gtk.Template.Child()
+    new_dive_btn   = Gtk.Template.Child()
 
     def __init__(self, *args, **kwargs):
         super().__init__(**kwargs)
+        self.new_dive_btn.connect('clicked', self.new_dive)
         self.dive_ids = []
         self.divetrips = []
 
@@ -56,3 +58,6 @@ class Logbook(Gtk.Box):
                 trip = DiveTrip(**{'name': trip_name, 'dives': trips[trip_name]})
                 self.divetrips.append(trip)
                 self.logbook_list.insert(trip.view, -1)
+
+    def new_dive(self, button):
+        print('New dive UI needs creating')

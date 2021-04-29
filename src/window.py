@@ -45,7 +45,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
 
     main_stack     = Gtk.Template.Child()
 
-    screen_stack    = Gtk.Template.Child()
+    screen_stack   = Gtk.Template.Child()
 
     login_screen   = Gtk.Template.Child()
     main_screen    = Gtk.Template.Child()

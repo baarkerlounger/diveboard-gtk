@@ -34,5 +34,11 @@ from .define import RES_PATH
 class Wallet(Gtk.Box):
     __gtype_name__ = 'Wallet'
 
+    new_cert_btn = Gtk.Template.Child()
+
     def __init__(self, *args, **kwargs):
         super().__init__(**kwargs)
+        self.new_cert_btn.connect('clicked', self.new_cert)
+
+    def new_cert(self, button):
+        print('New file needs uploading')

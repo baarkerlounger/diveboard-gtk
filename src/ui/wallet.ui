@@ -13,6 +13,15 @@
         <property name="can-focus">False</property>
         <property name="title">Wallet</property>
         <child>
+          <object class="GtkButton" id="new_cert_btn">
+            <property name="label" translatable="yes">+</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="border-width">3</property>
+          </object>
+        </child>
+        <child>
           <object class="GtkMenuButton" id="menu_btn1">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
@@ -42,21 +51,39 @@
       <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="vexpand">True</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkScrolledWindow">
             <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="halign">start</property>
-            <property name="label" translatable="yes">Wallet</property>
+            <property name="can-focus">True</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkViewport">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkFlowBox" id="wallet">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="max-children-per-line">3</property>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
           <packing>
-            <property name="expand">False</property>
+            <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">0</property>
           </packing>
         </child>
       </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">1</property>
+      </packing>
     </child>
   </template>
   <menu id="app-menu">
