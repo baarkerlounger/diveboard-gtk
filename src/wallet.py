@@ -44,10 +44,10 @@ class Wallet(Gtk.Box):
 
     def display_cert(self, filename):
         image = Gtk.Image()
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename=filename, width=100, height=100, preserve_aspect_ratio=False)
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename=filename, width=250, height=150, preserve_aspect_ratio=False)
         image.set_from_pixbuf(pixbuf)
         image.set_visible(True)
-        self.wallet_box.insert(image, -1)
+        self.wallet_box.add(image)
 
     def new_cert(self, button):
         dialog = Gtk.FileChooserDialog(
@@ -64,10 +64,9 @@ class Wallet(Gtk.Box):
 
         response = dialog.run()
         if response == Gtk.ResponseType.OK:
-            print("File selected: " + dialog.get_filename())
             self.display_cert(dialog.get_filename())
         elif response == Gtk.ResponseType.CANCEL:
-            print("Cancel clicked")
+            pass
 
         dialog.destroy()
 
