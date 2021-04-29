@@ -72,6 +72,7 @@
             <property name="can-focus">False</property>
             <property name="halign">start</property>
             <property name="margin-start">15</property>
+            <property name="margin-top">5</property>
             <property name="label" translatable="yes">12</property>
             <style>
               <class name="bold_header"/>
