@@ -49,7 +49,6 @@ class Wallet(Gtk.Box):
         image.set_visible(True)
         self.wallet_box.insert(image, -1)
 
-
     def new_cert(self, button):
         dialog = Gtk.FileChooserDialog(
             title="Please choose a file", parent=self.parent, action=Gtk.FileChooserAction.OPEN

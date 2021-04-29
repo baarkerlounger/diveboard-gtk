@@ -63,10 +63,10 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <child>
-                  <object class="GtkFlowBox" id="wallet_box">
+                  <object class="GtkListBox" id="wallet_box">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="max-children-per-line">3</property>
+                    <property name="vexpand">True</property>
                   </object>
                 </child>
               </object>
