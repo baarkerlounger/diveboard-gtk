@@ -44,15 +44,20 @@
         <property name="can-focus">False</property>
         <property name="margin-start">5</property>
         <property name="margin-end">5</property>
-        <property name="margin-top">5</property>
+        <property name="margin-top">10</property>
         <property name="margin-bottom">5</property>
         <property name="orientation">vertical</property>
+        <property name="homogeneous">True</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
+            <property name="margin-start">20</property>
             <property name="label" translatable="yes">Total Dives</property>
+            <style>
+              <class name="bold_header"/>
+            </style>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -65,6 +70,7 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
+            <property name="margin-start">20</property>
             <property name="label" translatable="yes">12</property>
           </object>
           <packing>
@@ -121,16 +127,20 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-start">5</property>
+            <property name="margin-start">10</property>
             <property name="margin-end">5</property>
             <property name="margin-top">5</property>
             <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Countries</property>
+                <style>
+                  <class name="bold_header"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -164,15 +174,19 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="margin-start">5</property>
-            <property name="margin-end">5</property>
+            <property name="margin-end">10</property>
             <property name="margin-top">5</property>
             <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Dive Sites</property>
+                <style>
+                  <class name="bold_header"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -205,16 +219,20 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-start">5</property>
+            <property name="margin-start">10</property>
             <property name="margin-end">5</property>
             <property name="margin-top">5</property>
             <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Total Time</property>
+                <style>
+                  <class name="bold_header"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -248,15 +266,19 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="margin-start">5</property>
-            <property name="margin-end">5</property>
+            <property name="margin-end">10</property>
             <property name="margin-top">5</property>
             <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Most Dives in</property>
+                <style>
+                  <class name="bold_header"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -289,16 +311,20 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-start">5</property>
+            <property name="margin-start">10</property>
             <property name="margin-end">5</property>
             <property name="margin-top">5</property>
             <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Max Time</property>
+                <style>
+                  <class name="bold_header"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -374,15 +400,19 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="margin-start">5</property>
-            <property name="margin-end">5</property>
+            <property name="margin-end">10</property>
             <property name="margin-top">5</property>
             <property name="margin-bottom">5</property>
             <property name="orientation">vertical</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Max Depth</property>
+                <style>
+                  <class name="bold_header"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -457,16 +487,20 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="margin-start">5</property>
+            <property name="margin-start">10</property>
             <property name="margin-end">5</property>
             <property name="margin-top">5</property>
-            <property name="margin-bottom">5</property>
+            <property name="margin-bottom">10</property>
             <property name="orientation">vertical</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Warmest Water</property>
+                <style>
+                  <class name="bold_header"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -542,15 +576,19 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="margin-start">5</property>
-            <property name="margin-end">5</property>
+            <property name="margin-end">10</property>
             <property name="margin-top">5</property>
-            <property name="margin-bottom">5</property>
+            <property name="margin-bottom">10</property>
             <property name="orientation">vertical</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Coldest Water</property>
+                <style>
+                  <class name="bold_header"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>

@@ -45,13 +45,14 @@ class Logbook(Gtk.Box):
         self.divetrips = []
 
     def populate_divetrips(self):
-        trips = DiveTrip.offline_trips()
-        if not trips:
-            Dive.create_from_online(self.dive_ids)
-            Spot.create_from_online()
+        if not self.divetrips and not self.dive_ids:
             trips = DiveTrip.offline_trips()
+            if not trips:
+                Dive.create_from_online(self.dive_ids)
+                Spot.create_from_online()
+                trips = DiveTrip.offline_trips()
 
-        for trip_name in trips:
-            trip = DiveTrip(**{'name': trip_name, 'dives': trips[trip_name]})
-            self.divetrips.append(trip)
-            self.logbook_list.insert(trip.view, -1)
+            for trip_name in trips:
+                trip = DiveTrip(**{'name': trip_name, 'dives': trips[trip_name]})
+                self.divetrips.append(trip)
+                self.logbook_list.insert(trip.view, -1)
