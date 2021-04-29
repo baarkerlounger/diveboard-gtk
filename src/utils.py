@@ -62,7 +62,7 @@ class Utils:
     def format_time(cls, mins):
         if mins is not None:
             if mins < 60:
-                return f'{mins}m'
+                return f'{mins} min'
             return "{}h {}m".format(*divmod(mins, 60))
 
     @classmethod
