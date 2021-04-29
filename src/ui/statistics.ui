@@ -53,10 +53,11 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
-            <property name="margin-start">20</property>
+            <property name="margin-start">15</property>
+            <property name="margin-top">10</property>
             <property name="label" translatable="yes">Total Dives</property>
             <style>
-              <class name="bold_header"/>
+              <class name="stats_header"/>
             </style>
           </object>
           <packing>
@@ -70,8 +71,12 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
-            <property name="margin-start">20</property>
+            <property name="margin-start">15</property>
             <property name="label" translatable="yes">12</property>
+            <style>
+              <class name="bold_header"/>
+              <class name="stat"/>
+            </style>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -137,9 +142,12 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-top">40</property>
                 <property name="label" translatable="yes">Countries</property>
                 <style>
-                  <class name="bold_header"/>
+                  <class name="stats_header"/>
                 </style>
               </object>
               <packing>
@@ -152,7 +160,14 @@
               <object class="GtkLabel" id="country_count">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-bottom">40</property>
                 <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="stat"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -183,9 +198,12 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-top">40</property>
                 <property name="label" translatable="yes">Dive Sites</property>
                 <style>
-                  <class name="bold_header"/>
+                  <class name="stats_header"/>
                 </style>
               </object>
               <packing>
@@ -198,7 +216,14 @@
               <object class="GtkLabel" id="spot_count">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-bottom">40</property>
                 <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="stat"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -229,9 +254,12 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-top">40</property>
                 <property name="label" translatable="yes">Total Time</property>
                 <style>
-                  <class name="bold_header"/>
+                  <class name="stats_header"/>
                 </style>
               </object>
               <packing>
@@ -244,7 +272,14 @@
               <object class="GtkLabel" id="total_duration">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-bottom">40</property>
                 <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="stat"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -275,9 +310,12 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-top">40</property>
                 <property name="label" translatable="yes">Most Dives in</property>
                 <style>
-                  <class name="bold_header"/>
+                  <class name="stats_header"/>
                 </style>
               </object>
               <packing>
@@ -290,7 +328,14 @@
               <object class="GtkLabel" id="most_dives_country">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-bottom">40</property>
                 <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="stat"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -321,9 +366,12 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-top">15</property>
                 <property name="label" translatable="yes">Max Time</property>
                 <style>
-                  <class name="bold_header"/>
+                  <class name="stats_header"/>
                 </style>
               </object>
               <packing>
@@ -336,7 +384,13 @@
               <object class="GtkLabel" id="max_time">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
                 <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="stat"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -353,6 +407,8 @@
                   <object class="GtkLabel" id="max_time_location_1">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -368,6 +424,9 @@
                   <object class="GtkLabel" id="max_time_location_2">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="margin-bottom">15</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -409,9 +468,12 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-top">15</property>
                 <property name="label" translatable="yes">Max Depth</property>
                 <style>
-                  <class name="bold_header"/>
+                  <class name="stats_header"/>
                 </style>
               </object>
               <packing>
@@ -424,7 +486,13 @@
               <object class="GtkLabel" id="max_depth">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
                 <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="stat"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -441,6 +509,8 @@
                   <object class="GtkLabel" id="max_depth_location_1">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -456,6 +526,9 @@
                   <object class="GtkLabel" id="max_depth_location_2">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="margin-bottom">15</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -497,9 +570,12 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-top">15</property>
                 <property name="label" translatable="yes">Warmest Water</property>
                 <style>
-                  <class name="bold_header"/>
+                  <class name="stats_header"/>
                 </style>
               </object>
               <packing>
@@ -512,7 +588,13 @@
               <object class="GtkLabel" id="max_temp">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
                 <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="stat"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -529,6 +611,8 @@
                   <object class="GtkLabel" id="max_temp_location_1">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -544,6 +628,9 @@
                   <object class="GtkLabel" id="max_temp_location_2">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="margin-bottom">15</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -585,9 +672,12 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="margin-top">15</property>
                 <property name="label" translatable="yes">Coldest Water</property>
                 <style>
-                  <class name="bold_header"/>
+                  <class name="stats_header"/>
                 </style>
               </object>
               <packing>
@@ -600,7 +690,13 @@
               <object class="GtkLabel" id="min_temp">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
                 <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="stat"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -617,6 +713,8 @@
                   <object class="GtkLabel" id="min_temp_location_1">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>
@@ -632,6 +730,9 @@
                   <object class="GtkLabel" id="min_temp_location_2">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="margin-bottom">15</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
                       <class name="details_text"/>

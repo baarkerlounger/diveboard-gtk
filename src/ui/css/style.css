@@ -11,9 +11,17 @@
   font-weight: 600;
 }
 
+.stats_header{
+  color: #505050;
+}
+
+.stat{
+  font-size: 1.5em;
+}
+
 .details_text{
   color: #505050;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 
 .stat_card{
