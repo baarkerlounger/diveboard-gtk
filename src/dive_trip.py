@@ -31,13 +31,15 @@ from gi.repository import Gtk
 from .database_manager import DatabaseManager
 from .dive import Dive
 from .define import RES_PATH
+from .dive_detail import DiveDetailWindow
 
 class DiveTrip():
 
-    def __init__(self, *args, **kwargs):
-        self.name  = kwargs['name']
-        self.dives = kwargs['dives']
-        self.view  = DiveTripView(self)
+    def __init__(self, logbook, **kwargs):
+        self.name    = kwargs['name']
+        self.dives   = kwargs['dives']
+        self.view    = DiveTripView(self)
+        self.logbook = logbook
 
     @classmethod
     def offline_trips(cls):
@@ -59,13 +61,20 @@ class DiveTripView(Gtk.Box):
 
     trip_name  = Gtk.Template.Child()
     dive_count = Gtk.Template.Child()
-    dive       = Gtk.Template.Child()
+    dive_list  = Gtk.Template.Child()
 
     def __init__(self, divetrip, **kwargs):
         super().__init__(**kwargs)
+        self.divetrip = divetrip
+        self.dive_list.connect("row-activated", self.on_row_activated)
         dive_count = len(divetrip.dives)
 
         self.trip_name.set_text(divetrip.name)
         self.dive_count.set_text(f'({dive_count} dives)')
         for dive in divetrip.dives:
-            self.dive.insert(dive.overview, -1)
+            self.dive_list.insert(dive.overview, -1)
+
+    def on_row_activated(self, dive_list, row):
+        clicked_dive = row.get_child().dive
+        window = DiveDetailWindow(self, clicked_dive)
+        window.set_transient_for(self.divetrip.logbook.window)

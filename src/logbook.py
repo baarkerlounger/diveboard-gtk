@@ -44,7 +44,7 @@ class Logbook(Gtk.Box):
     def __init__(self, parent, **kwargs):
         super().__init__(**kwargs)
         self.new_dive_btn.connect('clicked', self.new_dive)
-        self.parent = parent
+        self.window = parent
         self.dive_ids = []
         self.divetrips = []
 
@@ -57,11 +57,10 @@ class Logbook(Gtk.Box):
                 trips = DiveTrip.offline_trips()
 
             for trip_name in trips:
-                trip = DiveTrip(**{'name': trip_name, 'dives': trips[trip_name]})
+                trip = DiveTrip(self, **{'name': trip_name, 'dives': trips[trip_name]})
                 self.divetrips.append(trip)
                 self.logbook_list.insert(trip.view, -1)
 
     def new_dive(self, button):
-        print('New dive UI needs creating')
         window = DiveDetailWindow(self)
-        window.set_transient_for(self.parent)
+        window.set_transient_for(self.window)

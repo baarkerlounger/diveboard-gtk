@@ -163,6 +163,7 @@ class DiveOverview(Gtk.Box):
 
     def __init__(self, dive, **kwargs):
         super().__init__(**kwargs)
+        self.dive = dive
 
         self.dive_site.set_text(dive.trip_name)
         self.dive_date.set_text(dive.date)

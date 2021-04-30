@@ -43,8 +43,16 @@ class DiveDetailWindow(Handy.ApplicationWindow):
     parent = NotImplemented
 
     back_btn = Gtk.Template.Child()
+    notes    = Gtk.Template.Child()
 
-    def __init__(self, parent, **kwargs):
+    def __init__(self, parent, dive=None, **kwargs):
         super().__init__(**kwargs)
         self.parent = parent
+        self.dive = dive
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
+        if dive:
+            self.fill_props()
+
+    def fill_props(self):
+        text_buffer = self.notes.get_buffer()
+        text_buffer.set_text(self.dive.notes)
