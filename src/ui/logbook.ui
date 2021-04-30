@@ -61,6 +61,8 @@
               <object class="GtkListBox" id="logbook_list">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="selection-mode">none</property>
+                <property name="activate-on-single-click">False</property>
               </object>
             </child>
           </object>
