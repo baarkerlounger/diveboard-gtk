@@ -55,4 +55,4 @@ class DiveDetailWindow(Handy.ApplicationWindow):
 
     def fill_props(self):
         text_buffer = self.notes.get_buffer()
-        text_buffer.set_text(self.dive.notes)
+        text_buffer.set_text(str(self.dive.notes))

@@ -78,3 +78,12 @@ class DiveTripView(Gtk.Box):
         clicked_dive = row.get_child().dive
         window = DiveDetailWindow(self, clicked_dive)
         window.set_transient_for(self.divetrip.logbook.window)
+        self.unselect_dives(row)
+
+
+    def unselect_dives(self, selected_dive):
+        divetrips = self.divetrip.logbook.divetrips
+        for divetrip in divetrips:
+            for dive in divetrip.view.dive_list.get_selected_rows():
+                if not selected_dive == dive:
+                    divetrip.view.dive_list.unselect_row(dive)
