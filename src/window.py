@@ -54,7 +54,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
         super().__init__(**kwargs)
         self.login = Login(self)
         self.login_screen.add(self.login)
-        self.logbook = Logbook()
+        self.logbook = Logbook(self)
         self.screen_stack.add(self.logbook)
         self.statistics = Statistics(self)
         self.screen_stack.add(self.statistics)

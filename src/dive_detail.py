@@ -1,4 +1,4 @@
-# logbook.py
+# dive_detail.py
 #
 # Copyright 2021 baarkerlounger
 #
@@ -26,42 +26,25 @@
 # use or other dealings in this Software without prior written
 # authorization.
 
-from gi.repository import Gtk
+import gi
 
+gi.require_version('Handy', '1')
+
+from gi.repository import Gtk, Handy, Gio
+
+from .settings import Settings
 from .define import RES_PATH
-from .dive_trip import DiveTrip
-from .dive import Dive
-from .dive_detail import DiveDetailWindow
-from .spot import Spot
 
-@Gtk.Template(resource_path=f'{RES_PATH}/logbook.ui')
-class Logbook(Gtk.Box):
-    __gtype_name__ = 'Logbook'
 
-    logbook_list   = Gtk.Template.Child()
-    new_dive_btn   = Gtk.Template.Child()
+@Gtk.Template(resource_path=f'{RES_PATH}/dive_detail.ui')
+class DiveDetailWindow(Handy.ApplicationWindow):
+    __gtype_name__ = 'DiveDetailWindow'
+
+    parent = NotImplemented
+
+    back_btn = Gtk.Template.Child()
 
     def __init__(self, parent, **kwargs):
         super().__init__(**kwargs)
-        self.new_dive_btn.connect('clicked', self.new_dive)
         self.parent = parent
-        self.dive_ids = []
-        self.divetrips = []
-
-    def populate_divetrips(self):
-        if not self.divetrips:
-            trips = DiveTrip.offline_trips()
-            if not trips:
-                Dive.create_from_online(self.dive_ids)
-                Spot.create_from_online()
-                trips = DiveTrip.offline_trips()
-
-            for trip_name in trips:
-                trip = DiveTrip(**{'name': trip_name, 'dives': trips[trip_name]})
-                self.divetrips.append(trip)
-                self.logbook_list.insert(trip.view, -1)
-
-    def new_dive(self, button):
-        print('New dive UI needs creating')
-        window = DiveDetailWindow(self)
-        window.set_transient_for(self.parent)
+        self.back_btn.connect('clicked', lambda clicked: self.destroy())

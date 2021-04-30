@@ -6,6 +6,7 @@
     <file compressed="true">window.ui</file>
     <file compressed="true">dive_overview.ui</file>
     <file compressed="true">dive_trip.ui</file>
+    <file compressed="true">dive_detail.ui</file>
     <file compressed="true">logbook.ui</file>
     <file compressed="true">login.ui</file>
     <file compressed="true">statistics.ui</file>
