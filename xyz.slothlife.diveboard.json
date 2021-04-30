@@ -52,8 +52,8 @@
             "buildsystem" : "meson",
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "file:///home/dan/Projects/diveboard"
+                    "type" : "dir",
+                    "url" : "."
                 }
             ]
         }
