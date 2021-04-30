@@ -11,8 +11,6 @@ destdir = environ.get('DESTDIR', '')
 if not destdir:
     print('Updating icon cache...')
     call(['gtk-update-icon-cache', '-qtf', path.join(datadir, 'icons', 'hicolor')])
-    # call(['gtk-update-icon-cache', '-qtf', '/usr/share/icons/*'])
-
 
     print('Updating desktop database...')
     call(['update-desktop-database', '-q', path.join(datadir, 'applications')])
