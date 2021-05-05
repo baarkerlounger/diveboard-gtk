@@ -28,6 +28,7 @@
 
 import sys
 import gi
+import os
 from pathlib import Path
 
 gi.require_version('Gtk', '3.0')
@@ -39,7 +40,7 @@ from gi.repository import Gdk, Gtk, Gio, Handy, GdkPixbuf
 from .window import DiveboardWindow
 from .preferences import DiveboardPreferencesWindow
 from .settings import Settings
-from .define import APP_ID, RES_PATH, VERSION
+from .define import APP_ID, RES_PATH, VERSION, DIVE_THUMBNAIL_PATH
 from .database_manager import DatabaseManager
 from .dive import Dive
 
@@ -59,6 +60,8 @@ class Application(Gtk.Application):
         Gtk.Application.do_startup(self)
         Handy.init()
         DatabaseManager().setup_database()
+        if not os.path.isdir(DIVE_THUMBNAIL_PATH):
+            os.mkdir(DIVE_THUMBNAIL_PATH)
         self.setup_actions()
         self.load_css()
 

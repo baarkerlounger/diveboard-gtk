@@ -27,6 +27,7 @@
 # authorization.
 
 from gi.repository import Gtk
+import multiprocessing.dummy as mp
 
 from .database_manager import DatabaseManager
 from .dive import Dive
@@ -43,10 +44,11 @@ class DiveTrip():
     @classmethod
     def offline_trips(cls):
         all_trips = {}
-        dives = Dive.offline_dives()
+        thread_pool = mp.Pool(4)
+        dives = thread_pool.map(lambda d: Dive(**d), Dive.offline_dives())
+        #TODO confirm dive sorting
 
-        for d in dives:
-            dive = Dive(**d)
+        for dive in dives:
             if dive.trip_name in all_trips.keys():
                 all_trips.get(dive.trip_name).append(dive)
             else:

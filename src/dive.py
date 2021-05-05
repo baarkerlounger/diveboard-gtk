@@ -107,9 +107,6 @@ class Dive():
         if self.thumbnail_image_url is None:
             return None
 
-        if not os.path.isdir(DIVE_THUMBNAIL_PATH):
-            os.mkdir(DIVE_THUMBNAIL_PATH)
-
         # Match everything after last backslash
         thumbnail_id = re.search('([^\/]+$)', self.thumbnail_image_url)[0]
         thumbnail_path = f'{DIVE_THUMBNAIL_PATH}/{thumbnail_id}'
