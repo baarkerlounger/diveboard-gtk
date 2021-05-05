@@ -39,3 +39,5 @@ VERSION  = '0.01'
 DATABASE_FILE = os.path.join(xdg_data_home(), 'diveboard.sqlite3')
 DATA_PATH = xdg_data_home()
 
+DIVE_THUMBNAIL_PATH = f'{DATA_PATH}/dive-thumbnails'
+

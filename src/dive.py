@@ -31,12 +31,13 @@ import json
 import urllib
 import os
 import re
+import multiprocessing.dummy as mp
 
 from gi.repository import Gtk, GdkPixbuf, Gio, Handy
 
 from .database_manager import DatabaseManager
 from .api_manager import ApiManager
-from .define import RES_PATH, DATA_PATH, API_KEY, API_URL
+from .define import RES_PATH, DATA_PATH, API_KEY, API_URL, DIVE_THUMBNAIL_PATH
 from .settings import Settings
 from .spot import Spot
 from .utils import Utils
@@ -106,9 +107,12 @@ class Dive():
         if self.thumbnail_image_url is None:
             return None
 
+        if not os.path.isdir(DIVE_THUMBNAIL_PATH):
+            os.mkdir(DIVE_THUMBNAIL_PATH)
+
         # Match everything after last backslash
         thumbnail_id = re.search('([^\/]+$)', self.thumbnail_image_url)[0]
-        thumbnail_path = f'{DATA_PATH}/{thumbnail_id}'
+        thumbnail_path = f'{DIVE_THUMBNAIL_PATH}/{thumbnail_id}'
         if not os.path.isfile(thumbnail_path):
             file = open(thumbnail_path, 'wb')
             thumbnail = urllib.request.urlopen(self.thumbnail_image_url)
@@ -159,8 +163,8 @@ class Dive():
     def create_from_online(cls, dive_ids):
         online_dives = ApiManager.object_request('V2/dive', dive_ids)
         if online_dives:
-            for d in online_dives:
-                Dive.insert_dive(d)
+            thread_pool = mp.Pool(4)
+            thread_pool.map(lambda d: Dive.insert_dive(d), online_dives)
 
 @Gtk.Template(resource_path=f'{RES_PATH}/dive_overview.ui')
 class DiveOverview(Gtk.Box):
@@ -200,6 +204,7 @@ class DiveDetailView(Handy.ApplicationWindow):
 
     back_btn = Gtk.Template.Child()
     header_bar = Gtk.Template.Child()
+    save_btn  = Gtk.Template.Child()
 
     notes    = Gtk.Template.Child()
 
@@ -210,6 +215,7 @@ class DiveDetailView(Handy.ApplicationWindow):
         super().__init__(**kwargs)
         self.dive = dive
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
+        self.save_btn.connect('clicked', self.save_dive)
         if dive.id:
             self.fill_props()
         else:
@@ -222,3 +228,7 @@ class DiveDetailView(Handy.ApplicationWindow):
         logo_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg')
         self.dive_buddy.set_icon_from_pixbuf(0, logo_pixbuf)
         self.dive_center.set_icon_from_pixbuf(0, logo_pixbuf)
+
+    def save_dive(self, _btn):
+        print('Implement Saving here')
+

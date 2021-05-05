@@ -28,6 +28,7 @@
 
 import requests
 import json
+import multiprocessing.dummy as mp
 
 from .database_manager import DatabaseManager
 from .api_manager import ApiManager
@@ -67,10 +68,10 @@ class Spot():
         sql = """SELECT DISTINCT spot_id FROM dives"""
         id_objects = DatabaseManager().fetch(sql, None)
         ids = [x['spot_id'] for x in id_objects]
-        online = ApiManager.object_request('V2/spot', ids)
-        if online:
-            for spot in online:
-                Spot.insert_spot(spot)
+        online_spots = ApiManager.object_request('V2/spot', ids)
+        if online_spots:
+            thread_pool = mp.Pool(4)
+            thread_pool.map(lambda s: Spot.insert_spot(s), online_spots)
 
     @classmethod
     def get_spot_by_id(cls, spot_id):
