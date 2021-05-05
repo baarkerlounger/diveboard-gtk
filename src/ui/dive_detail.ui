@@ -3,7 +3,7 @@
 <interface>
   <requires lib="gtk+" version="3.24"/>
   <requires lib="libhandy" version="1.0"/>
-  <template class="DiveDetailWindow" parent="HdyApplicationWindow">
+  <template class="DiveDetailView" parent="HdyApplicationWindow">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="default-width">360</property>
@@ -14,7 +14,7 @@
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="HdyHeaderBar" id="header_bar1">
+          <object class="HdyHeaderBar" id="header_bar">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="valign">start</property>
@@ -84,11 +84,10 @@
                 <property name="orientation">vertical</property>
                 <property name="homogeneous">True</property>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="dive_buddy">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="caps-lock-warning">False</property>
-                    <property name="primary-icon-pixbuf">images/logo.svg</property>
                     <property name="placeholder-text" translatable="yes">Diveboard Buddy</property>
                   </object>
                   <packing>
@@ -98,10 +97,9 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkEntry">
+                  <object class="GtkEntry" id="dive_center">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="primary-icon-pixbuf">images/logo.svg</property>
                     <property name="placeholder-text" translatable="yes">Dive Center</property>
                   </object>
                   <packing>

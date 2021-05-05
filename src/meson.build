@@ -33,7 +33,6 @@ diveboard_sources = [
   'login.py',
   'api_manager.py',
   'spot.py',
-  'dive_detail.py',
   'database_manager.py',
   'window.py',
 ]

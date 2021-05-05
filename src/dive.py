@@ -32,7 +32,7 @@ import urllib
 import os
 import re
 
-from gi.repository import Gtk, GdkPixbuf, Gio
+from gi.repository import Gtk, GdkPixbuf, Gio, Handy
 
 from .database_manager import DatabaseManager
 from .api_manager import ApiManager
@@ -44,64 +44,68 @@ from .utils import Utils
 class Dive():
 
     def __init__(self, *args, **kwargs):
-        self.id                     = kwargs['id']
-        self.shaken_id              = kwargs['shaken_id']
-        self.time_in                = kwargs['time_in']
-        self.duration               = kwargs['duration']
-        self.surface_interval       = kwargs['surface_interval']
-        self.maxdepth               = kwargs['maxdepth']
-        self.maxdepth_value         = kwargs['maxdepth_value']
-        self.maxdepth_unit          = kwargs['maxdepth_unit']
-        self.user_id                = kwargs['user_id']
-        self.spot_id                = kwargs['spot_id']
-        self.temp_surface           = kwargs['temp_surface']
-        self.temp_surface_value     = kwargs['temp_surface_value']
-        self.temp_surface_unit      = kwargs['temp_surface_unit']
-        self.temp_bottom            = kwargs['temp_bottom']
-        self.temp_bottom_unit       = kwargs['temp_bottom_unit']
-        self.temp_bottom_value      = kwargs['temp_bottom_value']
-        self.privacy                = kwargs['privacy']
-        self.weights                = kwargs['weights']
-        self.weights_value          = kwargs['weights_value']
-        self.weights_unit           = kwargs['weights_unit']
-        self.safetystops            = kwargs['safetystops']
-        self.safetystops_unit_value = kwargs['safetystops_unit_value']
-        self.divetype               = json.loads(kwargs['divetype'])
-        self.favorite               = kwargs['favorite']
-        self.visibility             = kwargs['visibility']
-        self.trip_name              = kwargs['trip_name']
-        self.water                  = kwargs['water']
-        self.altitude               = kwargs['altitude']
-        self.fullpermalink          = kwargs['fullpermalink']
-        self.permalink              = kwargs['permalink']
-        self.complete               = kwargs['complete']
-        self.thumbnail_image_url    = kwargs['thumbnail_image_url']
-        self.thumbnail_profile_url  = kwargs['thumbnail_profile_url']
-        self.guide                  = kwargs['guide']
-        self.shop_id                = kwargs['shop_id']
-        self.notes                  = kwargs['notes']
-        self.public_notes           = kwargs['public_notes']
-        self.diveshop               = json.loads(kwargs['diveshop'])
-        self.current                = kwargs['current']
-        self.species                = json.loads(kwargs['species'])
-        self.gears                  = json.loads(kwargs['gears'])
-        self.user_gears             = json.loads(kwargs['user_gears'])
-        self.dive_gears             = json.loads(kwargs['dive_gears'])
-        self.legacy_buddies_hash    = json.loads(kwargs['legacy_buddies_hash'])
-        self.lat                    = kwargs['lat']
-        self.lng                    = kwargs['lng']
-        self.date                   = kwargs['date']
-        self.time                   = kwargs['time']
-        self.buddies                = json.loads(kwargs['buddies'])
-        self.shop                   = json.loads(kwargs['shop'])
-        self.dive_reviews           = json.loads(kwargs['dive_reviews'])
+        self.id                     = kwargs.get('id', None)
+        self.shaken_id              = kwargs.get('shaken_id')
+        self.time_in                = kwargs.get('time_in')
+        self.duration               = kwargs.get('duration')
+        self.surface_interval       = kwargs.get('surface_interval')
+        self.maxdepth               = kwargs.get('maxdepth')
+        self.maxdepth_value         = kwargs.get('maxdepth_value')
+        self.maxdepth_unit          = kwargs.get('maxdepth_unit')
+        self.user_id                = kwargs.get('user_id')
+        self.spot_id                = kwargs.get('spot_id')
+        self.temp_surface           = kwargs.get('temp_surface')
+        self.temp_surface_value     = kwargs.get('temp_surface_value')
+        self.temp_surface_unit      = kwargs.get('temp_surface_unit')
+        self.temp_bottom            = kwargs.get('temp_bottom')
+        self.temp_bottom_unit       = kwargs.get('temp_bottom_unit')
+        self.temp_bottom_value      = kwargs.get('temp_bottom_value')
+        self.privacy                = kwargs.get('privacy')
+        self.weights                = kwargs.get('weights')
+        self.weights_value          = kwargs.get('weights_value')
+        self.weights_unit           = kwargs.get('weights_unit')
+        self.safetystops            = kwargs.get('safetystops')
+        self.safetystops_unit_value = kwargs.get('safetystops_unit_value')
+        self.divetype               = self.from_json_or_none('divetype', **kwargs)
+        self.favorite               = kwargs.get('favorite')
+        self.visibility             = kwargs.get('visibility')
+        self.trip_name              = kwargs.get('trip_name')
+        self.water                  = kwargs.get('water')
+        self.altitude               = kwargs.get('altitude')
+        self.fullpermalink          = kwargs.get('fullpermalink')
+        self.permalink              = kwargs.get('permalink')
+        self.complete               = kwargs.get('complete')
+        self.thumbnail_image_url    = kwargs.get('thumbnail_image_url')
+        self.thumbnail_profile_url  = kwargs.get('thumbnail_profile_url')
+        self.guide                  = kwargs.get('guide')
+        self.shop_id                = kwargs.get('shop_id')
+        self.notes                  = kwargs.get('notes')
+        self.public_notes           = kwargs.get('public_notes')
+        self.diveshop               = self.from_json_or_none('diveshop', **kwargs)
+        self.current                = kwargs.get('current')
+        self.species                = self.from_json_or_none('species', **kwargs)
+        self.gears                  = self.from_json_or_none('gears', **kwargs)
+        self.used_gears             = self.from_json_or_none('used_gears', **kwargs)
+        self.dive_gears             = self.from_json_or_none('dive_gears', **kwargs)
+        self.legacy_buddies_hash    = self.from_json_or_none('legacy_buddies_hash', **kwargs)
+        self.lat                    = kwargs.get('lat')
+        self.lng                    = kwargs.get('lng')
+        self.date                   = kwargs.get('date')
+        self.time                   = kwargs.get('time')
+        self.buddies                = self.from_json_or_none('buddies', **kwargs)
+        self.shop                   = self.from_json_or_none('shop', **kwargs)
+        self.dive_reviews           = self.from_json_or_none('dive_reviews', **kwargs)
 
         self.spot = Spot.get_spot_by_id(self.spot_id)
 
         self.cache_thumbnail_path = self.cache_thumbnail()
+
         self.overview = DiveOverview(self)
 
     def cache_thumbnail(self):
+        if self.thumbnail_image_url is None:
+            return None
+
         # Match everything after last backslash
         thumbnail_id = re.search('([^\/]+$)', self.thumbnail_image_url)[0]
         thumbnail_path = f'{DATA_PATH}/{thumbnail_id}'
@@ -111,6 +115,16 @@ class Dive():
             file.write(thumbnail.read())
             file.close()
         return thumbnail_path
+
+    def detail_view(self):
+        return DiveDetailView(self)
+
+    def from_json_or_none(self, val, **kwargs):
+        jsn = kwargs.get(val)
+        if jsn:
+            return json.loads(jsn)
+        else:
+            return None
 
     @classmethod
     def insert_dive(cls, dive):
@@ -165,15 +179,46 @@ class DiveOverview(Gtk.Box):
         super().__init__(**kwargs)
         self.dive = dive
 
-        self.dive_site.set_text(dive.trip_name)
-        self.dive_date.set_text(dive.date)
-        self.maxdepth.set_text(Utils.format_depth(dive.maxdepth, dive.maxdepth_unit))
-        self.duration.set_text(str(round(dive.duration)) + ' min')
-        self.duration_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/duration.svg'))
-        self.depth_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/depth.svg'))
+        if dive.id:
+            self.dive_site.set_text(dive.trip_name)
+            self.dive_date.set_text(dive.date)
+            self.maxdepth.set_text(Utils.format_depth(dive.maxdepth, dive.maxdepth_unit))
+            self.duration.set_text(str(round(dive.duration)) + ' min')
+            self.duration_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/duration.svg'))
+            self.depth_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/depth.svg'))
 
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file(dive.cache_thumbnail_path)
-        self.thumbnail.set_from_pixbuf(pixbuf)
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file(dive.cache_thumbnail_path)
+            self.thumbnail.set_from_pixbuf(pixbuf)
 
-        self.dive_site.set_text(dive.spot.name)
-        self.country.set_text(dive.spot.country_name)
+            self.dive_site.set_text(dive.spot.name)
+            self.country.set_text(dive.spot.country_name)
+
+
+@Gtk.Template(resource_path=f'{RES_PATH}/dive_detail.ui')
+class DiveDetailView(Handy.ApplicationWindow):
+    __gtype_name__ = 'DiveDetailView'
+
+    back_btn = Gtk.Template.Child()
+    header_bar = Gtk.Template.Child()
+
+    notes    = Gtk.Template.Child()
+
+    dive_center = Gtk.Template.Child()
+    dive_buddy  = Gtk.Template.Child()
+
+    def __init__(self, dive, **kwargs):
+        super().__init__(**kwargs)
+        self.dive = dive
+        self.back_btn.connect('clicked', lambda clicked: self.destroy())
+        if dive.id:
+            self.fill_props()
+        else:
+            self.header_bar.set_title("New Dive")
+
+    def fill_props(self):
+        text_buffer = self.notes.get_buffer()
+        text_buffer.set_text(str(self.dive.notes))
+
+        logo_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg')
+        self.dive_buddy.set_icon_from_pixbuf(0, logo_pixbuf)
+        self.dive_center.set_icon_from_pixbuf(0, logo_pixbuf)

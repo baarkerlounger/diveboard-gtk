@@ -31,7 +31,6 @@ from gi.repository import Gtk
 from .define import RES_PATH
 from .dive_trip import DiveTrip
 from .dive import Dive
-from .dive_detail import DiveDetailWindow
 from .spot import Spot
 
 @Gtk.Template(resource_path=f'{RES_PATH}/logbook.ui')
@@ -62,5 +61,5 @@ class Logbook(Gtk.Box):
                 self.logbook_list.insert(trip.view, -1)
 
     def new_dive(self, button):
-        window = DiveDetailWindow(self)
+        window = Dive().detail_view()
         window.set_transient_for(self.window)

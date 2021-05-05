@@ -31,7 +31,6 @@ from gi.repository import Gtk
 from .database_manager import DatabaseManager
 from .dive import Dive
 from .define import RES_PATH
-from .dive_detail import DiveDetailWindow
 
 class DiveTrip():
 
@@ -76,7 +75,7 @@ class DiveTripView(Gtk.Box):
 
     def on_row_activated(self, dive_list, row):
         clicked_dive = row.get_child().dive
-        window = DiveDetailWindow(self, clicked_dive)
+        window = clicked_dive.detail_view()
         window.set_transient_for(self.divetrip.logbook.window)
         self.unselect_dives(row)
 
