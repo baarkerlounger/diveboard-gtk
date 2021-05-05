@@ -63,10 +63,6 @@ class DiveboardPreferencesWindow(Handy.PreferencesWindow):
     def _switch_units(self, _row, _value):
         selected_index = self.units.get_selected_index()
         Settings.get().set_units(selected_index)
-        dive_trips = self.parent.props.active_window.logbook.logbook_list.get_children()
-        for trip in dive_trips:
-            trip.destroy()
-        screen_state = self.parent.props.active_window.get_action_state("screen_state")
-        self.parent.props.active_window.set_main_screen(screen_state)
+        self.parent.props.active_window.logbook.refresh()
 
 

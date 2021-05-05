@@ -46,7 +46,6 @@ class DiveTrip():
         all_trips = {}
         thread_pool = mp.Pool(4)
         dives = thread_pool.map(lambda d: Dive(**d), Dive.offline_dives())
-        #TODO confirm dive sorting
 
         for dive in dives:
             if dive.trip_name in all_trips.keys():

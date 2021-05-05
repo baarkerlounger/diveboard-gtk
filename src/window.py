@@ -92,7 +92,7 @@ class DiveboardWindow(Handy.ApplicationWindow):
     def display_logbook(self):
         self.main_stack.set_visible_child(self.main_screen)
         self.screen_stack.set_visible_child(self.logbook)
-        self.logbook.populate_divetrips()
+        self.logbook.populate()
 
     def display_login(self):
         self.main_stack.set_visible_child(self.login_screen)

@@ -47,7 +47,7 @@ class Logbook(Gtk.Box):
         self.dive_ids = []
         self.divetrips = []
 
-    def populate_divetrips(self):
+    def populate(self):
         if not self.divetrips:
             trips = DiveTrip.offline_trips()
             if not trips:
@@ -59,6 +59,16 @@ class Logbook(Gtk.Box):
                 trip = DiveTrip(self, **{'name': trip_name, 'dives': trips[trip_name]})
                 self.divetrips.append(trip)
                 self.logbook_list.insert(trip.view, -1)
+
+    def clear(self):
+        logbook_rows = self.logbook_list.get_children()
+        for row in logbook_rows:
+            row.destroy()
+        self.divetrips = []
+
+    def refresh(self):
+        self.clear()
+        self.populate()
 
     def new_dive(self, button):
         window = Dive().detail_view()
