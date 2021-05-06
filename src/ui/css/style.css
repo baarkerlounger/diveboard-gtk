@@ -24,6 +24,12 @@
   font-size: 0.9em;
 }
 
+.detail_section_header{
+  color: #fdc90c;
+  font-size: 1em;
+  font-weight: 600;
+}
+
 .stat_card{
   background-color: white;
   border-style: solid;

@@ -32,6 +32,7 @@ import urllib
 import os
 import re
 import multiprocessing.dummy as mp
+from datetime import datetime
 
 from gi.repository import Gtk, GdkPixbuf, Gio, Handy
 
@@ -204,28 +205,78 @@ class DiveDetailView(Handy.ApplicationWindow):
     header_bar = Gtk.Template.Child()
     save_btn  = Gtk.Template.Child()
 
+    #General Page
+    dive_no = Gtk.Template.Child()
+    trip_name_label = Gtk.Template.Child()
+    trip_name = Gtk.Template.Child()
+    spot_label = Gtk.Template.Child()
+    spot = Gtk.Template.Child()
+    date = Gtk.Template.Child()
+    time = Gtk.Template.Child()
+    max_depth = Gtk.Template.Child()
+    duration = Gtk.Template.Child()
+    safety_stops = Gtk.Template.Child()
+    weights_label = Gtk.Template.Child()
+    weights = Gtk.Template.Child()
+    tanks_label = Gtk.Template.Child()
+    tanks = Gtk.Template.Child()
+
+    # Notes Page
     notes    = Gtk.Template.Child()
 
+    # People Page
     dive_center = Gtk.Template.Child()
     dive_buddy  = Gtk.Template.Child()
+    guide       = Gtk.Template.Child()
 
     def __init__(self, dive, **kwargs):
         super().__init__(**kwargs)
         self.dive = dive
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
         self.save_btn.connect('clicked', self.save_dive)
+        logo_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg')
+        self.dive_buddy.set_icon_from_pixbuf(0, logo_pixbuf)
+        self.dive_center.set_icon_from_pixbuf(0, logo_pixbuf)
         if dive.id:
             self.fill_props()
         else:
             self.header_bar.set_title("New Dive")
+            self.fill_defaults()
 
     def fill_props(self):
-        text_buffer = self.notes.get_buffer()
-        text_buffer.set_text(str(self.dive.notes))
+        self.fill_details_props()
+        self.fill_people_props()
+        self.fill_notes_props()
+        self.fill_photos_props()
 
-        logo_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg')
-        self.dive_buddy.set_icon_from_pixbuf(0, logo_pixbuf)
-        self.dive_center.set_icon_from_pixbuf(0, logo_pixbuf)
+    def fill_details_props(self):
+        pass
+
+    def fill_people_props(self):
+        guide = self.dive.guide
+        if guide is not None:
+            self.guide.set_text(self.dive.guide)
+        buddies = ', '.join(self.dive.buddies)
+        if buddies:
+            self.dive_buddy.set_text(buddies)
+        dive_center_name = self.dive.diveshop.get("name")
+        if dive_center_name is not None:
+            self.dive_center.set_text(dive_center_name)
+
+    def fill_notes_props(self):
+        notes_buffer = self.notes.get_buffer()
+        notes_buffer.set_text(str(self.dive.notes))
+
+    def fill_photos_props(self):
+        pass
+
+    def fill_defaults(self):
+        now = datetime.now()
+        self.date.set_text(now.strftime("%d/%m/%Y"))
+        self.time.set_text(now.strftime("%H:%M"))
+        self.max_depth.set_text('0.0')
+        self.duration.set_text('0')
+        self.safety_stops.set_text('5 m - 3 m')
 
     def save_dive(self, _btn):
         print('Implement Saving here')
