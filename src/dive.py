@@ -101,8 +101,6 @@ class Dive():
 
         self.cache_thumbnail_path = self.cache_thumbnail()
 
-        self.overview = DiveOverview(self)
-
     def cache_thumbnail(self):
         if self.thumbnail_image_url is None:
             return None
@@ -116,6 +114,9 @@ class Dive():
             file.write(thumbnail.read())
             file.close()
         return thumbnail_path
+
+    def overview(self):
+        return DiveOverview(self)
 
     def detail_view(self):
         return DiveDetailView(self)
