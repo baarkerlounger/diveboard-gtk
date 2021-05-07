@@ -280,4 +280,6 @@ class DiveDetailView(Handy.ApplicationWindow):
 
     def save_dive(self, _btn):
         print('Implement Saving here')
+        #kwargs = {"tripname": self.trip_name.get_text()}
+        #self.dive.__dict__.update(kwargs)
 
