@@ -244,11 +244,22 @@ class DiveDetailView(Handy.ApplicationWindow):
     dive_buddy  = Gtk.Template.Child()
     guide       = Gtk.Template.Child()
 
+
+
     def __init__(self, dive, **kwargs):
         super().__init__(**kwargs)
         self.dive = dive
-        self.back_btn.connect('clicked', lambda clicked: self.destroy())
-        self.save_btn.connect('clicked', self.save_dive)
+        self.popup_labels = {
+            self.trip_name:  self.trip_name_label,
+            self.spot:       self.spot_label,
+            self.weights:    self.weights_label,
+            self.tanks:      self.tanks_label,
+            self.dive_type:  self.dive_type_label,
+            self.air_temp:   self.air_temp_label,
+            self.water_temp: self.water_temp_label,
+            self.altitude:   self.altitude_label
+        }
+        self.setup_actions()
         logo_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg')
         self.dive_buddy.set_icon_from_pixbuf(0, logo_pixbuf)
         self.dive_center.set_icon_from_pixbuf(0, logo_pixbuf)
@@ -257,6 +268,14 @@ class DiveDetailView(Handy.ApplicationWindow):
         else:
             self.header_bar.set_title("New Dive")
             self.fill_defaults()
+        self.set_label_visibilities()
+
+    def setup_actions(self):
+        self.back_btn.connect('clicked', lambda clicked: self.destroy())
+        self.save_btn.connect('clicked', self.save_dive)
+        for entry in self.popup_labels:
+            entry.connect('focus-in-event', self.set_label_visibilities)
+            entry.connect('focus-out-event', self.set_label_visibilities)
 
     def fill_props(self):
         self.fill_details_props()
@@ -292,6 +311,17 @@ class DiveDetailView(Handy.ApplicationWindow):
         self.max_depth.set_text('0.0')
         self.duration.set_text('0')
         self.safety_stops.set_text('5 m - 3 m')
+
+    def set_label_visibilities(self, active_entry=None, event=None):
+        for entry in self.popup_labels:
+            label = self.popup_labels[entry]
+            self.set_label_visibility(entry , label)
+
+    def set_label_visibility(self, entry, entry_label):
+        if entry.has_focus() or entry.get_text():
+            entry_label.set_visible(True)
+        else:
+            entry_label.set_visible(False)
 
     def save_dive(self, _btn):
         print('Implement Saving here')
