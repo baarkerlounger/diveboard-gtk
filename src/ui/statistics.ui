@@ -56,7 +56,7 @@
             <property name="margin-top">10</property>
             <property name="label" translatable="yes">Total Dives</property>
             <style>
-              <class name="stats_header"/>
+              <class name="light_grey_text"/>
             </style>
           </object>
           <packing>
@@ -75,7 +75,7 @@
             <property name="label" translatable="yes">12</property>
             <style>
               <class name="bold_header"/>
-              <class name="stat"/>
+              <class name="large_text"/>
             </style>
           </object>
           <packing>
@@ -147,7 +147,7 @@
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Countries</property>
                 <style>
-                  <class name="stats_header"/>
+                  <class name="light_grey_text"/>
                 </style>
               </object>
               <packing>
@@ -166,7 +166,7 @@
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
-                  <class name="stat"/>
+                  <class name="large_text"/>
                 </style>
               </object>
               <packing>
@@ -201,7 +201,7 @@
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Dive Sites</property>
                 <style>
-                  <class name="stats_header"/>
+                  <class name="light_grey_text"/>
                 </style>
               </object>
               <packing>
@@ -220,7 +220,7 @@
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
-                  <class name="stat"/>
+                  <class name="large_text"/>
                 </style>
               </object>
               <packing>
@@ -255,7 +255,7 @@
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Total Time</property>
                 <style>
-                  <class name="stats_header"/>
+                  <class name="light_grey_text"/>
                 </style>
               </object>
               <packing>
@@ -274,7 +274,7 @@
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
-                  <class name="stat"/>
+                  <class name="large_text"/>
                 </style>
               </object>
               <packing>
@@ -309,7 +309,7 @@
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Most Dives in</property>
                 <style>
-                  <class name="stats_header"/>
+                  <class name="light_grey_text"/>
                 </style>
               </object>
               <packing>
@@ -328,7 +328,7 @@
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
-                  <class name="stat"/>
+                  <class name="large_text"/>
                 </style>
               </object>
               <packing>
@@ -361,7 +361,7 @@
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Max Time</property>
                 <style>
-                  <class name="stats_header"/>
+                  <class name="light_grey_text"/>
                 </style>
               </object>
               <packing>
@@ -379,7 +379,7 @@
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
-                  <class name="stat"/>
+                  <class name="large_text"/>
                 </style>
               </object>
               <packing>
@@ -401,7 +401,8 @@
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
-                      <class name="details_text"/>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
                     </style>
                   </object>
                   <packing>
@@ -418,7 +419,8 @@
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
-                      <class name="details_text"/>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
                     </style>
                   </object>
                   <packing>
@@ -458,7 +460,7 @@
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Max Depth</property>
                 <style>
-                  <class name="stats_header"/>
+                  <class name="light_grey_text"/>
                 </style>
               </object>
               <packing>
@@ -476,7 +478,7 @@
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
-                  <class name="stat"/>
+                  <class name="large_text"/>
                 </style>
               </object>
               <packing>
@@ -498,7 +500,8 @@
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
-                      <class name="details_text"/>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
                     </style>
                   </object>
                   <packing>
@@ -515,7 +518,8 @@
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
-                      <class name="details_text"/>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
                     </style>
                   </object>
                   <packing>
@@ -555,7 +559,7 @@
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Warmest Water</property>
                 <style>
-                  <class name="stats_header"/>
+                  <class name="light_grey_text"/>
                 </style>
               </object>
               <packing>
@@ -573,7 +577,7 @@
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
-                  <class name="stat"/>
+                  <class name="large_text"/>
                 </style>
               </object>
               <packing>
@@ -595,7 +599,8 @@
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
-                      <class name="details_text"/>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
                     </style>
                   </object>
                   <packing>
@@ -612,7 +617,8 @@
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
-                      <class name="details_text"/>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
                     </style>
                   </object>
                   <packing>
@@ -652,7 +658,7 @@
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Coldest Water</property>
                 <style>
-                  <class name="stats_header"/>
+                  <class name="light_grey_text"/>
                 </style>
               </object>
               <packing>
@@ -670,7 +676,7 @@
                 <property name="label" translatable="yes">label</property>
                 <style>
                   <class name="bold_header"/>
-                  <class name="stat"/>
+                  <class name="large_text"/>
                 </style>
               </object>
               <packing>
@@ -692,7 +698,8 @@
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
-                      <class name="details_text"/>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
                     </style>
                   </object>
                   <packing>
@@ -709,7 +716,8 @@
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
                     <style>
-                      <class name="details_text"/>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
                     </style>
                   </object>
                   <packing>

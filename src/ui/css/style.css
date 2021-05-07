@@ -11,23 +11,20 @@
   font-weight: 600;
 }
 
-.stats_header{
-  color: #505050;
-}
-
-.stat{
+.large_text{
   font-size: 1.5em;
 }
 
-.details_text{
-  color: #505050;
+.small_text{
   font-size: 0.9em;
 }
 
-.detail_section_header{
+.yellow_text{
   color: #fdc90c;
-  font-size: 1em;
-  font-weight: 600;
+}
+
+.light_grey_text{
+  color: #505050;
 }
 
 .stat_card{

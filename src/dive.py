@@ -318,10 +318,15 @@ class DiveDetailView(Handy.ApplicationWindow):
             self.set_label_visibility(entry , label)
 
     def set_label_visibility(self, entry, entry_label):
-        if entry.has_focus() or entry.get_text():
+        if entry.has_focus():
             entry_label.set_visible(True)
+            entry_label.get_style_context().add_class('yellow_text')
+        elif entry.get_text():
+            entry_label.set_visible(True)
+            entry_label.get_style_context().remove_class('yellow_text')
         else:
             entry_label.set_visible(False)
+            entry_label.get_style_context().remove_class('yellow_text')
 
     def save_dive(self, _btn):
         print('Implement Saving here')

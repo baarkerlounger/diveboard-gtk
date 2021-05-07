@@ -99,7 +99,8 @@
                 <property name="margin-right">5</property>
                 <property name="label" translatable="yes">19 Apr 2019</property>
                 <style>
-                  <class name="details_text"/>
+                  <class name="small_text"/>
+                  <class name="light_grey_text"/>
                 </style>
               </object>
               <packing>
@@ -137,7 +138,8 @@
                     <property name="margin-right">5</property>
                     <property name="label" translatable="yes">21m</property>
                     <style>
-                      <class name="details_text"/>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
                     </style>
                   </object>
                   <packing>
@@ -167,7 +169,8 @@
                     <property name="margin-right">5</property>
                     <property name="label" translatable="yes">45min</property>
                     <style>
-                      <class name="details_text"/>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
                     </style>
                   </object>
                   <packing>

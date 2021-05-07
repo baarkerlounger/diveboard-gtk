@@ -88,7 +88,8 @@
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">GENERAL</property>
                                 <style>
-                                  <class name="detail_section_header"/>
+                                  <class name="yellow_text"/>
+                                  <class name="bold_header"/>
                                 </style>
                               </object>
                               <packing>
@@ -313,7 +314,8 @@
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">DIVE PROFILE</property>
                                 <style>
-                                  <class name="detail_section_header"/>
+                                  <class name="yellow_text"/>
+                                  <class name="bold_header"/>
                                 </style>
                               </object>
                               <packing>
@@ -465,7 +467,8 @@
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">EQUIPMENT</property>
                                 <style>
-                                  <class name="detail_section_header"/>
+                                  <class name="yellow_text"/>
+                                  <class name="bold_header"/>
                                 </style>
                               </object>
                               <packing>
@@ -571,7 +574,8 @@
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">ENVIRONMENT</property>
                                 <style>
-                                  <class name="detail_section_header"/>
+                                  <class name="yellow_text"/>
+                                  <class name="bold_header"/>
                                 </style>
                               </object>
                               <packing>
