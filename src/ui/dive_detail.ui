@@ -374,7 +374,7 @@
                                       <object class="GtkEntry" id="max_depth">
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
-                                        <property name="input-purpose">digits</property>
+                                        <property name="input-purpose">number</property>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
