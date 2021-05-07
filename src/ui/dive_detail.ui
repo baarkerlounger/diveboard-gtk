@@ -109,6 +109,10 @@
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="label" translatable="yes">Dive #</property>
+                                    <style>
+                                      <class name="tiny_text"/>
+                                      <class name="bold_header"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -150,6 +154,10 @@
                                         <property name="can-focus">False</property>
                                         <property name="halign">start</property>
                                         <property name="label" translatable="yes">Date</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -186,6 +194,10 @@
                                         <property name="can-focus">False</property>
                                         <property name="halign">start</property>
                                         <property name="label" translatable="yes">Time</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -229,6 +241,10 @@
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="label" translatable="yes">Trip Name</property>
+                                    <style>
+                                      <class name="tiny_text"/>
+                                      <class name="bold_header"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -266,6 +282,10 @@
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="label" translatable="yes">Spot</property>
+                                    <style>
+                                      <class name="tiny_text"/>
+                                      <class name="bold_header"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -339,6 +359,10 @@
                                         <property name="can-focus">False</property>
                                         <property name="halign">start</property>
                                         <property name="label" translatable="yes">Max depth, m</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -376,6 +400,10 @@
                                         <property name="can-focus">False</property>
                                         <property name="halign">start</property>
                                         <property name="label" translatable="yes">Duration, min</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -420,6 +448,10 @@
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="label" translatable="yes">Safety Stops</property>
+                                    <style>
+                                      <class name="tiny_text"/>
+                                      <class name="bold_header"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -488,6 +520,10 @@
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="label" translatable="yes">Weights, KG</property>
+                                    <style>
+                                      <class name="tiny_text"/>
+                                      <class name="bold_header"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -526,6 +562,10 @@
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="label" translatable="yes">Tanks, bar</property>
+                                    <style>
+                                      <class name="tiny_text"/>
+                                      <class name="bold_header"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -595,6 +635,10 @@
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="label" translatable="yes">Dive Type</property>
+                                    <style>
+                                      <class name="tiny_text"/>
+                                      <class name="bold_header"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -636,6 +680,10 @@
                                         <property name="can-focus">False</property>
                                         <property name="halign">start</property>
                                         <property name="label" translatable="yes">Air Temp</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -673,6 +721,10 @@
                                         <property name="can-focus">False</property>
                                         <property name="halign">start</property>
                                         <property name="label" translatable="yes">Water Temp</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -721,6 +773,10 @@
                                         <property name="can-focus">False</property>
                                         <property name="halign">start</property>
                                         <property name="label" translatable="yes">Water Type</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -790,6 +846,10 @@
                                         <property name="can-focus">False</property>
                                         <property name="halign">start</property>
                                         <property name="label" translatable="yes">Visibility</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -840,6 +900,10 @@
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="label" translatable="yes">Current</property>
+                                    <style>
+                                      <class name="tiny_text"/>
+                                      <class name="bold_header"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -884,6 +948,10 @@
                                     <property name="can-focus">False</property>
                                     <property name="halign">start</property>
                                     <property name="label" translatable="yes">Altitude, m</property>
+                                    <style>
+                                      <class name="tiny_text"/>
+                                      <class name="bold_header"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>

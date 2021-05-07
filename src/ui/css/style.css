@@ -19,6 +19,10 @@
   font-size: 0.9em;
 }
 
+.tiny_text{
+  font-size: 0.7em;
+}
+
 .yellow_text{
   color: #fdc90c;
 }
