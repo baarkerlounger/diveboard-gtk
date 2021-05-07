@@ -42,12 +42,13 @@ class DiveTrip():
         self.logbook = logbook
 
     @classmethod
-    def offline_trips(cls):
+    def offline_trips(cls, logbook):
         all_trips = {}
         thread_pool = mp.Pool(4)
         dives = thread_pool.map(lambda d: Dive(**d), Dive.offline_dives())
 
         for dive in dives:
+            logbook.dive_ids.append(dive.id)
             if dive.trip_name in all_trips.keys():
                 all_trips.get(dive.trip_name).append(dive)
             else:
@@ -76,7 +77,8 @@ class DiveTripView(Gtk.Box):
 
     def on_row_activated(self, dive_list, row):
         clicked_dive = row.get_child().dive
-        window = clicked_dive.detail_view()
+        dive_number = self.divetrip.logbook.dive_ids.index(clicked_dive.id) + 1
+        window = clicked_dive.detail_view(dive_number)
         window.set_transient_for(self.divetrip.logbook.window)
         self.unselect_dives(row)
 

@@ -49,7 +49,7 @@ class Logbook(Gtk.Box):
 
     def populate(self):
         if not self.divetrips:
-            trips = DiveTrip.offline_trips()
+            trips = DiveTrip.offline_trips(self)
             if not trips:
                 Dive.create_from_online(self.dive_ids)
                 Spot.create_from_online()
@@ -71,5 +71,6 @@ class Logbook(Gtk.Box):
         self.populate()
 
     def new_dive(self, button):
-        window = Dive().detail_view()
+        dive_no = len(self.dive_ids) + 1
+        window = Dive().detail_view(dive_no)
         window.set_transient_for(self.window)

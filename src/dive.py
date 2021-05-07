@@ -119,8 +119,8 @@ class Dive():
     def overview(self):
         return DiveOverview(self)
 
-    def detail_view(self):
-        return DiveDetailView(self)
+    def detail_view(self, dive_no):
+        return DiveDetailView(self, dive_no)
 
     def from_json_or_none(self, val, **kwargs):
         jsn = kwargs.get(val)
@@ -246,9 +246,10 @@ class DiveDetailView(Handy.ApplicationWindow):
 
 
 
-    def __init__(self, dive, **kwargs):
+    def __init__(self, dive, dive_no, **kwargs):
         super().__init__(**kwargs)
         self.dive = dive
+        self.dive_number = dive_no
         self.popup_labels = {
             self.trip_name:  self.trip_name_label,
             self.spot:       self.spot_label,
@@ -263,6 +264,7 @@ class DiveDetailView(Handy.ApplicationWindow):
         logo_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg')
         self.dive_buddy.set_icon_from_pixbuf(0, logo_pixbuf)
         self.dive_center.set_icon_from_pixbuf(0, logo_pixbuf)
+        self.dive_no.set_text(str(self.dive_number))
         if dive.id:
             self.fill_props()
         else:
