@@ -286,6 +286,15 @@ class DiveDetailView(Handy.ApplicationWindow):
         self.fill_photos_props()
 
     def fill_details_props(self):
+        self.date.set_text(self.dive.date)
+        self.time.set_text(self.dive.time)
+        self.trip_name.set_text(self.dive.trip_name)
+        self.spot.set_text(', '.join([self.dive.spot.name, self.dive.spot.country_name]))
+        self.max_depth.set_text(Utils.format_depth(self.dive.maxdepth_value, self.dive.maxdepth_unit))
+        self.duration.set_text(Utils.format_time(self.dive.duration))
+        self.altitude.set_text(Utils.format_depth(self.dive.altitude, self.dive.maxdepth_unit))
+        self.visibility.set_active_id(self.dive.visibility)
+        self.current.set_active_id(self.dive.current)
         if self.dive.water == 'salt' or self.dive.water is None:
             self.salt_water.set_active(True)
         else:

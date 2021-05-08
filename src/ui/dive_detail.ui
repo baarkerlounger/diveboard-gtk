@@ -866,10 +866,10 @@
                                         <property name="can-focus">False</property>
                                         <items>
                                           <item translatable="yes">-</item>
-                                          <item id="0" translatable="yes">Bad (under 5 m)</item>
-                                          <item id="1" translatable="yes">Average (5-10 m)</item>
-                                          <item id="2" translatable="yes">Good (10-25 m)</item>
-                                          <item id="3" translatable="yes">Excellent (over 25 m)</item>
+                                          <item id="bad" translatable="yes">Bad (under 5 m)</item>
+                                          <item id="average" translatable="yes">Average (5-10 m)</item>
+                                          <item id="good" translatable="yes">Good (10-25 m)</item>
+                                          <item id="excellent" translatable="yes">Excellent (over 25 m)</item>
                                         </items>
                                       </object>
                                       <packing>
@@ -920,11 +920,11 @@
                                     <property name="can-focus">False</property>
                                     <items>
                                       <item translatable="yes">-</item>
-                                      <item id="0" translatable="yes">None</item>
-                                      <item id="1" translatable="yes">Light (up to 1 knot)</item>
-                                      <item id="2" translatable="yes">Medium (up to 2 knots)</item>
-                                      <item id="3" translatable="yes">Strong (up to 3 knots)</item>
-                                      <item id="4" translatable="yes">Extreme (over 3 knots)</item>
+                                      <item id="none" translatable="yes">None</item>
+                                      <item id="light" translatable="yes">Light (up to 1 knot)</item>
+                                      <item id="medium" translatable="yes">Medium (up to 2 knots)</item>
+                                      <item id="strong" translatable="yes">Strong (up to 3 knots)</item>
+                                      <item id="extreme" translatable="yes">Extreme (over 3 knots)</item>
                                     </items>
                                   </object>
                                   <packing>
