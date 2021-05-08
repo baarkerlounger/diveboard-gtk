@@ -286,7 +286,10 @@ class DiveDetailView(Handy.ApplicationWindow):
         self.fill_photos_props()
 
     def fill_details_props(self):
-        pass
+        if self.dive.water == 'salt' or self.dive.water is None:
+            self.salt_water.set_active(True)
+        else:
+            self.fresh_water.set_active(True)
 
     def fill_people_props(self):
         guide = self.dive.guide

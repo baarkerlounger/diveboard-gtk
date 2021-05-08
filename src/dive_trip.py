@@ -77,7 +77,10 @@ class DiveTripView(Gtk.Box):
 
     def on_row_activated(self, dive_list, row):
         clicked_dive = row.get_child().dive
-        dive_number = self.divetrip.logbook.dive_ids.index(clicked_dive.id) + 1
+        dives = Dive.offline_dives()
+        dives.reverse()
+        sorted_dive_ids = [ sub['id'] for sub in dives ]
+        dive_number = sorted_dive_ids.index(clicked_dive.id) + 1
         window = clicked_dive.detail_view(dive_number)
         window.set_transient_for(self.divetrip.logbook.window)
         self.unselect_dives(row)

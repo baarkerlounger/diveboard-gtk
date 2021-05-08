@@ -71,6 +71,6 @@ class Logbook(Gtk.Box):
         self.populate()
 
     def new_dive(self, button):
-        dive_no = len(self.dive_ids) + 1
+        dive_no = len(Dive.offline_dives()) + 1
         window = Dive().detail_view(dive_no)
         window.set_transient_for(self.window)
