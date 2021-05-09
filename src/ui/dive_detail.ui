@@ -304,7 +304,8 @@
                                   <object class="GtkEntry" id="spot">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="secondary-icon-name">gtk-find</property>
+                                    <property name="primary-icon-activatable">False</property>
+                                    <property name="primary-icon-sensitive">False</property>
                                     <property name="placeholder-text" translatable="yes">Spot</property>
                                   </object>
                                   <packing>

@@ -264,6 +264,8 @@ class DiveDetailView(Handy.ApplicationWindow):
         logo_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg')
         self.dive_buddy.set_icon_from_pixbuf(0, logo_pixbuf)
         self.dive_center.set_icon_from_pixbuf(0, logo_pixbuf)
+        location_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/map-marker-symbolic.svg')
+        self.spot.set_icon_from_pixbuf(1, location_pixbuf)
         self.dive_no.set_text(str(self.dive_number))
         if dive.id:
             self.fill_props()
