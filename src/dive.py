@@ -290,9 +290,10 @@ class DiveDetailView(Handy.ApplicationWindow):
         self.time.set_text(self.dive.time)
         self.trip_name.set_text(self.dive.trip_name)
         self.spot.set_text(', '.join([self.dive.spot.name, self.dive.spot.country_name]))
-        self.max_depth.set_text(Utils.format_depth(self.dive.maxdepth_value, self.dive.maxdepth_unit))
+        self.max_depth.set_text(Utils.format_depth(self.dive.maxdepth_value, self.dive.maxdepth_unit, False))
         self.duration.set_text(Utils.format_time(self.dive.duration))
         self.altitude.set_text(Utils.format_depth(self.dive.altitude, self.dive.maxdepth_unit))
+        self.weights.set_text(Utils.format_weight(self.dive.weights, self.dive.weights_unit))
         self.visibility.set_active_id(self.dive.visibility)
         self.current.set_active_id(self.dive.current)
         if self.dive.water == 'salt' or self.dive.water is None:

@@ -21,14 +21,18 @@
             <property name="title">Dive Details</property>
             <child>
               <object class="GtkButton" id="back_btn">
-                <property name="label">gtk-go-back</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="double-buffered">False</property>
                 <property name="border-width">3</property>
-                <property name="use-stock">True</property>
                 <property name="always-show-image">True</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="icon-name">go-previous-symbolic</property>
+                  </object>
+                </child>
               </object>
             </child>
             <child>

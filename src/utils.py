@@ -50,7 +50,7 @@ class Utils:
             return cls.convert_ft_to_m(depth_value)
 
     @classmethod
-    def format_depth(cls, depth_value, depth_unit):
+    def format_depth(cls, depth_value, depth_unit, rounded=True):
         if not depth_value:
             return ''
         value = cls.convert_depth_to_m(depth_value, depth_unit)
@@ -58,7 +58,17 @@ class Utils:
         if (Settings.get().get_units() == 1):
             value = cls.convert_m_to_ft(value)
             unit = 'ft'
-        return f'{round(value)}{unit}'
+        if rounded:
+            result = f'{round(value)}{unit}'
+        else:
+            result = f'{float(value)}{unit}'
+        return result
+
+    @classmethod
+    def format_weight(cls, weight_value, weight_unit):
+        if not weight_value:
+            return ''
+        return f'{float(weight_value)}'
 
     @classmethod
     def format_time(cls, mins):
