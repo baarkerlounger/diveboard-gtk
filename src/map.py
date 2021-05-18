@@ -36,6 +36,7 @@ from gi.repository import Gtk, Champlain, GtkChamplain, Handy
 from gi.repository import Geoclue
 
 from .define import RES_PATH, MAPBOX_ACCESS_TOKEN
+from .spot import Spot
 
 @Gtk.Template(resource_path=f'{RES_PATH}/map.ui')
 class MapWindow(Handy.ApplicationWindow):
@@ -44,13 +45,14 @@ class MapWindow(Handy.ApplicationWindow):
     CACHE_SIZE = 100000000  # size of cache stored on disk
     MEMORY_CACHE_SIZE = 100 # in-memory cache size (tiles stored in memory)
     MIN_ZOOM = 2
-    MAX_ZOOM = 12
+    MAX_ZOOM = 15
     TILE_SIZE = 256
     LICENSE_TEXT = ""
     LICENSE_URI = "https://www.mapbox.com/tos/"
 
     map_container = Gtk.Template.Child()
     back_btn      = Gtk.Template.Child()
+    spot_search   = Gtk.Template.Child()
 
     def __init__(self, parent, **kwargs):
         GtkClutter.init([])
@@ -69,12 +71,25 @@ class MapWindow(Handy.ApplicationWindow):
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
+        self.spot_search.connect('search-changed', self.search)
+
+    def search(self, event):
+        search_text = self.spot_search.get_text()
+        if len(search_text) > 2:
+            matches = Spot.search_online(**{"name": search_text})
+            print(matches)
+
 
     def user_location(self):
-        clue = Geoclue.Simple.new_sync('diveboard',Geoclue.AccuracyLevel.NEIGHBORHOOD,None)
-        location = clue.get_location()
-        lat = location.get_property('latitude')
-        lng = location.get_property('longitude')
+        try:
+            clue = Geoclue.Simple.new_sync('diveboard',Geoclue.AccuracyLevel.NEIGHBORHOOD,None)
+            location = clue.get_location()
+            lat = location.get_property('latitude')
+            lng = location.get_property('longitude')
+        except GLib.Error as err:
+            # If we don't have permission for geolocation let's just center on Greenwich
+            lat = 51.4825766
+            lng = -0.0076589
         return lat, lng
 
     def center_on(self, lat, lng):

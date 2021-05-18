@@ -56,4 +56,30 @@ class ApiManager:
             return json_response['result']
         elif response.status_code == 404:
             print('Not Found.')
-        
+
+    @classmethod
+    def spot_search(cls, **kwargs):
+        url = API_URL + 'search/spot'
+        name = kwargs.get('name')
+        if name:
+            if len(name) < 3:
+                return None
+            payload = {
+                "q": kwargs['name'],
+                "auth_token": Settings.get().get_auth_token(),
+                "apikey": API_KEY
+            }
+        elif kwargs.get('lat'):
+            payload = {
+                "lat": kwargs['lat'],
+                "lng": kwargs['lng'],
+                "auth_token": Settings.get().get_auth_token(),
+                "apikey": API_KEY
+            }
+
+        response = requests.post(url, data=payload)
+        if response.status_code == 200:
+            json_response = response.json()
+            return json_response['data']
+        elif response.status_code == 404:
+            print('Not Found.')

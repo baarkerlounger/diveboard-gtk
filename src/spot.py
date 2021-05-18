@@ -64,6 +64,10 @@ class Spot():
         DatabaseManager().insert_row(sql, values)
 
     @classmethod
+    def search_online(cls, **kwargs):
+        return ApiManager.spot_search(**kwargs)
+
+    @classmethod
     def create_from_online(cls):
         sql = """SELECT DISTINCT spot_id FROM dives"""
         id_objects = DatabaseManager().fetch(sql, None)
