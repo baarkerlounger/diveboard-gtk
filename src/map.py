@@ -30,8 +30,10 @@ import gi
 gi.require_version('Champlain', '0.12')
 gi.require_version('GtkChamplain', '0.12')
 gi.require_version('GtkClutter', '1.0')
+gi.require_version('Geoclue', '2.0')
 from gi.repository import GtkClutter
 from gi.repository import Gtk, Champlain, GtkChamplain, Handy
+from gi.repository import Geoclue
 
 from .define import RES_PATH, MAPBOX_ACCESS_TOKEN
 
@@ -60,11 +62,20 @@ class MapWindow(Handy.ApplicationWindow):
         self.view.set_map_source(self.create_cached_source())
 
         self.map_container.add(self.map_widget)
+        lat, lng = self.user_location()
+        self.center_on(lat, lng)
         self.set_zoom_level(9)
         self.show_all()
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
+
+    def user_location(self):
+        clue = Geoclue.Simple.new_sync('diveboard',Geoclue.AccuracyLevel.NEIGHBORHOOD,None)
+        location = clue.get_location()
+        lat = location.get_property('latitude')
+        lng = location.get_property('longitude')
+        return lat, lng
 
     def center_on(self, lat, lng):
         self.view.center_on(float(lat), float(lng))

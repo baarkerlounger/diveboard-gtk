@@ -31,6 +31,7 @@ import json
 import urllib
 import os
 import re
+from datetime import datetime
 import multiprocessing.dummy as mp
 
 from gi.repository import Gtk, GdkPixbuf, Gio, Handy
@@ -292,7 +293,8 @@ class DiveDetailView(Handy.ApplicationWindow):
         window = MapWindow(self)
         window.set_transient_for(self.dive.divetrip.logbook.window)
         spot = self.dive.spot
-        window.center_on(spot.lat, spot.lng)
+        if spot:
+            window.center_on(spot.lat, spot.lng)
 
     def set_time_popover(self, _event):
         pass
@@ -343,7 +345,7 @@ class DiveDetailView(Handy.ApplicationWindow):
     def fill_defaults(self):
         now = datetime.now()
         self.date.set_text(now.strftime("%d/%m/%Y"))
-        self.time.set_text(now.strftime("%H:%M"))
+        self.time.set_label(now.strftime("%H:%M"))
         self.max_depth.set_text('0.0')
         self.duration.set_text('0')
         self.safety_stops.set_text('5 m - 3 m')

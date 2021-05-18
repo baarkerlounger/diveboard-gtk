@@ -36,12 +36,14 @@ from .define import RES_PATH
 class DiveTrip():
 
     def __init__(self, logbook, **kwargs):
-        self.name    = kwargs['name']
-        self.dives   = kwargs['dives']
-        self.view    = DiveTripView(self)
+        self.name    = kwargs.get('name')
+        self.dives   = kwargs.get('dives', [])
         self.logbook = logbook
         for dive in self.dives:
             dive.divetrip = self
+
+    def view(self):
+        return DiveTripView(self)
 
     @classmethod
     def offline_trips(cls, logbook):
@@ -91,6 +93,6 @@ class DiveTripView(Gtk.Box):
     def unselect_dives(self, selected_dive):
         divetrips = self.divetrip.logbook.divetrips
         for divetrip in divetrips:
-            for dive in divetrip.view.dive_list.get_selected_rows():
+            for dive in divetrip.view().dive_list.get_selected_rows():
                 if not selected_dive == dive:
                     divetrip.view.dive_list.unselect_row(dive)

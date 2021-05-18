@@ -58,7 +58,7 @@ class Logbook(Gtk.Box):
             for trip_name in trips:
                 trip = DiveTrip(self, **{'name': trip_name, 'dives': trips[trip_name]})
                 self.divetrips.append(trip)
-                self.logbook_list.insert(trip.view, -1)
+                self.logbook_list.insert(trip.view(), -1)
 
     def clear(self):
         logbook_rows = self.logbook_list.get_children()
@@ -72,5 +72,6 @@ class Logbook(Gtk.Box):
 
     def new_dive(self, button):
         dive_no = len(Dive.offline_dives()) + 1
-        window = Dive().detail_view(dive_no)
+        divetrip = DiveTrip(self)
+        window = Dive(divetrip).detail_view(dive_no)
         window.set_transient_for(self.window)
