@@ -291,6 +291,8 @@ class DiveDetailView(Handy.ApplicationWindow):
     def open_map(self, _event):
         window = MapWindow(self)
         window.set_transient_for(self.dive.divetrip.logbook.window)
+        spot = self.dive.spot
+        window.center_on(spot.lat, spot.lng)
 
     def set_time_popover(self, _event):
         pass

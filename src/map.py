@@ -33,13 +33,11 @@ gi.require_version('GtkClutter', '1.0')
 from gi.repository import GtkClutter
 from gi.repository import Gtk, Champlain, GtkChamplain, Handy
 
-from .define import RES_PATH
+from .define import RES_PATH, MAPBOX_ACCESS_TOKEN
 
 @Gtk.Template(resource_path=f'{RES_PATH}/map.ui')
 class MapWindow(Handy.ApplicationWindow):
     __gtype_name__ = 'MapWindow'
-
-    ACCESS_TOKEN = "pk.eyJ1IjoiYmFhcmtlcmxvdW5nZXIiLCJhIjoiY2tvcjk5M2RtMTJwNTMycGlyYXg0YWVoNyJ9.sJ51Bd-9GObV0NoPtXJ-XA"
 
     CACHE_SIZE = 100000000  # size of cache stored on disk
     MEMORY_CACHE_SIZE = 100 # in-memory cache size (tiles stored in memory)
@@ -57,15 +55,22 @@ class MapWindow(Handy.ApplicationWindow):
         super().__init__(**kwargs)
         self.setup_actions()
 
-        map_widget = GtkChamplain.Embed()
-        view = map_widget.get_view()
-        view.set_map_source(self.create_cached_source())
+        self.map_widget = GtkChamplain.Embed()
+        self.view = self.map_widget.get_view()
+        self.view.set_map_source(self.create_cached_source())
 
-        self.map_container.add(map_widget)
+        self.map_container.add(self.map_widget)
+        self.set_zoom_level(9)
         self.show_all()
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
+
+    def center_on(self, lat, lng):
+        self.view.center_on(float(lat), float(lng))
+
+    def set_zoom_level(self, level):
+        self.view.set_zoom_level(level)
 
     def create_cached_source(self):
         factory = Champlain.MapSourceFactory.dup_default()
@@ -79,7 +84,7 @@ class MapWindow(Handy.ApplicationWindow):
             self.MAX_ZOOM,
             self.TILE_SIZE,
             Champlain.MapProjection.MERCATOR,
-            "https://api.mapbox.com/v4/mapbox.satellite/#Z#/#X#/#Y#.png?access_token=" + self.ACCESS_TOKEN,
+            "https://api.mapbox.com/v4/mapbox.satellite/#Z#/#X#/#Y#.png?access_token=" + MAPBOX_ACCESS_TOKEN,
             Champlain.ImageRenderer())
 
         tile_size = tile_source.get_tile_size()

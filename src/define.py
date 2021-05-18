@@ -41,3 +41,5 @@ DATA_PATH = xdg_data_home()
 
 DIVE_THUMBNAIL_PATH = f'{DATA_PATH}/dive-thumbnails'
 
+MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoiYmFhcmtlcmxvdW5nZXIiLCJhIjoiY2tvcjk5M2RtMTJwNTMycGlyYXg0YWVoNyJ9.sJ51Bd-9GObV0NoPtXJ-XA"
+
