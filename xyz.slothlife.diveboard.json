@@ -8,7 +8,8 @@
         "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
-        "--socket=wayland"
+        "--socket=wayland",
+        "--device=dri"
     ],
     "cleanup" : [
         "/include",
@@ -46,6 +47,16 @@
 		    "pip3 install --prefix=/app --no-cache-dir xdg"
 		]
     	},
+        {
+            "name" : "libchamplain",
+            "buildsystem": "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/libchamplain.git"
+                }
+            ]
+        },
         {
             "name" : "diveboard",
             "builddir" : true,

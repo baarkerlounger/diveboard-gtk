@@ -32,7 +32,6 @@ import urllib
 import os
 import re
 import multiprocessing.dummy as mp
-from datetime import datetime
 
 from gi.repository import Gtk, GdkPixbuf, Gio, Handy
 
@@ -42,10 +41,11 @@ from .define import RES_PATH, DATA_PATH, API_KEY, API_URL, DIVE_THUMBNAIL_PATH
 from .settings import Settings
 from .spot import Spot
 from .utils import Utils
+from .map import MapWindow
 
 class Dive():
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, divetrip=None, *args, **kwargs):
         self.id                     = kwargs.get('id', None)
         self.shaken_id              = kwargs.get('shaken_id')
         self.time_in                = kwargs.get('time_in')
@@ -101,6 +101,8 @@ class Dive():
         self.spot = Spot.get_spot_by_id(self.spot_id)
 
         self.cache_thumbnail_path = self.cache_thumbnail()
+
+        self.divetrip = divetrip
 
     def cache_thumbnail(self):
         if self.thumbnail_image_url is None:
@@ -244,6 +246,10 @@ class DiveDetailView(Handy.ApplicationWindow):
     dive_buddy  = Gtk.Template.Child()
     guide       = Gtk.Template.Child()
 
+    time_popover = Gtk.Template.Child()
+    hour         = Gtk.Template.Child()
+    minute       = Gtk.Template.Child()
+
 
 
     def __init__(self, dive, dive_no, **kwargs):
@@ -280,6 +286,14 @@ class DiveDetailView(Handy.ApplicationWindow):
         for entry in self.popup_labels:
             entry.connect('focus-in-event', self.set_label_visibilities)
             entry.connect('focus-out-event', self.set_label_visibilities)
+        self.spot.connect('grab_focus', self.open_map)
+
+    def open_map(self, _event):
+        window = MapWindow(self)
+        window.set_transient_for(self.dive.divetrip.logbook.window)
+
+    def set_time_popover(self, _event):
+        pass
 
     def fill_props(self):
         self.fill_details_props()
@@ -289,7 +303,10 @@ class DiveDetailView(Handy.ApplicationWindow):
 
     def fill_details_props(self):
         self.date.set_text(self.dive.date)
-        self.time.set_text(self.dive.time)
+        self.time.set_label(self.dive.time)
+        time = self.dive.time.split(':')
+        self.hour.set_value(int(time[0]))
+        self.minute.set_value(int(time[1]))
         self.trip_name.set_text(self.dive.trip_name)
         self.spot.set_text(', '.join([self.dive.spot.name, self.dive.spot.country_name]))
         self.max_depth.set_text(Utils.format_depth(self.dive.maxdepth_value, self.dive.maxdepth_unit, False))

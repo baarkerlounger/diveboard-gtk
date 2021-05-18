@@ -40,6 +40,8 @@ class DiveTrip():
         self.dives   = kwargs['dives']
         self.view    = DiveTripView(self)
         self.logbook = logbook
+        for dive in self.dives:
+            dive.divetrip = self
 
     @classmethod
     def offline_trips(cls, logbook):

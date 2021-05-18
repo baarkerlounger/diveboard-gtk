@@ -3,6 +3,111 @@
 <interface>
   <requires lib="gtk+" version="3.24"/>
   <requires lib="libhandy" version="1.0"/>
+  <object class="GtkAdjustment" id="hour-adjustment">
+    <property name="upper">24</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="minute-adjustment">
+    <property name="upper">59</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
+  </object>
+  <object class="GtkPopover" id="time_popover">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkSpinButton" id="hour">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="max-length">2</property>
+                <property name="input-purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">hour-adjustment</property>
+                <property name="climb-rate">1</property>
+                <property name="numeric">True</property>
+                <property name="wrap">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="minute">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="max-length">2</property>
+                <property name="input-purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">minute-adjustment</property>
+                <property name="climb-rate">1</property>
+                <property name="numeric">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="spacing">20</property>
+            <property name="homogeneous">True</property>
+            <child>
+              <object class="GtkButton" id="time_cancel">
+                <property name="label" translatable="yes">Cancel</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="time_set">
+                <property name="label" translatable="yes">OK</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <template class="DiveDetailView" parent="HdyApplicationWindow">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -213,9 +318,15 @@
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkEntry" id="time">
+                                      <object class="GtkMenuButton" id="time">
                                         <property name="visible">True</property>
                                         <property name="can-focus">True</property>
+                                        <property name="focus-on-click">False</property>
+                                        <property name="receives-default">True</property>
+                                        <property name="popover">time_popover</property>
+                                        <child>
+                                          <placeholder/>
+                                        </child>
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>

@@ -11,6 +11,7 @@ GTK client for https://www.diveboard.com/ designed for Linux based mobiles like 
 - libhandy (>= 1.2)
 - Meson
 - Ninja
+- libchamplain-gtk-0.12-0
 
 ### Building from Git
 ```
