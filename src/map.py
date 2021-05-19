@@ -72,6 +72,20 @@ class MapWindow(Handy.ApplicationWindow):
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
         self.spot_search.connect('search-changed', self.search)
+        gesture = Gtk.GestureZoom.new(self.map_container)
+        gesture.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
+        gesture.connect("begin", self.zoom_begin)
+        gesture.connect("update", self.zoom_follow)
+        gesture.connect("end", self.zoom_end)
+
+    def zoom_begin(self, widget):
+        print('pinch begin')
+
+    def zoom_follow(self, widget):
+        print('pinch follow')
+
+    def zoom_end(self, widget):
+        print('pinch end')
 
     def search(self, event):
         search_text = self.spot_search.get_text()
