@@ -59,6 +59,7 @@
           <object class="GtkBox" id="map_container">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="events">GDK_STRUCTURE_MASK | GDK_TOUCH_MASK</property>
             <property name="orientation">vertical</property>
             <child>
               <placeholder/>

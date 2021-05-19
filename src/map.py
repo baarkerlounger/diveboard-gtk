@@ -77,7 +77,9 @@ class MapWindow(Handy.ApplicationWindow):
         search_text = self.spot_search.get_text()
         if len(search_text) > 2:
             matches = Spot.search_online(**{"name": search_text})
-            print(matches)
+            spot_names = [ spot['name'] for spot in matches[0:3] ]
+            print(spot_names)
+
 
 
     def user_location(self):
