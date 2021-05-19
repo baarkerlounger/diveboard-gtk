@@ -62,12 +62,16 @@ class MapWindow(Handy.ApplicationWindow):
         self.map_widget = GtkChamplain.Embed()
         self.view = self.map_widget.get_view()
         #self.view.set_map_source(self.create_cached_source())
+        self.view.connect('touch-event', self.test)
 
         self.map_container.add(self.map_widget)
         lat, lng = self.user_location()
         self.center_on(lat, lng)
         self.set_zoom_level(9)
         self.show_all()
+
+    def test(self):
+        print('Touched')
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
