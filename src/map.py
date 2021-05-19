@@ -61,7 +61,7 @@ class MapWindow(Handy.ApplicationWindow):
 
         self.map_widget = GtkChamplain.Embed()
         self.view = self.map_widget.get_view()
-        self.view.set_map_source(self.create_cached_source())
+        #self.view.set_map_source(self.create_cached_source())
 
         self.map_container.add(self.map_widget)
         lat, lng = self.user_location()
@@ -72,20 +72,6 @@ class MapWindow(Handy.ApplicationWindow):
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
         self.spot_search.connect('search-changed', self.search)
-        gesture = Gtk.GestureZoom.new(self.map_container)
-        gesture.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
-        gesture.connect("begin", self.zoom_begin)
-        gesture.connect("update", self.zoom_follow)
-        gesture.connect("end", self.zoom_end)
-
-    def zoom_begin(self, widget):
-        print('pinch begin')
-
-    def zoom_follow(self, widget):
-        print('pinch follow')
-
-    def zoom_end(self, widget):
-        print('pinch end')
 
     def search(self, event):
         search_text = self.spot_search.get_text()
@@ -93,8 +79,6 @@ class MapWindow(Handy.ApplicationWindow):
             matches = Spot.search_online(**{"name": search_text})
             spot_names = [ spot['name'] for spot in matches[0:3] ]
             print(spot_names)
-
-
 
     def user_location(self):
         try:
