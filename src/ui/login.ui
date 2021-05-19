@@ -7,10 +7,9 @@
     <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="HdyHeaderBar" id="header_bar">
+      <object class="AdwHeaderBar" id="header_bar">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="title">Diveboard</property>
         <child>
           <object class="GtkMenuButton" id="menu_btn">
             <property name="visible">True</property>
@@ -25,16 +24,8 @@
               <class name="image-button"/>
             </style>
           </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
         </child>
       </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
     </child>
     <child>
       <!-- n-columns=1 n-rows=4 -->
@@ -52,10 +43,6 @@
             <property name="resource">/xyz/slothlife/diveboard/images/full_diveboard_grey.png</property>
             <property name="icon_size">1</property>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkEntry" id="username_entry">
@@ -68,10 +55,6 @@
             <property name="xalign">0.5</property>
             <property name="placeholder-text" translatable="yes">Username</property>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkEntry" id="password_entry">
@@ -85,10 +68,6 @@
             <property name="xalign">0.5</property>
             <property name="placeholder-text" translatable="yes">Password</property>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="login_btn">
@@ -102,17 +81,8 @@
               <class name="dark_grey"/>
             </style>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">3</property>
-          </packing>
         </child>
       </object>
-      <packing>
-        <property name="expand">True</property>
-        <property name="fill">True</property>
-        <property name="position">1</property>
-      </packing>
     </child>
     <style>
       <class name="yellow"/>

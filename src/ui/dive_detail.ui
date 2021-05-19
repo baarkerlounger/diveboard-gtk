@@ -2,7 +2,6 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <requires lib="libhandy" version="1.0"/>
   <object class="GtkAdjustment" id="hour-adjustment">
     <property name="upper">24</property>
     <property name="step-increment">1</property>
@@ -108,7 +107,7 @@
       </object>
     </child>
   </object>
-  <template class="DiveDetailView" parent="HdyApplicationWindow">
+  <template class="DiveDetailView" parent="AdwApplicationWindow">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="default-width">360</property>
@@ -119,7 +118,7 @@
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="HdyHeaderBar" id="header_bar">
+          <object class="AdwHeaderBar" id="header_bar">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="valign">start</property>
@@ -1224,7 +1223,7 @@
           </packing>
         </child>
         <child>
-          <object class="HdyViewSwitcherBar">
+          <object class="AdwViewSwitcherBar">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="stack">dive_detail_stack</property>

@@ -2,8 +2,7 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <requires lib="libhandy" version="1.2"/>
-  <template class="DiveboardWindow" parent="HdyApplicationWindow">
+  <template class="DiveboardWindow" parent="AdwApplicationWindow">
     <property name="can-focus">False</property>
     <property name="default-width">360</property>
     <property name="default-height">720</property>
@@ -13,14 +12,14 @@
         <property name="can-focus">False</property>
         <property name="transition-type">crossfade</property>
         <child>
-          <object class="HdyWindowHandle" id="login_screen">
+          <object class="GtkWindowHandle" id="login_screen">
             <property name="name">login_screen</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
           </object>
         </child>
         <child>
-          <object class="HdyWindowHandle" id="main_screen">
+          <object class="GtkWindowHandle" id="main_screen">
             <property name="name">logbook_screen</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
@@ -40,11 +39,6 @@
               </object>
             </child>
           </object>
-          <packing>
-            <property name="name">main_screen</property>
-            <property name="title" translatable="yes">Main</property>
-            <property name="position">1</property>
-          </packing>
         </child>
       </object>
     </child>

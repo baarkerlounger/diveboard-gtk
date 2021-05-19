@@ -31,11 +31,11 @@ import gi
 import os
 from pathlib import Path
 
-gi.require_version('Gtk', '3.0')
-gi.require_version('Gdk', '3.0')
-gi.require_version('Handy', '1')
+gi.require_version('Gtk', '4.0')
+gi.require_version('Gdk', '4.0')
+gi.require_version('Adw', '1')
 
-from gi.repository import Gdk, Gtk, Gio, Handy, GdkPixbuf
+from gi.repository import Gdk, Gtk, Gio, GdkPixbuf, Adw
 
 from .window import DiveboardWindow
 from .preferences import DiveboardPreferencesWindow
@@ -58,7 +58,7 @@ class Application(Gtk.Application):
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
-        Handy.init()
+        Adw.init()
         DatabaseManager().setup_database()
         if not os.path.isdir(DIVE_THUMBNAIL_PATH):
             os.mkdir(DIVE_THUMBNAIL_PATH)
@@ -68,9 +68,9 @@ class Application(Gtk.Application):
     def load_css(self):
         css_provider = Gtk.CssProvider()
         css_provider.load_from_resource(f'{RES_PATH}/css/style.css')
-        screen = Gdk.Screen.get_default()
+        display = Gdk.Display.get_default()
         style_context = Gtk.StyleContext()
-        style_context.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
+        #   style_context.add_provider_for_display(display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
     def setup_actions(self):
         preferences_action = Gio.SimpleAction.new('preferences', None)

@@ -1,0 +1,5 @@
+# ninja log v5
+2	55	1621462470215413745	src/ui/diveboard.gresource	756bcc317af9bedc
+0	355	1621462470483414507	data/xyz.slothlife.diveboard.desktop	a9f1eaf2f40e0924
+1	359	1621462470483414507	data/xyz.slothlife.diveboard.appdata.xml	97126f1cfc758a2
+359	1103	0	meson-install	9bd7faa9472bf40f

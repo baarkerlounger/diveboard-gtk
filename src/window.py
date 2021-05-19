@@ -28,9 +28,7 @@
 
 import gi
 
-gi.require_version('Handy', '1')
-
-from gi.repository import Gtk, Gio, GLib, Handy
+from gi.repository import Gtk, Gio, GLib, Adw
 
 from .settings import Settings
 from .define import RES_PATH
@@ -40,7 +38,7 @@ from .statistics import Statistics
 from .wallet import Wallet
 
 @Gtk.Template(resource_path=f'{RES_PATH}/window.ui')
-class DiveboardWindow(Handy.ApplicationWindow):
+class DiveboardWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'DiveboardWindow'
 
     main_stack     = Gtk.Template.Child()
@@ -53,13 +51,13 @@ class DiveboardWindow(Handy.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.login = Login(self)
-        self.login_screen.add(self.login)
+        self.login_screen.set_child(self.login)
         self.logbook = Logbook(self)
-        self.screen_stack.add(self.logbook)
+        self.screen_stack.add_child(self.logbook)
         self.statistics = Statistics(self)
-        self.screen_stack.add(self.statistics)
+        self.screen_stack.add_child(self.statistics)
         self.wallet = Wallet(self)
-        self.screen_stack.add(self.wallet)
+        self.screen_stack.add_child(self.wallet)
         self.set_main_screen(None)
         self.setup_actions()
 

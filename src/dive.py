@@ -34,7 +34,7 @@ import re
 from datetime import datetime
 import multiprocessing.dummy as mp
 
-from gi.repository import Gtk, GdkPixbuf, Gio, Handy
+from gi.repository import Gtk, GdkPixbuf, Gio, Adw
 
 from .database_manager import DatabaseManager
 from .api_manager import ApiManager
@@ -201,7 +201,7 @@ class DiveOverview(Gtk.Box):
 
 
 @Gtk.Template(resource_path=f'{RES_PATH}/dive_detail.ui')
-class DiveDetailView(Handy.ApplicationWindow):
+class DiveDetailView(Adw.ApplicationWindow):
     __gtype_name__ = 'DiveDetailView'
 
     back_btn = Gtk.Template.Child()

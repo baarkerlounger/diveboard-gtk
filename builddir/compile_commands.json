@@ -1,0 +1,140 @@
+[
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/meson --internal msgfmthelper ../data/xyz.slothlife.diveboard.desktop.in data/xyz.slothlife.diveboard.desktop desktop ../data/../po",
+    "file": "../data/xyz.slothlife.diveboard.desktop.in",
+    "output": "data/xyz.slothlife.diveboard.desktop"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/meson --internal msgfmthelper ../data/xyz.slothlife.diveboard.appdata.xml.in data/xyz.slothlife.diveboard.appdata.xml xml ../data/../po",
+    "file": "../data/xyz.slothlife.diveboard.appdata.xml.in",
+    "output": "data/xyz.slothlife.diveboard.appdata.xml"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/glib-compile-resources ../src/ui/diveboard.gresource.xml --sourcedir ../src/ui --internal --generate --target src/ui/diveboard.gresource --dependency-file src/ui/diveboard.gresource.d",
+    "file": "../src/ui/diveboard.gresource.xml",
+    "output": "src/ui/diveboard.gresource"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "meson-diveboard-pot",
+    "output": "diveboard-pot"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "meson-diveboard-gmo",
+    "output": "diveboard-gmo"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "meson-diveboard-update-po",
+    "output": "diveboard-update-po"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/meson test --no-rebuild --print-errorlogs",
+    "file": "all",
+    "output": "meson-test"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "meson-test",
+    "output": "test"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/meson test --benchmark --logbase benchmarklog --num-processes=1 --no-rebuild",
+    "file": "all",
+    "output": "meson-benchmark"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "meson-benchmark",
+    "output": "benchmark"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/meson install --no-rebuild",
+    "file": "PHONY",
+    "output": "meson-install"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "meson-install",
+    "output": "install"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/meson dist",
+    "file": "PHONY",
+    "output": "meson-dist"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "meson-dist",
+    "output": "dist"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/meson --internal uninstall",
+    "file": "PHONY",
+    "output": "meson-uninstall"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "meson-uninstall",
+    "output": "uninstall"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "data/xyz.slothlife.diveboard.desktop",
+    "output": "all"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "meson-clean",
+    "output": "clean"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/meson --internal cleantrees /home/dan/Projects/diveboard/builddir/meson-private/cleantrees.dat",
+    "file": "PHONY",
+    "output": "meson-clean-ctlist"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "",
+    "file": "meson-clean-ctlist",
+    "output": "clean-ctlist"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/ninja -t clean",
+    "file": "PHONY",
+    "output": "meson-clean"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/meson --internal regenerate /home/dan/Projects/diveboard /home/dan/Projects/diveboard/builddir --backend ninja",
+    "file": "../meson.build",
+    "output": "build.ninja"
+  },
+  {
+    "directory": "/home/dan/Projects/diveboard/builddir",
+    "command": "/usr/bin/meson --internal regenerate /home/dan/Projects/diveboard /home/dan/Projects/diveboard/builddir --backend ninja",
+    "file": "PHONY",
+    "output": "reconfigure"
+  }
+]

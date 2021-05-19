@@ -5,7 +5,6 @@
   <template class="DiveTrip" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="margin-left">5</property>
     <property name="margin-bottom">10</property>
     <property name="orientation">vertical</property>
     <child>
@@ -17,18 +16,11 @@
             <property name="name">trip_name</property>
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="xpad">5</property>
-            <property name="margin-left">2</property>
             <property name="label" translatable="yes">Bali</property>
             <style>
               <class name="bold_header"/>
             </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkLabel" id="dive_count">
@@ -39,18 +31,8 @@
               <class name="small_text"/>
             </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
         </child>
       </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
     </child>
     <child>
       <object class="GtkListBox" id="dive_list">
@@ -58,11 +40,6 @@
         <property name="can-focus">False</property>
         <property name="vexpand">True</property>
       </object>
-      <packing>
-        <property name="expand">True</property>
-        <property name="fill">True</property>
-        <property name="position">1</property>
-      </packing>
     </child>
   </template>
 </interface>

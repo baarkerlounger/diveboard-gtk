@@ -27,19 +27,16 @@
 # authorization.
 
 import gi
-gi.require_version('Champlain', '0.12')
-gi.require_version('GtkChamplain', '0.12')
-gi.require_version('GtkClutter', '1.0')
+
 gi.require_version('Geoclue', '2.0')
-from gi.repository import GtkClutter
-from gi.repository import Gtk, Champlain, GtkChamplain, Handy
-from gi.repository import Geoclue
+
+from gi.repository import Gtk, Adw, Geoclue
 
 from .define import RES_PATH, MAPBOX_ACCESS_TOKEN
 from .spot import Spot
 
 @Gtk.Template(resource_path=f'{RES_PATH}/map.ui')
-class MapWindow(Handy.ApplicationWindow):
+class MapWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'MapWindow'
 
     CACHE_SIZE = 100000000  # size of cache stored on disk
@@ -55,19 +52,18 @@ class MapWindow(Handy.ApplicationWindow):
     spot_search   = Gtk.Template.Child()
 
     def __init__(self, parent, **kwargs):
-        GtkClutter.init([])
         super().__init__(**kwargs)
         self.setup_actions()
 
-        self.map_widget = GtkChamplain.Embed()
-        self.view = self.map_widget.get_view()
+        #self.map_widget = GtkChamplain.Embed()
+        #self.view = self.map_widget.get_view()
         #self.view.set_map_source(self.create_cached_source())
-        self.view.connect('touch-event', self.test)
+        #self.view.connect('touch-event', self.test)
 
-        self.map_container.add(self.map_widget)
+        #self.map_container.add(self.map_widget)
         lat, lng = self.user_location()
-        self.center_on(lat, lng)
-        self.set_zoom_level(9)
+        #self.center_on(lat, lng)
+        #self.set_zoom_level(9)
         self.show_all()
 
     def test(self):
@@ -97,10 +93,12 @@ class MapWindow(Handy.ApplicationWindow):
         return lat, lng
 
     def center_on(self, lat, lng):
-        self.view.center_on(float(lat), float(lng))
+        #self.view.center_on(float(lat), float(lng))
+        pass
 
     def set_zoom_level(self, level):
-        self.view.set_zoom_level(level)
+        #self.view.set_zoom_level(level)
+        pass
 
     def create_cached_source(self):
         factory = Champlain.MapSourceFactory.dup_default()

@@ -59,6 +59,21 @@
             ]
         },
         {
+	  "name" : "libadwaita",
+	  "buildsystem" : "meson",
+	  "config-opts": [
+	    "-Dexamples=false",
+	    "-Dtests=false"
+	  ],
+	  "sources" : [
+	    {
+	      "type" : "git",
+	      "url" : "https://gitlab.gnome.org/GNOME/libadwaita.git",
+	      "branch" : "main"
+	    }
+	  ]
+	},
+        {
             "name" : "diveboard",
             "builddir" : true,
             "buildsystem" : "meson",
@@ -71,6 +86,10 @@
         }
     ],
     "build-options" : {
-        "env" : {        }
+        "env" : {        },
+        # TODO remove when we upgrade to Gnome 41 and don't need to build libadwaita anymore
+        "build-args": [
+          "--share=network"
+        ]
     }
 }

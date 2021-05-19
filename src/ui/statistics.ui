@@ -2,16 +2,14 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <requires lib="libhandy" version="0.0"/>
   <template class="Statistics" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
     <child>
-      <object class="HdyHeaderBar" id="header_bar1">
+      <object class="AdwHeaderBar" id="header_bar1">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="title">Statistics</property>
         <child>
           <object class="GtkMenuButton" id="menu_btn1">
             <property name="visible">True</property>
@@ -26,17 +24,8 @@
               <class name="image-button"/>
             </style>
           </object>
-          <packing>
-            <property name="pack-type">end</property>
-            <property name="position">1</property>
-          </packing>
         </child>
       </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">0</property>
-      </packing>
     </child>
     <child>
       <object class="GtkBox">
@@ -59,11 +48,6 @@
               <class name="light_grey_text"/>
             </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkLabel" id="dive_count">
@@ -78,11 +62,6 @@
               <class name="large_text"/>
             </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
         </child>
         <child>
           <!-- n-columns=5 n-rows=1 -->
@@ -105,21 +84,11 @@
               <placeholder/>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
         </child>
         <style>
           <class name="stat_card"/>
         </style>
       </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="position">1</property>
-      </packing>
     </child>
     <child>
       <!-- n-columns=2 n-rows=4 -->
@@ -150,11 +119,6 @@
                   <class name="light_grey_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkLabel" id="country_count">
@@ -169,20 +133,11 @@
                   <class name="large_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <style>
               <class name="stat_card"/>
             </style>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkBox">
@@ -204,11 +159,6 @@
                   <class name="light_grey_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkLabel" id="spot_count">
@@ -223,20 +173,11 @@
                   <class name="large_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <style>
               <class name="stat_card"/>
             </style>
           </object>
-          <packing>
-            <property name="left-attach">1</property>
-            <property name="top-attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkBox">
@@ -258,11 +199,6 @@
                   <class name="light_grey_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkLabel" id="total_duration">
@@ -277,20 +213,11 @@
                   <class name="large_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <style>
               <class name="stat_card"/>
             </style>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkBox">
@@ -312,11 +239,6 @@
                   <class name="light_grey_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkLabel" id="most_dives_country">
@@ -331,20 +253,11 @@
                   <class name="large_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <style>
               <class name="stat_card"/>
             </style>
           </object>
-          <packing>
-            <property name="left-attach">1</property>
-            <property name="top-attach">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkBox">
@@ -364,11 +277,6 @@
                   <class name="light_grey_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkLabel" id="max_time">
@@ -382,11 +290,6 @@
                   <class name="large_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <child>
               <object class="GtkBox">
@@ -405,11 +308,6 @@
                       <class name="light_grey_text"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="max_time_location_2">
@@ -423,27 +321,13 @@
                       <class name="light_grey_text"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
             </child>
             <style>
               <class name="stat_card"/>
             </style>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkBox">
@@ -463,11 +347,6 @@
                   <class name="light_grey_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkLabel" id="max_depth">
@@ -481,11 +360,6 @@
                   <class name="large_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <child>
               <object class="GtkBox">
@@ -504,11 +378,6 @@
                       <class name="light_grey_text"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="max_depth_location_2">
@@ -522,27 +391,13 @@
                       <class name="light_grey_text"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
             </child>
             <style>
               <class name="stat_card"/>
             </style>
           </object>
-          <packing>
-            <property name="left-attach">1</property>
-            <property name="top-attach">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkBox">
@@ -562,11 +417,6 @@
                   <class name="light_grey_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkLabel" id="max_temp">
@@ -580,11 +430,6 @@
                   <class name="large_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <child>
               <object class="GtkBox">
@@ -603,11 +448,6 @@
                       <class name="light_grey_text"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="max_temp_location_2">
@@ -621,27 +461,13 @@
                       <class name="light_grey_text"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
             </child>
             <style>
               <class name="stat_card"/>
             </style>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">3</property>
-          </packing>
         </child>
         <child>
           <object class="GtkBox">
@@ -661,11 +487,6 @@
                   <class name="light_grey_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkLabel" id="min_temp">
@@ -679,11 +500,6 @@
                   <class name="large_text"/>
                 </style>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <child>
               <object class="GtkBox">
@@ -702,11 +518,6 @@
                       <class name="light_grey_text"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="min_temp_location_2">
@@ -720,35 +531,15 @@
                       <class name="light_grey_text"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
             </child>
             <style>
               <class name="stat_card"/>
             </style>
           </object>
-          <packing>
-            <property name="left-attach">1</property>
-            <property name="top-attach">3</property>
-          </packing>
         </child>
       </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="padding">10</property>
-        <property name="position">2</property>
-      </packing>
     </child>
   </template>
   <menu id="app-menu">
