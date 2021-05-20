@@ -33,7 +33,6 @@ from pathlib import Path
 
 gi.require_version('Gtk', '4.0')
 gi.require_version('Gdk', '4.0')
-gi.require_version('Adw', '1')
 
 from gi.repository import Gdk, Gtk, Gio, GdkPixbuf, Adw
 
@@ -93,9 +92,7 @@ class Application(Gtk.Application):
         about.set_transient_for(self.window)
         about.set_logo_icon_name(APP_ID)
         about.set_version(VERSION)
-        about.set_logo(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg'))
-        about.connect('response', lambda dialog, response: dialog.destroy())
-        about.present()
+        about.show()
 
 def main(version):
     app = Application()

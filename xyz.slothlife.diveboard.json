@@ -25,54 +25,66 @@
     ],
     "modules" : [
         {
-		"name": "requests",
-		"buildsystem": "simple",
-		"build-options": {
-		  "build-args": [
-		    "--share=network"
-		  ]
-		},
-		"build-commands": [
-		    "pip3 install --prefix=/app --no-cache-dir requests"
-		]
-    	},
-    	{
-		"name": "xdg",
-		"buildsystem": "simple",
-		"build-options": {
-		  "build-args": [
-		    "--share=network"
-		  ]
-		},
-		"build-commands": [
-		    "pip3 install --prefix=/app --no-cache-dir xdg"
-		]
-    	},
+            "name" : "requests",
+            "buildsystem" : "simple",
+            "build-options" : {
+                "build-args" : [
+                    "--share=network"
+                ]
+            },
+            "build-commands" : [
+                "pip3 install --prefix=/app --no-cache-dir requests"
+            ]
+        },
         {
-            "name" : "libchamplain",
-            "buildsystem": "meson",
+            "name" : "xdg",
+            "buildsystem" : "simple",
+            "build-options" : {
+                "build-args" : [
+                    "--share=network"
+                ]
+            },
+            "build-commands" : [
+                "pip3 install --prefix=/app --no-cache-dir xdg"
+            ]
+        },
+        {
+            "name" : "libsass",
+            "buildsystem" : "meson",
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/libchamplain.git"
+                    "url" : "https://github.com/lazka/libsass.git",
+                    "branch" : "meson"
                 }
             ]
         },
         {
-	  "name" : "libadwaita",
-	  "buildsystem" : "meson",
-	  "config-opts": [
-	    "-Dexamples=false",
-	    "-Dtests=false"
-	  ],
-	  "sources" : [
-	    {
-	      "type" : "git",
-	      "url" : "https://gitlab.gnome.org/GNOME/libadwaita.git",
-	      "branch" : "main"
-	    }
-	  ]
-	},
+            "name" : "sassc",
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/lazka/sassc.git",
+                    "branch" : "meson"
+                }
+            ]
+        },
+        {
+            "name" : "libadwaita",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dexamples=false",
+                "-Dtests=false"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/libadwaita.git",
+                    "branch" : "main"
+                }
+            ]
+        },
         {
             "name" : "diveboard",
             "builddir" : true,
@@ -86,10 +98,6 @@
         }
     ],
     "build-options" : {
-        "env" : {        },
-        # TODO remove when we upgrade to Gnome 41 and don't need to build libadwaita anymore
-        "build-args": [
-          "--share=network"
-        ]
+        "env" : {        }
     }
 }
