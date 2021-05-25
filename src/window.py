@@ -101,7 +101,3 @@ class DiveboardWindow(Adw.ApplicationWindow):
 
     def display_wallet(self):
         self.screen_stack.set_visible_child(self.wallet)
-
-
-
-        

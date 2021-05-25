@@ -75,5 +75,3 @@ class Wallet(Gtk.Box):
         filter_image.set_name("Image files")
         filter_image.add_mime_type("image/*")
         dialog.add_filter(filter_image)
-
-    
