@@ -69,8 +69,7 @@ class Application(Gtk.Application):
         css_provider = Gtk.CssProvider()
         css_provider.load_from_resource(f'{RES_PATH}/css/style.css')
         display = Gdk.Display.get_default()
-        style_context = Gtk.StyleContext()
-        #   style_context.add_provider_for_display(display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
+        Gtk.StyleContext.add_provider_for_display(display, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
     def setup_actions(self):
         preferences_action = Gio.SimpleAction.new('preferences', None)
