@@ -269,25 +269,26 @@ class DiveDetailView(Adw.ApplicationWindow):
         }
         self.setup_actions()
         logo_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg')
-        self.dive_buddy.set_icon_from_pixbuf(0, logo_pixbuf)
-        self.dive_center.set_icon_from_pixbuf(0, logo_pixbuf)
+        # self.dive_buddy.set_icon_from_pixbuf(0, logo_pixbuf)
+        # self.dive_center.set_icon_from_pixbuf(0, logo_pixbuf)
         location_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/map-marker-symbolic.svg')
-        self.spot.set_icon_from_pixbuf(1, location_pixbuf)
+        # self.spot.set_icon_from_pixbuf(1, location_pixbuf)
         self.dive_no.set_text(str(self.dive_number))
         if dive.id:
             self.fill_props()
         else:
-            self.header_bar.set_title("New Dive")
+            # self.header_bar.set_title("New Dive")
             self.fill_defaults()
         self.set_label_visibilities()
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
         self.save_btn.connect('clicked', self.save_dive)
-        for entry in self.popup_labels:
-            entry.connect('focus-in-event', self.set_label_visibilities)
-            entry.connect('focus-out-event', self.set_label_visibilities)
-        self.spot.connect('grab_focus', self.open_map)
+        # for entry in self.popup_labels:
+        #     GtkEventControllerFocus
+        #     entry.connect('focus-in-event', self.set_label_visibilities)
+        #     entry.connect('focus-out-event', self.set_label_visibilities)
+        # self.spot.connect('grab_focus', self.open_map)
 
     def open_map(self, _event):
         window = MapWindow(self)

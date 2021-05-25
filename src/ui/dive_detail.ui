@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.24"/>
+  <requires lib="gtk" version="4.0"/>
   <object class="GtkAdjustment" id="hour-adjustment">
     <property name="upper">24</property>
     <property name="step-increment">1</property>
@@ -13,99 +12,57 @@
     <property name="page-increment">10</property>
   </object>
   <object class="GtkPopover" id="time_popover">
-    <property name="can-focus">False</property>
-    <child>
+    <property name="can-focus">0</property>
+    <property name="child">
       <object class="GtkBox">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
+        <property name="can-focus">0</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="vexpand">1</property>
+            <property name="can-focus">0</property>
             <child>
               <object class="GtkSpinButton" id="hour">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="max-length">2</property>
-                <property name="input-purpose">number</property>
+                <property name="hexpand">1</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">hour-adjustment</property>
                 <property name="climb-rate">1</property>
-                <property name="numeric">True</property>
-                <property name="wrap">True</property>
+                <property name="numeric">1</property>
+                <property name="wrap">1</property>
               </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkSpinButton" id="minute">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="max-length">2</property>
-                <property name="input-purpose">number</property>
+                <property name="hexpand">1</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">minute-adjustment</property>
                 <property name="climb-rate">1</property>
-                <property name="numeric">True</property>
+                <property name="numeric">1</property>
               </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
           </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="spacing">20</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">1</property>
             <child>
               <object class="GtkButton" id="time_cancel">
                 <property name="label" translatable="yes">Cancel</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
+                <property name="receives-default">1</property>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkButton" id="time_set">
                 <property name="label" translatable="yes">OK</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
+                <property name="receives-default">1</property>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
         </child>
       </object>
-    </child>
+    </property>
   </object>
   <template class="DiveDetailView" parent="AdwApplicationWindow">
     <property name="visible">True</property>
@@ -114,26 +71,19 @@
     <property name="default-height">720</property>
     <child>
       <object class="GtkBox">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
+        <property name="can-focus">0</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="AdwHeaderBar" id="header_bar">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="valign">start</property>
-            <property name="title">Dive Details</property>
             <child>
               <object class="GtkButton" id="back_btn">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-                <property name="border-width">3</property>
-                <property name="always-show-image">True</property>
+                <property name="receives-default">1</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="icon-name">go-previous-symbolic</property>
                   </object>
                 </child>
@@ -142,1085 +92,622 @@
             <child>
               <object class="GtkButton" id="save_btn">
                 <property name="label" translatable="yes">Save</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">False</property>
                 <style>
                   <class name="image-button"/>
                 </style>
               </object>
-              <packing>
-                <property name="pack-type">end</property>
-                <property name="position">1</property>
-              </packing>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkScrolledWindow">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
+            <property name="vexpand">1</property>
             <property name="hscrollbar-policy">never</property>
-            <property name="shadow-type">in</property>
-            <child>
+            <property name="child">
               <object class="GtkViewport">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <child>
+                <property name="can-focus">0</property>
+                <property name="child">
                   <object class="GtkStack" id="dive_detail_stack">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <child>
-                      <object class="GtkBox" id="details_page">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="margin-start">10</property>
-                        <property name="margin-end">10</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">5</property>
-                        <child>
-                          <object class="GtkBox" id="general">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
+                      <object class="GtkStackPage">
+                        <property name="name">details</property>
+                        <property name="title" translatable="yes">Details</property>
+                        <property name="child">
+                          <object class="GtkBox" id="details_page">
+                            <property name="can-focus">0</property>
+                            <property name="margin-start">10</property>
+                            <property name="margin-end">10</property>
                             <property name="orientation">vertical</property>
-                            <property name="spacing">10</property>
+                            <property name="spacing">5</property>
                             <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">start</property>
-                                <property name="label" translatable="yes">GENERAL</property>
-                                <style>
-                                  <class name="yellow_text"/>
-                                  <class name="bold_header"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                              <object class="GtkBox" id="general">
+                                <property name="can-focus">0</property>
                                 <property name="orientation">vertical</property>
+                                <property name="spacing">10</property>
                                 <child>
                                   <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
+                                    <property name="can-focus">0</property>
                                     <property name="halign">start</property>
-                                    <property name="label" translatable="yes">Dive #</property>
+                                    <property name="label" translatable="yes">GENERAL</property>
                                     <style>
-                                      <class name="tiny_text"/>
+                                      <class name="yellow_text"/>
                                       <class name="bold_header"/>
                                     </style>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
                                 </child>
-                                <child>
-                                  <object class="GtkEntry" id="dive_no">
-                                    <property name="visible">True</property>
-                                    <property name="sensitive">False</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="editable">False</property>
-                                    <property name="has-frame">False</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
                                 <child>
                                   <object class="GtkBox">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
+                                    <property name="can-focus">0</property>
                                     <property name="orientation">vertical</property>
                                     <child>
                                       <object class="GtkLabel">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
+                                        <property name="can-focus">0</property>
                                         <property name="halign">start</property>
-                                        <property name="label" translatable="yes">Date</property>
+                                        <property name="label" translatable="yes">Dive #</property>
                                         <style>
                                           <class name="tiny_text"/>
                                           <class name="bold_header"/>
                                         </style>
                                       </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">0</property>
-                                      </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkEntry" id="date">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">True</property>
+                                      <object class="GtkEntry" id="dive_no">
+                                        <property name="sensitive">0</property>
+                                        <property name="can-focus">0</property>
+                                        <property name="halign">start</property>
+                                        <property name="editable">0</property>
+                                        <property name="has-frame">0</property>
                                       </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">1</property>
-                                      </packing>
                                     </child>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
                                 </child>
                                 <child>
                                   <object class="GtkBox">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="orientation">vertical</property>
+                                    <property name="can-focus">0</property>
                                     <child>
-                                      <object class="GtkLabel">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
-                                        <property name="halign">start</property>
-                                        <property name="label" translatable="yes">Time</property>
-                                        <style>
-                                          <class name="tiny_text"/>
-                                          <class name="bold_header"/>
-                                        </style>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">0</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkMenuButton" id="time">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">True</property>
-                                        <property name="focus-on-click">False</property>
-                                        <property name="receives-default">True</property>
-                                        <property name="popover">time_popover</property>
+                                      <object class="GtkBox">
+                                        <property name="can-focus">0</property>
+                                        <property name="orientation">vertical</property>
                                         <child>
-                                          <placeholder/>
+                                          <object class="GtkLabel">
+                                            <property name="can-focus">0</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">Date</property>
+                                            <style>
+                                              <class name="tiny_text"/>
+                                              <class name="bold_header"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="date"/>
                                         </child>
                                       </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="trip_name_label">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="label" translatable="yes">Trip Name</property>
-                                    <style>
-                                      <class name="tiny_text"/>
-                                      <class name="bold_header"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="trip_name">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="placeholder-text" translatable="yes">Trip Name</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="spot_label">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="label" translatable="yes">Spot</property>
-                                    <style>
-                                      <class name="tiny_text"/>
-                                      <class name="bold_header"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="spot">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="primary-icon-activatable">False</property>
-                                    <property name="primary-icon-sensitive">False</property>
-                                    <property name="placeholder-text" translatable="yes">Spot</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">4</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="padding">10</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="dive_profile">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">10</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">start</property>
-                                <property name="label" translatable="yes">DIVE PROFILE</property>
-                                <style>
-                                  <class name="yellow_text"/>
-                                  <class name="bold_header"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <child>
-                                  <object class="GtkBox">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="orientation">vertical</property>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
-                                        <property name="halign">start</property>
-                                        <property name="label" translatable="yes">Max depth, m</property>
-                                        <style>
-                                          <class name="tiny_text"/>
-                                          <class name="bold_header"/>
-                                        </style>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">0</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkEntry" id="max_depth">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">True</property>
-                                        <property name="input-purpose">number</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkBox">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="orientation">vertical</property>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
-                                        <property name="halign">start</property>
-                                        <property name="label" translatable="yes">Duration, min</property>
-                                        <style>
-                                          <class name="tiny_text"/>
-                                          <class name="bold_header"/>
-                                        </style>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">0</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkEntry" id="duration">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">True</property>
-                                        <property name="input-purpose">digits</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="label" translatable="yes">Safety Stops</property>
-                                    <style>
-                                      <class name="tiny_text"/>
-                                      <class name="bold_header"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="safety_stops">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="secondary-icon-name">list-add</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="padding">10</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="equipment">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">10</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">start</property>
-                                <property name="label" translatable="yes">EQUIPMENT</property>
-                                <style>
-                                  <class name="yellow_text"/>
-                                  <class name="bold_header"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="weights_label">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="label" translatable="yes">Weights, KG</property>
-                                    <style>
-                                      <class name="tiny_text"/>
-                                      <class name="bold_header"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="weights">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="halign">start</property>
-                                    <property name="placeholder-text" translatable="yes">Weights, KG</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="tanks_label">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="label" translatable="yes">Tanks, bar</property>
-                                    <style>
-                                      <class name="tiny_text"/>
-                                      <class name="bold_header"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="tanks">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="secondary-icon-name">list-add</property>
-                                    <property name="placeholder-text" translatable="yes">Tanks, bar</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="padding">10</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox" id="environment">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">10</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">start</property>
-                                <property name="label" translatable="yes">ENVIRONMENT</property>
-                                <style>
-                                  <class name="yellow_text"/>
-                                  <class name="bold_header"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="orientation">vertical</property>
-                                <child>
-                                  <object class="GtkLabel" id="dive_type_label">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
-                                    <property name="label" translatable="yes">Dive Type</property>
-                                    <style>
-                                      <class name="tiny_text"/>
-                                      <class name="bold_header"/>
-                                    </style>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="dive_type">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="placeholder-text" translatable="yes">Dive Type</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <child>
-                                  <object class="GtkBox">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="orientation">vertical</property>
-                                    <child>
-                                      <object class="GtkLabel" id="air_temp_label">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
-                                        <property name="halign">start</property>
-                                        <property name="label" translatable="yes">Air Temp</property>
-                                        <style>
-                                          <class name="tiny_text"/>
-                                          <class name="bold_header"/>
-                                        </style>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">0</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkEntry" id="air_temp">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">True</property>
-                                        <property name="placeholder-text" translatable="yes">Air Temp</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkBox">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="orientation">vertical</property>
-                                    <child>
-                                      <object class="GtkLabel" id="water_temp_label">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
-                                        <property name="halign">start</property>
-                                        <property name="label" translatable="yes">Water Temp</property>
-                                        <style>
-                                          <class name="tiny_text"/>
-                                          <class name="bold_header"/>
-                                        </style>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">0</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkEntry" id="water_temp">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">True</property>
-                                        <property name="placeholder-text" translatable="yes">Water Temp</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">1</property>
-                                      </packing>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <child>
-                                  <object class="GtkBox">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="orientation">vertical</property>
-                                    <child>
-                                      <object class="GtkLabel" id="water_type_label">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
-                                        <property name="halign">start</property>
-                                        <property name="label" translatable="yes">Water Type</property>
-                                        <style>
-                                          <class name="tiny_text"/>
-                                          <class name="bold_header"/>
-                                        </style>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">0</property>
-                                      </packing>
                                     </child>
                                     <child>
                                       <object class="GtkBox">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
+                                        <property name="can-focus">0</property>
                                         <property name="orientation">vertical</property>
                                         <child>
-                                          <object class="GtkRadioButton" id="salt_water">
-                                            <property name="label" translatable="yes">Salt Water</property>
-                                            <property name="visible">True</property>
-                                            <property name="can-focus">True</property>
-                                            <property name="receives-default">False</property>
-                                            <property name="active">True</property>
-                                            <property name="draw-indicator">True</property>
-                                            <property name="group">fresh_water</property>
+                                          <object class="GtkLabel">
+                                            <property name="can-focus">0</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">Time</property>
+                                            <style>
+                                              <class name="tiny_text"/>
+                                              <class name="bold_header"/>
+                                            </style>
                                           </object>
-                                          <packing>
-                                            <property name="expand">False</property>
-                                            <property name="fill">True</property>
-                                            <property name="position">0</property>
-                                          </packing>
                                         </child>
                                         <child>
-                                          <object class="GtkRadioButton" id="fresh_water">
-                                            <property name="label" translatable="yes">Fresh Water</property>
-                                            <property name="visible">True</property>
-                                            <property name="can-focus">True</property>
-                                            <property name="receives-default">False</property>
-                                            <property name="active">True</property>
-                                            <property name="draw-indicator">True</property>
-                                            <property name="group">salt_water</property>
+                                          <object class="GtkMenuButton" id="time">
+                                            <property name="focus-on-click">0</property>
+                                            <property name="receives-default">1</property>
+                                            <property name="popover">time_popover</property>
+                                            <child>
+                                              <placeholder/>
+                                            </child>
                                           </object>
-                                          <packing>
-                                            <property name="expand">False</property>
-                                            <property name="fill">True</property>
-                                            <property name="position">1</property>
-                                          </packing>
                                         </child>
                                       </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">1</property>
-                                      </packing>
                                     </child>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
                                 </child>
                                 <child>
                                   <object class="GtkBox">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
+                                    <property name="can-focus">0</property>
                                     <property name="orientation">vertical</property>
                                     <child>
-                                      <object class="GtkLabel" id="visibility_label">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
+                                      <object class="GtkLabel" id="trip_name_label">
+                                        <property name="can-focus">0</property>
                                         <property name="halign">start</property>
-                                        <property name="label" translatable="yes">Visibility</property>
+                                        <property name="label" translatable="yes">Trip Name</property>
                                         <style>
                                           <class name="tiny_text"/>
                                           <class name="bold_header"/>
                                         </style>
                                       </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">0</property>
-                                      </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkComboBoxText" id="visibility">
-                                        <property name="visible">True</property>
-                                        <property name="can-focus">False</property>
-                                        <items>
-                                          <item translatable="yes">-</item>
-                                          <item id="bad" translatable="yes">Bad (under 5 m)</item>
-                                          <item id="average" translatable="yes">Average (5-10 m)</item>
-                                          <item id="good" translatable="yes">Good (10-25 m)</item>
-                                          <item id="excellent" translatable="yes">Excellent (over 25 m)</item>
-                                        </items>
+                                      <object class="GtkEntry" id="trip_name">
+                                        <property name="placeholder-text" translatable="yes">Trip Name</property>
                                       </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">1</property>
-                                      </packing>
                                     </child>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="can-focus">0</property>
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel" id="spot_label">
+                                        <property name="can-focus">0</property>
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">Spot</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="spot">
+                                        <property name="primary-icon-activatable">0</property>
+                                        <property name="primary-icon-sensitive">0</property>
+                                        <property name="placeholder-text" translatable="yes">Spot</property>
+                                      </object>
+                                    </child>
+                                  </object>
                                 </child>
                               </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">3</property>
-                              </packing>
                             </child>
                             <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                              <object class="GtkBox" id="dive_profile">
+                                <property name="can-focus">0</property>
                                 <property name="orientation">vertical</property>
+                                <property name="spacing">10</property>
                                 <child>
-                                  <object class="GtkLabel" id="current_label">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
+                                  <object class="GtkLabel">
+                                    <property name="can-focus">0</property>
                                     <property name="halign">start</property>
-                                    <property name="label" translatable="yes">Current</property>
+                                    <property name="label" translatable="yes">DIVE PROFILE</property>
                                     <style>
-                                      <class name="tiny_text"/>
+                                      <class name="yellow_text"/>
                                       <class name="bold_header"/>
                                     </style>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkComboBoxText" id="current">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <items>
-                                      <item translatable="yes">-</item>
-                                      <item id="none" translatable="yes">None</item>
-                                      <item id="light" translatable="yes">Light (up to 1 knot)</item>
-                                      <item id="medium" translatable="yes">Medium (up to 2 knots)</item>
-                                      <item id="strong" translatable="yes">Strong (up to 3 knots)</item>
-                                      <item id="extreme" translatable="yes">Extreme (over 3 knots)</item>
-                                    </items>
+                                  <object class="GtkBox">
+                                    <property name="can-focus">0</property>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="can-focus">0</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="can-focus">0</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">Max depth, m</property>
+                                            <style>
+                                              <class name="tiny_text"/>
+                                              <class name="bold_header"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="max_depth">
+                                            <property name="input-purpose">number</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="can-focus">0</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="can-focus">0</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">Duration, min</property>
+                                            <style>
+                                              <class name="tiny_text"/>
+                                              <class name="bold_header"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="duration">
+                                            <property name="input-purpose">digits</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="can-focus">0</property>
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="can-focus">0</property>
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">Safety Stops</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="safety_stops">
+                                        <property name="secondary-icon-name">list-add</property>
+                                      </object>
+                                    </child>
+                                  </object>
                                 </child>
                               </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">4</property>
-                              </packing>
                             </child>
                             <child>
-                              <object class="GtkBox">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
+                              <object class="GtkBox" id="equipment">
+                                <property name="can-focus">0</property>
                                 <property name="orientation">vertical</property>
+                                <property name="spacing">10</property>
                                 <child>
-                                  <object class="GtkLabel" id="altitude_label">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
+                                  <object class="GtkLabel">
+                                    <property name="can-focus">0</property>
                                     <property name="halign">start</property>
-                                    <property name="label" translatable="yes">Altitude, m</property>
+                                    <property name="label" translatable="yes">EQUIPMENT</property>
                                     <style>
-                                      <class name="tiny_text"/>
+                                      <class name="yellow_text"/>
                                       <class name="bold_header"/>
                                     </style>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkEntry" id="altitude">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="placeholder-text" translatable="yes">Altitude, m</property>
+                                  <object class="GtkBox">
+                                    <property name="can-focus">0</property>
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel" id="weights_label">
+                                        <property name="can-focus">0</property>
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">Weights, KG</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="weights">
+                                        <property name="halign">start</property>
+                                        <property name="placeholder-text" translatable="yes">Weights, KG</property>
+                                      </object>
+                                    </child>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="can-focus">0</property>
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel" id="tanks_label">
+                                        <property name="can-focus">0</property>
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">Tanks, bar</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="tanks">
+                                        <property name="secondary-icon-name">list-add</property>
+                                        <property name="placeholder-text" translatable="yes">Tanks, bar</property>
+                                      </object>
+                                    </child>
+                                  </object>
                                 </child>
                               </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">5</property>
-                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkBox" id="environment">
+                                <property name="can-focus">0</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">10</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="can-focus">0</property>
+                                    <property name="halign">start</property>
+                                    <property name="label" translatable="yes">ENVIRONMENT</property>
+                                    <style>
+                                      <class name="yellow_text"/>
+                                      <class name="bold_header"/>
+                                    </style>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="can-focus">0</property>
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel" id="dive_type_label">
+                                        <property name="can-focus">0</property>
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">Dive Type</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="dive_type">
+                                        <property name="placeholder-text" translatable="yes">Dive Type</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="can-focus">0</property>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="can-focus">0</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="air_temp_label">
+                                            <property name="can-focus">0</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">Air Temp</property>
+                                            <style>
+                                              <class name="tiny_text"/>
+                                              <class name="bold_header"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="air_temp">
+                                            <property name="placeholder-text" translatable="yes">Air Temp</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="can-focus">0</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="water_temp_label">
+                                            <property name="can-focus">0</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">Water Temp</property>
+                                            <style>
+                                              <class name="tiny_text"/>
+                                              <class name="bold_header"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="water_temp">
+                                            <property name="placeholder-text" translatable="yes">Water Temp</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="can-focus">0</property>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="can-focus">0</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="water_type_label">
+                                            <property name="can-focus">0</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">Water Type</property>
+                                            <style>
+                                              <class name="tiny_text"/>
+                                              <class name="bold_header"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="can-focus">0</property>
+                                            <property name="orientation">vertical</property>
+                                            <child>
+                                              <object class="GtkCheckButton" id="salt_water">
+                                                <property name="label" translatable="yes">Salt Water</property>
+                                                <property name="active">1</property>
+                                                <property name="group">fresh_water</property>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkCheckButton" id="fresh_water">
+                                                <property name="label" translatable="yes">Fresh Water</property>
+                                                <property name="active">1</property>
+                                                <property name="group">salt_water</property>
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="can-focus">0</property>
+                                        <property name="orientation">vertical</property>
+                                        <child>
+                                          <object class="GtkLabel" id="visibility_label">
+                                            <property name="can-focus">0</property>
+                                            <property name="halign">start</property>
+                                            <property name="label" translatable="yes">Visibility</property>
+                                            <style>
+                                              <class name="tiny_text"/>
+                                              <class name="bold_header"/>
+                                            </style>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkComboBoxText" id="visibility">
+                                            <property name="can-focus">0</property>
+                                            <items>
+                                              <item translatable="yes">-</item>
+                                              <item id="bad" translatable="yes">Bad (under 5 m)</item>
+                                              <item id="average" translatable="yes">Average (5-10 m)</item>
+                                              <item id="good" translatable="yes">Good (10-25 m)</item>
+                                              <item id="excellent" translatable="yes">Excellent (over 25 m)</item>
+                                            </items>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="can-focus">0</property>
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel" id="current_label">
+                                        <property name="can-focus">0</property>
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">Current</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkComboBoxText" id="current">
+                                        <property name="can-focus">0</property>
+                                        <items>
+                                          <item translatable="yes">-</item>
+                                          <item id="none" translatable="yes">None</item>
+                                          <item id="light" translatable="yes">Light (up to 1 knot)</item>
+                                          <item id="medium" translatable="yes">Medium (up to 2 knots)</item>
+                                          <item id="strong" translatable="yes">Strong (up to 3 knots)</item>
+                                          <item id="extreme" translatable="yes">Extreme (over 3 knots)</item>
+                                        </items>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="can-focus">0</property>
+                                    <property name="orientation">vertical</property>
+                                    <child>
+                                      <object class="GtkLabel" id="altitude_label">
+                                        <property name="can-focus">0</property>
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">Altitude, m</property>
+                                        <style>
+                                          <class name="tiny_text"/>
+                                          <class name="bold_header"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="altitude">
+                                        <property name="placeholder-text" translatable="yes">Altitude, m</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
                             </child>
                           </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="padding">10</property>
-                            <property name="position">3</property>
-                          </packing>
-                        </child>
+                        </property>
                       </object>
-                      <packing>
-                        <property name="name">details</property>
-                        <property name="title" translatable="yes">Details</property>
-                      </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="people_page">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="valign">start</property>
-                        <property name="orientation">vertical</property>
-                        <property name="homogeneous">True</property>
-                        <child>
-                          <object class="GtkEntry" id="dive_buddy">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="caps-lock-warning">False</property>
-                            <property name="placeholder-text" translatable="yes">Diveboard Buddy</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="dive_center">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="placeholder-text" translatable="yes">Dive Center</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="guide">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="placeholder-text" translatable="yes">Guide Name</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
+                      <object class="GtkStackPage">
                         <property name="name">people</property>
                         <property name="title" translatable="yes">People</property>
-                        <property name="position">1</property>
-                      </packing>
+                        <property name="child">
+                          <object class="GtkBox" id="people_page">
+                            <property name="can-focus">0</property>
+                            <property name="valign">start</property>
+                            <property name="orientation">vertical</property>
+                            <property name="homogeneous">1</property>
+                            <child>
+                              <object class="GtkEntry" id="dive_buddy">
+                                <property name="placeholder-text" translatable="yes">Diveboard Buddy</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="dive_center">
+                                <property name="placeholder-text" translatable="yes">Dive Center</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="guide">
+                                <property name="placeholder-text" translatable="yes">Guide Name</property>
+                              </object>
+                            </child>
+                          </object>
+                        </property>
+                      </object>
                     </child>
                     <child>
-                      <object class="GtkBox" id="notes_page">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkTextView" id="notes">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="wrap-mode">char</property>
-                            <property name="left-margin">10</property>
-                            <property name="right-margin">10</property>
-                            <property name="top-margin">10</property>
-                            <property name="bottom-margin">10</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="padding">2</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
+                      <object class="GtkStackPage">
                         <property name="name">notes</property>
                         <property name="title" translatable="yes">Notes</property>
-                        <property name="position">2</property>
-                      </packing>
+                        <property name="child">
+                          <object class="GtkBox" id="notes_page">
+                            <property name="can-focus">0</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <object class="GtkTextView" id="notes">
+                                <property name="vexpand">1</property>
+                                <property name="wrap-mode">char</property>
+                                <property name="left-margin">10</property>
+                                <property name="right-margin">10</property>
+                                <property name="top-margin">10</property>
+                                <property name="bottom-margin">10</property>
+                              </object>
+                            </child>
+                          </object>
+                        </property>
+                      </object>
                     </child>
                     <child>
-                      <object class="GtkBox" id="photos_page">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                      </object>
-                      <packing>
+                      <object class="GtkStackPage">
                         <property name="name">photos</property>
                         <property name="title" translatable="yes">Photos</property>
-                        <property name="position">3</property>
-                      </packing>
+                        <property name="child">
+                          <object class="GtkBox" id="photos_page">
+                            <property name="can-focus">0</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                          </object>
+                        </property>
+                      </object>
                     </child>
                   </object>
-                </child>
+                </property>
               </object>
-            </child>
+            </property>
           </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
         </child>
         <child>
           <object class="AdwViewSwitcherBar">
@@ -1229,13 +716,9 @@
             <property name="stack">dive_detail_stack</property>
             <property name="reveal">True</property>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
         </child>
       </object>
     </child>
   </template>
 </interface>
+

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.24"/>
+  <requires lib="gtk" version="4.0"/>
   <template class="Logbook" parent="GtkBox">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
+    <property name="can-focus">0</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="AdwHeaderBar" id="header_bar1">
@@ -13,16 +11,11 @@
         <child>
           <object class="GtkButton" id="new_dive_btn">
             <property name="label" translatable="yes">+</property>
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
+            <property name="receives-default">1</property>
           </object>
         </child>
         <child>
           <object class="GtkMenuButton" id="menu_btn1">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
             <property name="direction">none</property>
             <property name="menu_model">app-menu</property>
             <child>
@@ -37,24 +30,22 @@
     </child>
     <child>
       <object class="GtkScrolledWindow">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
+        <property name="vexpand">1</property>
+        <property name="can-focus">0</property>
         <property name="hscrollbar-policy">never</property>
-        <child>
+        <property name="child">
           <object class="GtkViewport">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="margin-top">15</property>
-            <child>
+            <property name="child">
               <object class="GtkListBox" id="logbook_list">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="selection-mode">none</property>
-                <property name="activate-on-single-click">False</property>
+                <property name="activate-on-single-click">0</property>
               </object>
-            </child>
+            </property>
           </object>
-        </child>
+        </property>
       </object>
     </child>
   </template>
@@ -96,3 +87,4 @@
     </section>
   </menu>
 </interface>
+

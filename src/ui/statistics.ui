@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.24"/>
+  <requires lib="gtk" version="4.0"/>
   <template class="Statistics" parent="GtkBox">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
+    <property name="can-focus">0</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="AdwHeaderBar" id="header_bar1">
@@ -12,9 +10,6 @@
         <property name="can-focus">False</property>
         <child>
           <object class="GtkMenuButton" id="menu_btn1">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
             <property name="direction">none</property>
             <property name="menu_model">app-menu</property>
             <child>
@@ -29,17 +24,15 @@
     </child>
     <child>
       <object class="GtkBox">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
+        <property name="can-focus">0</property>
         <property name="margin-start">10</property>
         <property name="margin-end">10</property>
         <property name="margin-top">10</property>
         <property name="orientation">vertical</property>
-        <property name="homogeneous">True</property>
+        <property name="homogeneous">1</property>
         <child>
           <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="halign">start</property>
             <property name="margin-start">15</property>
             <property name="margin-top">10</property>
@@ -51,8 +44,7 @@
         </child>
         <child>
           <object class="GtkLabel" id="dive_count">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="halign">start</property>
             <property name="margin-start">15</property>
             <property name="margin-top">5</property>
@@ -64,10 +56,8 @@
           </object>
         </child>
         <child>
-          <!-- n-columns=5 n-rows=1 -->
           <object class="GtkGrid">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <child>
               <placeholder/>
             </child>
@@ -91,26 +81,22 @@
       </object>
     </child>
     <child>
-      <!-- n-columns=2 n-rows=4 -->
       <object class="GtkGrid">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
+        <property name="can-focus">0</property>
         <property name="row-spacing">10</property>
         <property name="column-spacing">10</property>
-        <property name="row-homogeneous">True</property>
-        <property name="column-homogeneous">True</property>
+        <property name="row-homogeneous">1</property>
+        <property name="column-homogeneous">1</property>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="margin-start">10</property>
-            <property name="vexpand">True</property>
+            <property name="vexpand">1</property>
             <property name="orientation">vertical</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">1</property>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="margin-start">10</property>
@@ -122,8 +108,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="country_count">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="valign">start</property>
                 <property name="margin-start">10</property>
@@ -137,20 +122,22 @@
             <style>
               <class name="stat_card"/>
             </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+            </layout>
           </object>
         </child>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="margin-end">10</property>
-            <property name="vexpand">True</property>
+            <property name="vexpand">1</property>
             <property name="orientation">vertical</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">1</property>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="margin-start">10</property>
@@ -162,8 +149,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="spot_count">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="valign">start</property>
                 <property name="margin-start">10</property>
@@ -177,20 +163,22 @@
             <style>
               <class name="stat_card"/>
             </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">0</property>
+            </layout>
           </object>
         </child>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="margin-start">10</property>
-            <property name="vexpand">True</property>
+            <property name="vexpand">1</property>
             <property name="orientation">vertical</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">1</property>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="margin-start">10</property>
@@ -202,8 +190,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="total_duration">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="valign">start</property>
                 <property name="margin-start">10</property>
@@ -217,20 +204,22 @@
             <style>
               <class name="stat_card"/>
             </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">1</property>
+            </layout>
           </object>
         </child>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="margin-end">10</property>
-            <property name="vexpand">True</property>
+            <property name="vexpand">1</property>
             <property name="orientation">vertical</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">1</property>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="margin-start">10</property>
@@ -242,8 +231,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="most_dives_country">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="valign">start</property>
                 <property name="margin-start">10</property>
@@ -257,19 +245,21 @@
             <style>
               <class name="stat_card"/>
             </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">1</property>
+            </layout>
           </object>
         </child>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="margin-start">10</property>
             <property name="orientation">vertical</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">1</property>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Max Time</property>
@@ -280,8 +270,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="max_time">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">label</property>
@@ -293,13 +282,11 @@
             </child>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="max_time_location_1">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
@@ -311,8 +298,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="max_time_location_2">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
@@ -327,19 +313,21 @@
             <style>
               <class name="stat_card"/>
             </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">2</property>
+            </layout>
           </object>
         </child>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="margin-end">10</property>
             <property name="orientation">vertical</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">1</property>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Max Depth</property>
@@ -350,8 +338,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="max_depth">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">label</property>
@@ -363,13 +350,11 @@
             </child>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="max_depth_location_1">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
@@ -381,8 +366,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="max_depth_location_2">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
@@ -397,19 +381,21 @@
             <style>
               <class name="stat_card"/>
             </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">2</property>
+            </layout>
           </object>
         </child>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="margin-start">10</property>
             <property name="orientation">vertical</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">1</property>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Warmest Water</property>
@@ -420,8 +406,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="max_temp">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">label</property>
@@ -433,13 +418,11 @@
             </child>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="max_temp_location_1">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
@@ -451,8 +434,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="max_temp_location_2">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
@@ -467,19 +449,21 @@
             <style>
               <class name="stat_card"/>
             </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">3</property>
+            </layout>
           </object>
         </child>
         <child>
           <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <property name="margin-end">10</property>
             <property name="orientation">vertical</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">1</property>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">Coldest Water</property>
@@ -490,8 +474,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="min_temp">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="halign">start</property>
                 <property name="margin-start">10</property>
                 <property name="label" translatable="yes">label</property>
@@ -503,13 +486,11 @@
             </child>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="min_temp_location_1">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
@@ -521,8 +502,7 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="min_temp_location_2">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="halign">start</property>
                     <property name="margin-start">10</property>
                     <property name="label" translatable="yes">label</property>
@@ -537,6 +517,10 @@
             <style>
               <class name="stat_card"/>
             </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">3</property>
+            </layout>
           </object>
         </child>
       </object>
@@ -580,3 +564,4 @@
     </section>
   </menu>
 </interface>
+
