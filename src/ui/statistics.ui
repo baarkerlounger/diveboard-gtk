@@ -3,7 +3,6 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="adw" version="1.0"/>
   <template class="Statistics" parent="GtkBox">
-    <property name="can-focus">0</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="AdwHeaderBar" id="header_bar1">
@@ -27,7 +26,6 @@
     </child>
     <child>
       <object class="GtkBox">
-        <property name="can-focus">0</property>
         <property name="margin-start">10</property>
         <property name="margin-end">10</property>
         <property name="margin-top">10</property>
@@ -60,7 +58,6 @@
         </child>
         <child>
           <object class="GtkGrid">
-            <property name="can-focus">0</property>
             <child>
               <placeholder/>
             </child>
@@ -85,14 +82,12 @@
     </child>
     <child>
       <object class="GtkGrid">
-        <property name="can-focus">0</property>
         <property name="row-spacing">10</property>
         <property name="column-spacing">10</property>
         <property name="row-homogeneous">1</property>
         <property name="column-homogeneous">1</property>
         <child>
           <object class="GtkBox">
-            <property name="can-focus">0</property>
             <property name="margin-start">10</property>
             <property name="vexpand">1</property>
             <property name="orientation">vertical</property>
@@ -133,7 +128,6 @@
         </child>
         <child>
           <object class="GtkBox">
-            <property name="can-focus">0</property>
             <property name="margin-end">10</property>
             <property name="vexpand">1</property>
             <property name="orientation">vertical</property>
@@ -174,7 +168,6 @@
         </child>
         <child>
           <object class="GtkBox">
-            <property name="can-focus">0</property>
             <property name="margin-start">10</property>
             <property name="vexpand">1</property>
             <property name="orientation">vertical</property>
@@ -215,7 +208,6 @@
         </child>
         <child>
           <object class="GtkBox">
-            <property name="can-focus">0</property>
             <property name="margin-end">10</property>
             <property name="vexpand">1</property>
             <property name="orientation">vertical</property>
@@ -256,7 +248,6 @@
         </child>
         <child>
           <object class="GtkBox">
-            <property name="can-focus">0</property>
             <property name="margin-start">10</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">1</property>
@@ -285,7 +276,6 @@
             </child>
             <child>
               <object class="GtkBox">
-                <property name="can-focus">0</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="max_time_location_1">
@@ -324,7 +314,6 @@
         </child>
         <child>
           <object class="GtkBox">
-            <property name="can-focus">0</property>
             <property name="margin-end">10</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">1</property>
@@ -353,7 +342,6 @@
             </child>
             <child>
               <object class="GtkBox">
-                <property name="can-focus">0</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="max_depth_location_1">
@@ -392,7 +380,6 @@
         </child>
         <child>
           <object class="GtkBox">
-            <property name="can-focus">0</property>
             <property name="margin-start">10</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">1</property>
@@ -421,7 +408,6 @@
             </child>
             <child>
               <object class="GtkBox">
-                <property name="can-focus">0</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="max_temp_location_1">
@@ -460,7 +446,6 @@
         </child>
         <child>
           <object class="GtkBox">
-            <property name="can-focus">0</property>
             <property name="margin-end">10</property>
             <property name="orientation">vertical</property>
             <property name="homogeneous">1</property>
@@ -489,7 +474,6 @@
             </child>
             <child>
               <object class="GtkBox">
-                <property name="can-focus">0</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkLabel" id="min_temp_location_1">

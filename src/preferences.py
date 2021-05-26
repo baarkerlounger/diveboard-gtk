@@ -54,7 +54,7 @@ class DiveboardPreferencesWindow(Adw.PreferencesWindow):
         units_list = Gio.ListStore.new(Adw.ValueObject)
         units_list.insert(0, Adw.ValueObject.new("Metric"))
         units_list.insert(1, Adw.ValueObject.new("Imperial"))
-        self.units.set_expression(Adw.ValueObject.dup)
+        self.units.set_expression(Adw.ValueObject.dup_string)
         self.units.set_model(units_list)
         self.units.set_selected_index(Settings.get().get_units())
         self.units.connect('notify::selected-index', self._switch_units)

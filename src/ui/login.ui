@@ -2,7 +2,6 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="Login" parent="GtkBox">
-    <property name="can-focus">0</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="AdwHeaderBar" id="header_bar">
@@ -23,17 +22,14 @@
     </child>
     <child>
       <object class="GtkGrid" id="login_grid">
-        <property name="vexpand">1</property>
-        <property name="can-focus">0</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
         <child>
           <object class="GtkImage">
             <property name="name">full_diveboard_grey</property>
-            <property name="can-focus">0</property>
-            <property name="margin-bottom">20</property>
             <property name="resource">/xyz/slothlife/diveboard/images/full_diveboard_grey.png</property>
-            <property name="icon_size">1</property>
+            <property name="pixel-size">240</property>
+            <property name="margin-top">100</property>
             <layout>
               <property name="column">0</property>
               <property name="row">0</property>
@@ -43,9 +39,10 @@
         <child>
           <object class="GtkEntry" id="username_entry">
             <property name="name">username</property>
-            <property name="width-request">260</property>
+            <property name="width-request">250</property>
             <property name="tooltip-text" translatable="yes">Diveboard account username</property>
             <property name="placeholder-text" translatable="yes">Username</property>
+            <property name="xalign">0.5</property>
             <layout>
               <property name="column">0</property>
               <property name="row">1</property>

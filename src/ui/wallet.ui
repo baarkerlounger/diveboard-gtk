@@ -3,7 +3,6 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="adw" version="1.0"/>
   <template class="Wallet" parent="GtkBox">
-    <property name="can-focus">0</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="AdwHeaderBar" id="header_bar1">
@@ -33,7 +32,6 @@
     </child>
     <child>
       <object class="GtkBox">
-        <property name="can-focus">0</property>
         <property name="vexpand">1</property>
         <property name="orientation">vertical</property>
         <child>
@@ -44,7 +42,6 @@
                 <property name="can-focus">0</property>
                 <property name="child">
                   <object class="GtkListBox" id="wallet_box">
-                    <property name="can-focus">0</property>
                     <property name="vexpand">1</property>
                   </object>
                 </property>
