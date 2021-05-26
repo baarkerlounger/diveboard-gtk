@@ -8,6 +8,8 @@
       <object class="AdwHeaderBar" id="header_bar">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="show-start-title-buttons">False</property>
+        <property name="show-end-title-buttons">False</property>
         <child>
           <object class="GtkMenuButton" id="menu_btn">
             <property name="direction">none</property>

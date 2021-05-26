@@ -9,6 +9,8 @@
       <object class="AdwHeaderBar" id="header_bar1">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="show-start-title-buttons">False</property>
+        <property name="show-end-title-buttons">False</property>
         <child>
           <object class="GtkButton" id="new_cert_btn">
             <property name="label" translatable="yes">+</property>
