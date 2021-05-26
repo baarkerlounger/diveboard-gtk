@@ -34,8 +34,7 @@
             <property name="name">full_diveboard_grey</property>
             <property name="file">resource:///xyz/slothlife/diveboard/images/full_diveboard_grey.png</property>
             <property name="margin-top">200</property>
-            <property name="height-request">50</property>
-            <property name="width-request">240</property>
+            <property name="margin-bottom">15</property>
             <layout>
               <property name="column">0</property>
               <property name="row">0</property>
@@ -45,7 +44,7 @@
         <child>
           <object class="GtkEntry" id="username_entry">
             <property name="name">username</property>
-            <property name="width-request">250</property>
+            <property name="width-request">260</property>
             <property name="tooltip-text" translatable="yes">Diveboard account username</property>
             <property name="placeholder-text" translatable="yes">Username</property>
             <property name="xalign">0.5</property>
