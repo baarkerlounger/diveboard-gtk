@@ -10,6 +10,11 @@
         <property name="can-focus">False</property>
         <property name="show-start-title-buttons">False</property>
         <property name="show-end-title-buttons">False</property>
+        <property name="title-widget">
+          <object class="AdwWindowTitle">
+            <property name="title">Wallet</property>
+        </object>
+        </property>
         <child type="start">
           <object class="GtkButton" id="new_cert_btn">
             <property name="label" translatable="yes">+</property>

@@ -9,6 +9,11 @@
         <property name="can-focus">False</property>
         <property name="show-start-title-buttons">False</property>
         <property name="show-end-title-buttons">False</property>
+        <property name="title-widget">
+          <object class="AdwWindowTitle">
+            <property name="title">Diveboard</property>
+        </object>
+        </property>
         <child type="end">
           <object class="GtkMenuButton" id="menu_btn">
             <property name="direction">none</property>

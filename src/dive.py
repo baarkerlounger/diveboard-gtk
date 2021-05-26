@@ -204,9 +204,10 @@ class DiveOverview(Gtk.Box):
 class DiveDetailView(Adw.ApplicationWindow):
     __gtype_name__ = 'DiveDetailView'
 
-    back_btn = Gtk.Template.Child()
-    header_bar = Gtk.Template.Child()
-    save_btn  = Gtk.Template.Child()
+    window_title = Gtk.Template.Child()
+    back_btn     = Gtk.Template.Child()
+    header_bar   = Gtk.Template.Child()
+    save_btn     = Gtk.Template.Child()
 
     #General Page
     dive_no          = Gtk.Template.Child()
@@ -277,7 +278,7 @@ class DiveDetailView(Adw.ApplicationWindow):
         if dive.id:
             self.fill_props()
         else:
-            # self.header_bar.set_title("New Dive")
+            self.window_title.set_title("New Dive")
             self.fill_defaults()
         self.set_label_visibilities()
 

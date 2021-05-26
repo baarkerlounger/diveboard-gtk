@@ -77,6 +77,11 @@
             <property name="valign">start</property>
             <property name="show-start-title-buttons">False</property>
             <property name="show-end-title-buttons">False</property>
+            <property name="title-widget">
+            <object class="AdwWindowTitle" id="window_title">
+              <property name="title">Dive Details</property>
+          </object>
+        </property>
             <child type="start">
               <object class="GtkButton" id="back_btn">
                 <property name="receives-default">1</property>
