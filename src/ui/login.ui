@@ -30,11 +30,12 @@
         <property name="halign">center</property>
         <property name="valign">center</property>
         <child>
-          <object class="GtkImage">
+          <object class="GtkPicture">
             <property name="name">full_diveboard_grey</property>
-            <property name="resource">/xyz/slothlife/diveboard/images/full_diveboard_grey.png</property>
-            <property name="pixel-size">240</property>
-            <property name="margin-top">100</property>
+            <property name="file">resource:///xyz/slothlife/diveboard/images/full_diveboard_grey.png</property>
+            <property name="margin-top">200</property>
+            <property name="height-request">50</property>
+            <property name="width-request">240</property>
             <layout>
               <property name="column">0</property>
               <property name="row">0</property>
