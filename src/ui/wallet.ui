@@ -11,13 +11,13 @@
         <property name="can-focus">False</property>
         <property name="show-start-title-buttons">False</property>
         <property name="show-end-title-buttons">False</property>
-        <child>
+        <child type="start">
           <object class="GtkButton" id="new_cert_btn">
             <property name="label" translatable="yes">+</property>
             <property name="receives-default">1</property>
           </object>
         </child>
-        <child>
+        <child type="end">
           <object class="GtkMenuButton" id="menu_btn1">
             <property name="direction">none</property>
             <property name="menu_model">app-menu</property>

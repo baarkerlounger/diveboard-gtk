@@ -18,7 +18,7 @@
             <property name="valign">start</property>
             <property name="show-start-title-buttons">False</property>
             <property name="show-end-title-buttons">False</property>
-            <child>
+            <child type="start">
               <object class="GtkButton" id="back_btn">
                 <property name="receives-default">1</property>
                 <property name="border-width">3</property>
@@ -31,7 +31,7 @@
                 </child>
               </object>
             </child>
-            <child>
+            <child type="end">
               <object class="GtkSearchEntry" id="spot_search">
                 <property name="primary-icon-name">edit-find-symbolic</property>
                 <property name="primary-icon-activatable">False</property>
