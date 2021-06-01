@@ -34,7 +34,7 @@ import re
 from datetime import datetime
 import multiprocessing.dummy as mp
 
-from gi.repository import Gtk, GdkPixbuf, Gio, Adw
+from gi.repository import Gtk, Gdk, GdkPixbuf, Gio, Adw
 
 from .database_manager import DatabaseManager
 from .api_manager import ApiManager
@@ -269,11 +269,11 @@ class DiveDetailView(Adw.ApplicationWindow):
             self.altitude:   self.altitude_label
         }
         self.setup_actions()
-        logo_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/logo.svg')
-        # self.dive_buddy.set_icon_from_pixbuf(0, logo_pixbuf)
-        # self.dive_center.set_icon_from_pixbuf(0, logo_pixbuf)
-        location_pixbuf = GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/map-marker-symbolic.svg')
-        # self.spot.set_icon_from_pixbuf(1, location_pixbuf)
+        logo_texture = Gdk.Texture.new_from_resource(f'{RES_PATH}/images/logo.svg')
+        self.dive_buddy.set_icon_from_paintable(0, logo_texture)
+        self.dive_center.set_icon_from_paintable(0, logo_texture)
+        location_texture = Gdk.Texture.new_from_resource(f'{RES_PATH}/images/map-marker-symbolic.svg')
+        self.spot.set_icon_from_paintable(1, location_texture)
         self.dive_no.set_text(str(self.dive_number))
         if dive.id:
             self.fill_props()
