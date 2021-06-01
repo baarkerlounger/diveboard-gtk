@@ -50,7 +50,7 @@ class Wallet(Gtk.Box):
 
     def file_chooser_dialog(self, button):
         dialog = Gtk.FileChooserDialog(
-            title="Please choose a file", parent=self.parent, action=Gtk.FileChooserAction.OPEN
+            title="Please choose a file", action=Gtk.FileChooserAction.OPEN
         )
 
         dialog.add_buttons(
@@ -61,6 +61,7 @@ class Wallet(Gtk.Box):
         )
 
         self.add_filters(dialog)
+        dialog.set_transient_for(self.parent)
         dialog.connect("response", self.file_chooser_response)
         dialog.show()
 
