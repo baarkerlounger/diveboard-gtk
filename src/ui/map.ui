@@ -23,8 +23,6 @@
             <child type="start">
               <object class="GtkButton" id="back_btn">
                 <property name="receives-default">1</property>
-                <property name="border-width">3</property>
-                <property name="always-show-image">True</property>
                 <child>
                   <object class="GtkImage">
                     <property name="can-focus">0</property>
@@ -35,9 +33,6 @@
             </child>
             <child type="end">
               <object class="GtkSearchEntry" id="spot_search">
-                <property name="primary-icon-name">edit-find-symbolic</property>
-                <property name="primary-icon-activatable">False</property>
-                <property name="primary-icon-sensitive">False</property>
               </object>
             </child>
           </object>

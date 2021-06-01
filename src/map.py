@@ -39,35 +39,22 @@ from .spot import Spot
 class MapWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'MapWindow'
 
-    CACHE_SIZE = 100000000  # size of cache stored on disk
-    MEMORY_CACHE_SIZE = 100 # in-memory cache size (tiles stored in memory)
-    MIN_ZOOM = 2
-    MAX_ZOOM = 15
-    TILE_SIZE = 256
-    LICENSE_TEXT = ""
-    LICENSE_URI = "https://www.mapbox.com/tos/"
-
     map_container = Gtk.Template.Child()
     back_btn      = Gtk.Template.Child()
     spot_search   = Gtk.Template.Child()
 
     def __init__(self, parent, **kwargs):
+        print('map')
         super().__init__(**kwargs)
         self.setup_actions()
 
         #self.map_widget = GtkChamplain.Embed()
         #self.view = self.map_widget.get_view()
-        #self.view.set_map_source(self.create_cached_source())
-        #self.view.connect('touch-event', self.test)
 
         #self.map_container.add(self.map_widget)
         lat, lng = self.user_location()
         #self.center_on(lat, lng)
         #self.set_zoom_level(9)
-        self.show_all()
-
-    def test(self):
-        print('Touched')
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
@@ -100,37 +87,6 @@ class MapWindow(Adw.ApplicationWindow):
         #self.view.set_zoom_level(level)
         pass
 
-    def create_cached_source(self):
-        factory = Champlain.MapSourceFactory.dup_default()
-
-        tile_source = Champlain.NetworkTileSource.new_full(
-            "mapbox",
-            "mapbox",
-            self.LICENSE_TEXT,
-            self.LICENSE_URI,
-            self.MIN_ZOOM,
-            self.MAX_ZOOM,
-            self.TILE_SIZE,
-            Champlain.MapProjection.MERCATOR,
-            "https://api.mapbox.com/v4/mapbox.satellite/#Z#/#X#/#Y#.png?access_token=" + MAPBOX_ACCESS_TOKEN,
-            Champlain.ImageRenderer())
-
-        tile_size = tile_source.get_tile_size()
-
-        error_source = factory.create_error_source(tile_size)
-        file_cache = Champlain.FileCache.new_full(self.CACHE_SIZE, None, Champlain.ImageRenderer())
-        memory_cache = Champlain.MemoryCache.new_full(self.MEMORY_CACHE_SIZE, Champlain.ImageRenderer())
-
-        source_chain = Champlain.MapSourceChain()
-        # tile is retrieved in this order:
-        # memory_cache -> file_cache -> tile_source -> error_source
-        # the first source that contains the tile returns it
-        source_chain.push(error_source)
-        source_chain.push(tile_source)
-        source_chain.push(file_cache)
-        source_chain.push(memory_cache)
-
-        return source_chain
 
 
 

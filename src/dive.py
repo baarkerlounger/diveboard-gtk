@@ -289,14 +289,15 @@ class DiveDetailView(Adw.ApplicationWindow):
         #     GtkEventControllerFocus
         #     entry.connect('focus-in-event', self.set_label_visibilities)
         #     entry.connect('focus-out-event', self.set_label_visibilities)
-        # self.spot.connect('grab_focus', self.open_map)
 
-    def open_map(self, _event):
+    @Gtk.Template.Callback()
+    def _open_map(self, _event):
         window = MapWindow(self)
         window.set_transient_for(self.dive.divetrip.logbook.window)
         spot = self.dive.spot
         if spot:
             window.center_on(spot.lat, spot.lng)
+        window.show()
 
     def set_time_popover(self, _event):
         pass

@@ -86,6 +86,21 @@
             ]
         },
         {
+            "name" : "libshumate",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Ddemos=true",
+                "-Dgtk_doc=true"
+            ],
+            "builddir" : true,
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/libshumate.git"
+                }
+            ]
+        },
+        {
             "name" : "diveboard",
             "builddir" : true,
             "buildsystem" : "meson",

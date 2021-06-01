@@ -250,6 +250,11 @@
                                         <property name="primary-icon-activatable">0</property>
                                         <property name="primary-icon-sensitive">0</property>
                                         <property name="placeholder-text" translatable="yes">Spot</property>
+                                        <child>
+                                          <object class="GtkEventControllerFocus">
+                                            <signal name="enter" handler="_open_map"/>
+                                          </object>
+                                        </child>
                                       </object>
                                     </child>
                                   </object>
