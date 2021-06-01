@@ -194,7 +194,7 @@ class DiveOverview(Gtk.Box):
             self.depth_icon.set_from_pixbuf(GdkPixbuf.Pixbuf.new_from_resource(f'{RES_PATH}/images/depth.svg'))
 
             pixbuf = GdkPixbuf.Pixbuf.new_from_file(dive.cache_thumbnail_path)
-            self.thumbnail.set_from_pixbuf(pixbuf)
+            self.thumbnail.set_pixbuf(pixbuf)
 
             self.dive_site.set_text(dive.spot.name)
             self.country.set_text(dive.spot.country_name)
