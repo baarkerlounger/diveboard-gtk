@@ -39,15 +39,20 @@
       <object class="GtkBox">
         <property name="vexpand">1</property>
         <property name="orientation">vertical</property>
+        <property name="visible">True</property>
         <child>
           <object class="GtkScrolledWindow">
             <property name="vexpand">1</property>
+            <property name="visible">True</property>
+            <property name="hscrollbar-policy">never</property>
             <property name="child">
               <object class="GtkViewport">
                 <property name="can-focus">0</property>
+                <property name="visible">True</property>
                 <property name="child">
-                  <object class="GtkListBox" id="wallet_box">
+                  <object class="GtkBox" id="wallet_box">
                     <property name="vexpand">1</property>
+                    <property name="visible">True</property>
                   </object>
                 </property>
               </object>

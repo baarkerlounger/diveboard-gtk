@@ -77,7 +77,7 @@ class DiveTripView(Gtk.Box):
         self.trip_name.set_text(divetrip.name)
         self.dive_count.set_text(f'({dive_count} dives)')
         for dive in divetrip.dives:
-            self.dive_list.insert(dive.overview(), -1)
+            self.dive_list.append(dive.overview())
 
     def on_row_activated(self, dive_list, row):
         clicked_dive = row.get_child().dive

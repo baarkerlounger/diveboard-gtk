@@ -40,34 +40,35 @@ class Wallet(Gtk.Box):
     def __init__(self, parent, **kwargs):
         super().__init__(**kwargs)
         self.parent = parent
-        self.new_cert_btn.connect('clicked', self.new_cert)
+        self.new_cert_btn.connect('clicked', self.file_chooser_dialog)
 
-    def display_cert(self, filename):
-        image = Gtk.Image()
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename=filename, width=250, height=150, preserve_aspect_ratio=False)
-        image.set_from_pixbuf(pixbuf)
-        image.set_visible(True)
-        self.wallet_box.add(image)
+    def display_cert(self, file):
+        image = Gtk.Picture()
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename=file.get_path(), width=250, height=150, preserve_aspect_ratio=False)
+        image.set_pixbuf(pixbuf)
+        self.wallet_box.append(image)
 
-    def new_cert(self, button):
+    def file_chooser_dialog(self, button):
         dialog = Gtk.FileChooserDialog(
             title="Please choose a file", parent=self.parent, action=Gtk.FileChooserAction.OPEN
         )
+
         dialog.add_buttons(
-            Gtk.STOCK_CANCEL,
+            "_Cancel",
             Gtk.ResponseType.CANCEL,
-            Gtk.STOCK_OPEN,
+            "_Open",
             Gtk.ResponseType.OK,
         )
 
         self.add_filters(dialog)
+        dialog.connect("response", self.file_chooser_response)
+        dialog.show()
 
-        response = dialog.run()
+    def file_chooser_response(self, dialog, response):
         if response == Gtk.ResponseType.OK:
-            self.display_cert(dialog.get_filename())
+            self.display_cert(dialog.get_file())
         elif response == Gtk.ResponseType.CANCEL:
             pass
-
         dialog.destroy()
 
     def add_filters(self, dialog):
