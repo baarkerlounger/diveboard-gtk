@@ -88,6 +88,7 @@ class DiveTripView(Gtk.Box):
         window = clicked_dive.detail_view(dive_number)
         window.set_transient_for(self.divetrip.logbook.window)
         self.unselect_dives(row)
+        window.show()
 
 
     def unselect_dives(self, selected_dive):

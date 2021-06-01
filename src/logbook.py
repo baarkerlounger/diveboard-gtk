@@ -75,3 +75,4 @@ class Logbook(Gtk.Box):
         divetrip = DiveTrip(self)
         window = Dive(divetrip).detail_view(dive_no)
         window.set_transient_for(self.window)
+        window.show()
