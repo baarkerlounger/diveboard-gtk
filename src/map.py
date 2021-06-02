@@ -60,7 +60,7 @@ class MapWindow(Adw.ApplicationWindow):
 
         self.map_container.append(self.view)
         lat, lng = self.user_location()
-        #self.center_on(lat, lng)
+        self.center_on(lat, lng)
         self.set_zoom_level(9)
         self.viewport.set_min_zoom_level(2)
 
@@ -88,8 +88,7 @@ class MapWindow(Adw.ApplicationWindow):
         return lat, lng
 
     def center_on(self, lat, lng):
-        #self.view.center_on(float(lat), float(lng))
-        pass
+        self.view.center_on(float(lat), float(lng))
 
     def set_zoom_level(self, level):
         self.viewport.set_zoom_level(level)
