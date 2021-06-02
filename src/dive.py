@@ -324,8 +324,10 @@ class DiveDetailView(Adw.ApplicationWindow):
         self.current.set_active_id(self.dive.current)
         if self.dive.water == 'salt' or self.dive.water is None:
             self.salt_water.set_active(True)
+            self.fresh_water.set_active(False)
         else:
             self.fresh_water.set_active(True)
+            self.salt_water.set_active(False)
 
     def fill_people_props(self):
         guide = self.dive.guide

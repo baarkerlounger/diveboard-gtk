@@ -107,6 +107,8 @@
           <object class="GtkScrolledWindow">
             <property name="vexpand">1</property>
             <property name="hscrollbar-policy">never</property>
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">10</property>
             <property name="child">
               <object class="GtkViewport">
                 <property name="child">
@@ -265,6 +267,7 @@
                               <object class="GtkBox" id="dive_profile">
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">10</property>
+                                <property name="margin-top">10</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="can-focus">0</property>
@@ -349,6 +352,7 @@
                               <object class="GtkBox" id="equipment">
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">10</property>
+                                <property name="margin-top">10</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="can-focus">0</property>
@@ -410,6 +414,7 @@
                               <object class="GtkBox" id="environment">
                                 <property name="orientation">vertical</property>
                                 <property name="spacing">10</property>
+                                <property name="margin-top">10</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="can-focus">0</property>
@@ -517,7 +522,7 @@
                                             <child>
                                               <object class="GtkCheckButton" id="fresh_water">
                                                 <property name="label" translatable="yes">Fresh Water</property>
-                                                <property name="active">1</property>
+                                                <property name="active">0</property>
                                                 <property name="group">salt_water</property>
                                               </object>
                                             </child>
