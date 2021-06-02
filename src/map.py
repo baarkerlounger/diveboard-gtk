@@ -28,9 +28,10 @@
 
 import gi
 
+gi.require_version('Shumate', '0.0')
 gi.require_version('Geoclue', '2.0')
 
-from gi.repository import Gtk, Adw, Geoclue
+from gi.repository import Gtk, Adw, Shumate, Geoclue
 
 from .define import RES_PATH, MAPBOX_ACCESS_TOKEN
 from .spot import Spot
@@ -44,17 +45,24 @@ class MapWindow(Adw.ApplicationWindow):
     spot_search   = Gtk.Template.Child()
 
     def __init__(self, parent, **kwargs):
-        print('map')
         super().__init__(**kwargs)
         self.setup_actions()
 
-        #self.map_widget = GtkChamplain.Embed()
-        #self.view = self.map_widget.get_view()
+        map_source_factory = Shumate.MapSourceFactory()
+        map_source = map_source_factory.create(Shumate.MAP_SOURCE_OSM_MAPNIK)
+        self.view = Shumate.View()
+        self.view.set_map_source(map_source)
+        self.viewport = self.view.get_viewport()
+        self.viewport.set_reference_map_source(map_source)
+        tile_layer = Shumate.MapLayer.new(map_source, self.viewport)
+        self.view.add_layer(tile_layer)
+        tile_layer = Shumate.MapLayer.new(map_source, self.viewport)
 
-        #self.map_container.add(self.map_widget)
+        self.map_container.append(self.view)
         lat, lng = self.user_location()
         #self.center_on(lat, lng)
-        #self.set_zoom_level(9)
+        self.set_zoom_level(9)
+        self.viewport.set_min_zoom_level(2)
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
@@ -84,8 +92,7 @@ class MapWindow(Adw.ApplicationWindow):
         pass
 
     def set_zoom_level(self, level):
-        #self.view.set_zoom_level(level)
-        pass
+        self.viewport.set_zoom_level(level)
 
 
 
