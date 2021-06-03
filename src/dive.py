@@ -285,10 +285,11 @@ class DiveDetailView(Adw.ApplicationWindow):
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
         self.save_btn.connect('clicked', self.save_dive)
-        # for entry in self.popup_labels:
-        #     GtkEventControllerFocus
-        #     entry.connect('focus-in-event', self.set_label_visibilities)
-        #     entry.connect('focus-out-event', self.set_label_visibilities)
+        for entry in self.popup_labels:
+            controller = Gtk.EventControllerFocus()
+            controller.connect('enter', self.entry_widget_focus, True)
+            controller.connect('leave', self.entry_widget_focus, False)
+            entry.add_controller(controller)
 
     @Gtk.Template.Callback()
     def _open_map(self, _event):
@@ -355,13 +356,20 @@ class DiveDetailView(Adw.ApplicationWindow):
         self.duration.set_text('0')
         self.safety_stops.set_text('5 m - 3 m')
 
-    def set_label_visibilities(self, active_entry=None, event=None):
+    def entry_widget_focus(self, event_controller, focused):
+        self.set_label_visibilities({'widget': event_controller.get_widget(), 'focused': focused})
+
+    def set_label_visibilities(self, event_object=None):
         for entry in self.popup_labels:
             label = self.popup_labels[entry]
-            self.set_label_visibility(entry , label)
+            self.set_label_visibility(entry , label, event_object)
 
-    def set_label_visibility(self, entry, entry_label):
-        if entry.has_focus():
+    def set_label_visibility(self, entry, entry_label, event_object):
+        focused_entry = None
+        if event_object:
+            if event_object.get('focused'):
+                focused_entry = event_object.get('widget')
+        if entry == focused_entry:
             entry_label.set_visible(True)
             entry_label.get_style_context().add_class('yellow_text')
         elif entry.get_text():
