@@ -20,4 +20,9 @@
     <file>images/depth.svg</file>
     <file preprocess="xml-stripblanks">images/map-marker-symbolic.svg</file>
   </gresource>
+  <gresource prefix="/xyz/slothlife/diveboard/icons/16x16/actions">
+    <file preprocess="xml-stripblanks" alias="system-users-symbolic.svg">images/system-users-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="accessories-text-editor-symbolic.svg">images/accessories-text-editor-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="emblem-photos-symbolic.svg">images/emblem-photos-symbolic.svg</file>
+  </gresource>
 </gresources>
