@@ -34,7 +34,7 @@ import re
 from datetime import datetime
 import multiprocessing.dummy as mp
 
-from gi.repository import Gtk, Gdk, GdkPixbuf, Gio, Adw
+from gi.repository import Gtk, Gdk, GdkPixbuf, Gio, Adw, GObject
 
 from .database_manager import DatabaseManager
 from .api_manager import ApiManager
@@ -44,9 +44,10 @@ from .spot import Spot
 from .utils import Utils
 from .map import MapWindow
 
-class Dive():
+class Dive(GObject.Object):
 
     def __init__(self, divetrip=None, *args, **kwargs):
+        super().__init__()
         self.id                     = kwargs.get('id', None)
         self.shaken_id              = kwargs.get('shaken_id')
         self.time_in                = kwargs.get('time_in')
@@ -317,7 +318,7 @@ class DiveDetailView(Adw.ApplicationWindow):
         self.minute.set_value(int(time[1]))
         self.trip_name.set_text(self.dive.trip_name)
         self.spot.set_text(', '.join([self.dive.spot.name, self.dive.spot.country_name]))
-        self.max_depth.set_text(Utils.format_depth(self.dive.maxdepth_value, self.dive.maxdepth_unit, False))
+        self.max_depth.set_text(Utils.format_depth(self.dive.maxdepth_value, self.dive.maxdepth_unit))
         self.duration.set_text(Utils.format_time(self.dive.duration))
         self.altitude.set_text(Utils.format_depth(self.dive.altitude, self.dive.maxdepth_unit))
         self.weights.set_text(Utils.format_weight(self.dive.weights, self.dive.weights_unit))

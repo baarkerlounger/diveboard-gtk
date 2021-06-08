@@ -26,7 +26,7 @@
 # use or other dealings in this Software without prior written
 # authorization.
 
-from gi.repository import Gtk
+from gi.repository import Gtk, Gio
 
 from .define import RES_PATH
 from .dive_trip import DiveTrip
@@ -45,7 +45,10 @@ class Logbook(Gtk.Box):
         self.new_dive_btn.connect('clicked', self.new_dive)
         self.window = parent
         self.dive_ids = []
-        self.divetrips = []
+        self.divetrips = Gio.ListStore.new(DiveTrip)
+        selection_model = Gtk.NoSelection.new()
+        selection_model.set_model(self.divetrips)
+        self.logbook_list.bind_model(selection_model, lambda trip: trip.view())
 
     def populate(self):
         if not self.divetrips:
@@ -58,18 +61,9 @@ class Logbook(Gtk.Box):
             for trip_name in trips:
                 trip = DiveTrip(self, **{'name': trip_name, 'dives': trips[trip_name]})
                 self.divetrips.append(trip)
-                self.logbook_list.append(trip.view())
-
-    def clear(self):
-        rows = []
-        for i in range(len(self.divetrips)):
-            rows.append(self.logbook_list.get_row_at_index(i))
-        for row in rows:
-            self.logbook_list.remove(row)
-        self.divetrips = []
 
     def refresh(self):
-        self.clear()
+        self.divetrips.remove_all()
         self.populate()
 
     def new_dive(self, button):
