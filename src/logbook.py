@@ -58,9 +58,13 @@ class Logbook(Gtk.Box):
                 Spot.create_from_online()
                 trips = DiveTrip.offline_trips()
 
+            idx = 0
             for trip_name in trips:
                 trip = DiveTrip(self, **{'name': trip_name, 'dives': trips[trip_name]})
                 self.divetrips.append(trip)
+                row = self.logbook_list.get_row_at_index(idx)
+                row.set_activatable(False)
+                idx += 1
 
     def refresh(self):
         self.divetrips.remove_all()
