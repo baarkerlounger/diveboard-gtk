@@ -61,9 +61,11 @@ class Logbook(Gtk.Box):
                 self.logbook_list.append(trip.view())
 
     def clear(self):
-        logbook_rows = self.logbook_list.get_children()
-        for row in logbook_rows:
-            row.destroy()
+        rows = []
+        for i in range(len(self.divetrips)):
+            rows.append(self.logbook_list.get_row_at_index(i))
+        for row in rows:
+            self.logbook_list.remove(row)
         self.divetrips = []
 
     def refresh(self):
