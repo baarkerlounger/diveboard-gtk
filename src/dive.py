@@ -373,12 +373,14 @@ class DiveDetailView(Adw.ApplicationWindow):
         if entry == focused_entry:
             entry_label.set_visible(True)
             entry_label.get_style_context().add_class('yellow_text')
+            entry.set_placeholder_text("")
         elif entry.get_text():
             entry_label.set_visible(True)
             entry_label.get_style_context().remove_class('yellow_text')
         else:
             entry_label.set_visible(False)
             entry_label.get_style_context().remove_class('yellow_text')
+            entry.set_placeholder_text(entry_label.get_text())
 
     def save_dive(self, _btn):
         print('Implement Saving here')
