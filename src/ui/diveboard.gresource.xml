@@ -19,6 +19,7 @@
     <file>images/duration.svg</file>
     <file>images/depth.svg</file>
     <file preprocess="xml-stripblanks">images/map-marker-symbolic.svg</file>
+    <file>images/map-marker-vector.png</file>
   </gresource>
   <gresource prefix="/xyz/slothlife/diveboard/icons/16x16/actions">
     <file preprocess="xml-stripblanks" alias="system-users-symbolic.svg">images/system-users-symbolic.svg</file>

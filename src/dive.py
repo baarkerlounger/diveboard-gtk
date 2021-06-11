@@ -299,11 +299,8 @@ class DiveDetailView(Adw.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def _open_map(self, _event):
-        window = MapWindow(self)
+        window = MapWindow(self.dive.spot)
         window.set_transient_for(self.dive.divetrip.logbook.window)
-        spot = self.dive.spot
-        if spot:
-            window.center_on(spot.lat, spot.lng)
         window.show()
 
     def fill_props(self):

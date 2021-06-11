@@ -44,7 +44,7 @@ class MapWindow(Adw.ApplicationWindow):
     back_btn      = Gtk.Template.Child()
     spot_search   = Gtk.Template.Child()
 
-    def __init__(self, parent, **kwargs):
+    def __init__(self, spot=None, **kwargs):
         super().__init__(**kwargs)
         self.setup_actions()
 
@@ -54,13 +54,22 @@ class MapWindow(Adw.ApplicationWindow):
         self.view.set_map_source(map_source)
         self.viewport = self.view.get_viewport()
         self.viewport.set_reference_map_source(map_source)
+
         tile_layer = Shumate.MapLayer.new(map_source, self.viewport)
         self.view.add_layer(tile_layer)
-        tile_layer = Shumate.MapLayer.new(map_source, self.viewport)
+
+        self.marker_layer = Shumate.MarkerLayer.new(self.viewport)
+        self.view.add_layer(self.marker_layer)
 
         self.map_container.append(self.view)
         lat, lng = self.user_location()
-        self.center_on(lat, lng)
+
+        if spot:
+            self.center_on(spot.lat, spot.lng)
+            self.set_marker(spot)
+        else:
+            self.center_on(lat, lng)
+
         self.set_zoom_level(9)
         self.viewport.set_min_zoom_level(2)
 
@@ -93,12 +102,10 @@ class MapWindow(Adw.ApplicationWindow):
     def set_zoom_level(self, level):
         self.viewport.set_zoom_level(level)
 
-
-
-
-
-
-
-
-
-  
+    def set_marker(self, spot):
+        icon = Gtk.Image.new_from_resource(f'{RES_PATH}/images/map-marker-vector.png')
+        marker = Shumate.Marker()
+        marker.set_location(float(spot.lat), float(spot.lng))
+        marker.set_child(icon)
+        self.marker_layer.add_marker(marker)
+        self.marker_layer.show_all_markers()
