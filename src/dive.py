@@ -252,6 +252,8 @@ class DiveDetailView(Adw.ApplicationWindow):
     time_popover = Gtk.Template.Child()
     hour         = Gtk.Template.Child()
     minute       = Gtk.Template.Child()
+    time_set     = Gtk.Template.Child()
+    time_cancel  = Gtk.Template.Child()
 
 
 
@@ -286,6 +288,9 @@ class DiveDetailView(Adw.ApplicationWindow):
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
         self.save_btn.connect('clicked', self.save_dive)
+        self.time_set.connect('clicked', self.update_time)
+        self.minute.connect('output', self.show_leading_zeros)
+        self.time_cancel.connect('clicked', lambda clicked: self.time_popover.hide())
         for entry in self.popup_labels:
             controller = Gtk.EventControllerFocus()
             controller.connect('enter', self.entry_widget_focus, True)
@@ -301,9 +306,6 @@ class DiveDetailView(Adw.ApplicationWindow):
             window.center_on(spot.lat, spot.lng)
         window.show()
 
-    def set_time_popover(self, _event):
-        pass
-
     def fill_props(self):
         self.fill_details_props()
         self.fill_people_props()
@@ -312,10 +314,7 @@ class DiveDetailView(Adw.ApplicationWindow):
 
     def fill_details_props(self):
         self.date.set_text(self.dive.date)
-        self.time.set_label(self.dive.time)
-        time = self.dive.time.split(':')
-        self.hour.set_value(int(time[0]))
-        self.minute.set_value(int(time[1]))
+        self.set_time_label_and_adjustment(datetime.strptime(self.dive.time, '%H:%M'))
         self.trip_name.set_text(self.dive.trip_name)
         self.spot.set_text(', '.join([self.dive.spot.name, self.dive.spot.country_name]))
         self.max_depth.set_text(Utils.format_depth(self.dive.maxdepth_value, self.dive.maxdepth_unit))
@@ -350,9 +349,7 @@ class DiveDetailView(Adw.ApplicationWindow):
         pass
 
     def fill_defaults(self):
-        now = datetime.now()
-        self.date.set_text(now.strftime("%d/%m/%Y"))
-        self.time.set_label(now.strftime("%H:%M"))
+        self.set_time_label_and_adjustment(datetime.now())
         self.max_depth.set_text('0.0')
         self.duration.set_text('0')
         self.safety_stops.set_text('5 m - 3 m')
@@ -381,6 +378,22 @@ class DiveDetailView(Adw.ApplicationWindow):
             entry_label.set_visible(False)
             entry_label.get_style_context().remove_class('yellow_text')
             entry.set_placeholder_text(entry_label.get_text())
+
+    def set_time_label_and_adjustment(self, time):
+        self.date.set_text(time.strftime("%d/%m/%Y"))
+        self.time.set_label(time.strftime("%H:%M"))
+        self.hour.set_value(time.hour)
+        self.minute.set_value(time.minute)
+
+    def show_leading_zeros(self, spin_button):
+        adjustment = spin_button.get_adjustment()
+        self.minute.set_text('{:02d}'.format(int(adjustment.get_value())))
+        return True
+
+    def update_time(self, _event):
+        hours = self.hour.get_value()
+        mins = self.minute.get_value()
+        self.time.set_label(f'{hours}:{mins}')
 
     def save_dive(self, _btn):
         print('Implement Saving here')

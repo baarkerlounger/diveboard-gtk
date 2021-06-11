@@ -44,18 +44,20 @@
         </child>
         <child>
           <object class="GtkBox">
-            <property name="spacing">20</property>
             <property name="homogeneous">1</property>
+            <property name="margin-top">10</property>
             <child>
               <object class="GtkButton" id="time_cancel">
                 <property name="label" translatable="yes">Cancel</property>
                 <property name="receives-default">1</property>
+                <property name="hexpand">1</property>
               </object>
             </child>
             <child>
               <object class="GtkButton" id="time_set">
                 <property name="label" translatable="yes">OK</property>
                 <property name="receives-default">1</property>
+                <property name="hexpand">1</property>
               </object>
             </child>
           </object>
@@ -250,8 +252,6 @@
                                     </child>
                                     <child>
                                       <object class="GtkEntry" id="spot">
-                                        <property name="primary-icon-activatable">0</property>
-                                        <property name="primary-icon-sensitive">0</property>
                                         <property name="placeholder-text" translatable="yes">Spot</property>
                                         <child>
                                           <object class="GtkEventControllerFocus">
