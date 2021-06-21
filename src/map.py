@@ -48,8 +48,8 @@ class MapWindow(Adw.ApplicationWindow):
         super().__init__(**kwargs)
         self.setup_actions()
 
-        map_source_factory = Shumate.MapSourceFactory()
-        map_source = map_source_factory.create(Shumate.MAP_SOURCE_OSM_MAPNIK)
+        map_source_registry = Shumate.MapSourceRegistry.new_with_defaults()
+        map_source = map_source_registry.get_by_id(Shumate.MAP_SOURCE_OSM_MAPNIK)
         self.view = Shumate.View()
         self.view.set_map_source(map_source)
         self.viewport = self.view.get_viewport()
