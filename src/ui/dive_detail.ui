@@ -517,7 +517,6 @@
                                               <object class="GtkCheckButton" id="salt_water">
                                                 <property name="label" translatable="yes">Salt Water</property>
                                                 <property name="active">1</property>
-                                                <property name="group">fresh_water</property>
                                               </object>
                                             </child>
                                             <child>
