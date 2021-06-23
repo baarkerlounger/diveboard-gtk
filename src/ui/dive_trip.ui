@@ -14,6 +14,7 @@
             <property name="name">trip_name</property>
             <property name="can-focus">0</property>
             <property name="margin-start">2</property>
+            <property name="margin-end">5</property>
             <property name="label" translatable="yes">Bali</property>
             <style>
               <class name="bold_header"/>

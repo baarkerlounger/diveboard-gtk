@@ -86,6 +86,7 @@ class DatabaseManager:
 	                                buddies text,
 	                                shop text,
 	                                dive_reviews text,
+	                                pictures text,
 	                            UNIQUE(shaken_id)
                                 );"""
 

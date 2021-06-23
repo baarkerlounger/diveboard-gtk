@@ -99,6 +99,7 @@ class Dive(GObject.Object):
         self.buddies                = self.from_json_or_none('buddies', **kwargs)
         self.shop                   = self.from_json_or_none('shop', **kwargs)
         self.dive_reviews           = self.from_json_or_none('dive_reviews', **kwargs)
+        self.pictures               = self.from_json_or_none('pictures', **kwargs)
 
         self.spot = Spot.get_spot_by_id(self.spot_id)
 
@@ -141,8 +142,8 @@ class Dive(GObject.Object):
                     privacy, weights, weights_value, weights_unit, safetystops, safetystops_unit_value, divetype, favorite,
                     visibility, trip_name, water, altitude, fullpermalink, permalink, complete, thumbnail_image_url, thumbnail_profile_url,
                     guide, shop_id, notes, public_notes, diveshop, current, species, gears, user_gears, dive_gears, legacy_buddies_hash,
-                    lat, lng, date, time, buddies, shop, dive_reviews)
-                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
+                    lat, lng, date, time, buddies, shop, dive_reviews, pictures)
+                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
 
         values = (dive['id'], dive['shaken_id'], dive['time_in'], dive['duration'], dive['surface_interval'], dive['maxdepth'],
                   dive['maxdepth_value'], dive['maxdepth_unit'], dive['user_id'], dive['spot_id'], dive['temp_surface'],
@@ -154,7 +155,7 @@ class Dive(GObject.Object):
                   dive['public_notes'], json.dumps(dive['diveshop']), dive['current'], json.dumps(dive['species']),
                   json.dumps(dive['gears']), json.dumps(dive['user_gears']), json.dumps(dive['dive_gears']),
                   json.dumps(dive['legacy_buddies_hash']), dive['lat'], dive['lng'], dive['date'], dive['time'],
-                  json.dumps(dive['buddies']), json.dumps(dive['shop']), json.dumps(dive['dive_reviews']))
+                  json.dumps(dive['buddies']), json.dumps(dive['shop']), json.dumps(dive['dive_reviews']), json.dumps([x['id'] for x in dive['pictures']]))
         DatabaseManager().insert_row(sql, values)
 
     @classmethod

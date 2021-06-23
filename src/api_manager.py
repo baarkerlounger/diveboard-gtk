@@ -47,6 +47,7 @@ class ApiManager:
         url = API_URL + endpoint
         payload = {
             "arg": json.dumps(objects),
+            "flavour": "mobile",
             "auth_token": Settings.get().get_auth_token(),
             "apikey": API_KEY
         }

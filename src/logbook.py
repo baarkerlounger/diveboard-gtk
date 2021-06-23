@@ -56,7 +56,7 @@ class Logbook(Gtk.Box):
             if not trips:
                 Dive.create_from_online(self.dive_ids)
                 Spot.create_from_online()
-                trips = DiveTrip.offline_trips()
+                trips = DiveTrip.offline_trips(self)
 
             idx = 0
             for trip_name in trips:
