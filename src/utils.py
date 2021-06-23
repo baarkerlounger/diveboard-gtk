@@ -53,7 +53,7 @@ class Utils:
     def format_depth(cls, depth_value, depth_unit, rounded=True):
         if not depth_value:
             return ''
-        value = cls.convert_depth_to_m(depth_value, depth_unit)
+        value = float(cls.convert_depth_to_m(depth_value, depth_unit))
         unit = 'm'
         if (Settings.get().get_units() == 1):
             value = cls.convert_m_to_ft(value)

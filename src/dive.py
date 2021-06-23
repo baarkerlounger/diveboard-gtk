@@ -291,7 +291,6 @@ class DiveDetailView(Adw.ApplicationWindow):
             self.window_title.set_title("New Dive")
             self.fill_defaults()
         self.set_label_visibilities()
-        self.populate_photo_grid()
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
@@ -351,7 +350,7 @@ class DiveDetailView(Adw.ApplicationWindow):
         notes_buffer.set_text(str(self.dive.notes))
 
     def fill_photos_props(self):
-        pass
+        self.populate_photo_grid()
 
     def fill_defaults(self):
         self.set_time_label_and_adjustment(datetime.now())
@@ -415,6 +414,7 @@ class DiveDetailView(Adw.ApplicationWindow):
                 file.close()
             pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(pic_path, 110, 110, False)
             image = Gtk.Picture.new_for_pixbuf(pixbuf)
+            image.set_can_shrink(False)
             self.photo_grid.attach(image, col, row, 1, 1)
             if col < 2:
                 col = col + 1
