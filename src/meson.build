@@ -34,6 +34,7 @@ diveboard_sources = [
   'api_manager.py',
   'spot.py',
   'map.py',
+  'picture.py',
   'database_manager.py',
   'window.py',
 ]

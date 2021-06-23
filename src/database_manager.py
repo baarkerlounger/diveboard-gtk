@@ -109,10 +109,28 @@ class DatabaseManager:
 	                            UNIQUE(id)
                                 );"""
 
+    CREATE_PICTURES_TABLE_SQL = """CREATE TABLE IF NOT EXISTS pictures (
+	                                id integer PRIMARY KEY,
+	                                thumbnail text,
+	                                medium text,
+                                    large text,
+                                    small text,
+                                    notes text,
+                                    media text,
+	                                player text,
+	                                full_redirect_link text,
+	                                fullpermalink text,
+	                                permalink text,
+	                                staticmap text,
+	                                created_at text,
+	                            UNIQUE(id)
+                                );"""
+
     def setup_database(self):
         conn = self.create_connection()
         self.create_tables(conn, self.CREATE_DIVES_TABLE_SQL)
         self.create_tables(conn, self.CREATE_SPOTS_TABLE_SQL)
+        self.create_tables(conn, self.CREATE_PICTURES_TABLE_SQL)
 
     def create_connection(self):
         conn = None

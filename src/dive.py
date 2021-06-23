@@ -43,6 +43,7 @@ from .settings import Settings
 from .spot import Spot
 from .utils import Utils
 from .map import MapWindow
+from .picture import Picture
 
 class Dive(GObject.Object):
 
@@ -157,6 +158,8 @@ class Dive(GObject.Object):
                   json.dumps(dive['legacy_buddies_hash']), dive['lat'], dive['lng'], dive['date'], dive['time'],
                   json.dumps(dive['buddies']), json.dumps(dive['shop']), json.dumps(dive['dive_reviews']), json.dumps([x['id'] for x in dive['pictures']]))
         DatabaseManager().insert_row(sql, values)
+
+        Picture.insert_picture(dive['pictures'])
 
     @classmethod
     def offline_dives(cls):

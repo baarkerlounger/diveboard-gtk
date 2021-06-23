@@ -68,14 +68,16 @@ class ApiManager:
             payload = {
                 "q": kwargs['name'],
                 "auth_token": Settings.get().get_auth_token(),
-                "apikey": API_KEY
+                "apikey": API_KEY,
+                "flavour": "mobile"
             }
         elif kwargs.get('lat'):
             payload = {
                 "lat": kwargs['lat'],
                 "lng": kwargs['lng'],
                 "auth_token": Settings.get().get_auth_token(),
-                "apikey": API_KEY
+                "apikey": API_KEY,
+                "flavour": "mobile"
             }
 
         response = requests.post(url, data=payload)
