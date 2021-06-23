@@ -159,7 +159,7 @@ class Dive(GObject.Object):
                   json.dumps(dive['buddies']), json.dumps(dive['shop']), json.dumps(dive['dive_reviews']), json.dumps([x['id'] for x in dive['pictures']]))
         DatabaseManager().insert_row(sql, values)
 
-        Picture.insert_picture(dive['pictures'])
+        Picture.insert_pictures(dive['pictures'])
 
     @classmethod
     def offline_dives(cls):
@@ -248,6 +248,9 @@ class DiveDetailView(Adw.ApplicationWindow):
     # Notes Page
     notes    = Gtk.Template.Child()
 
+    # Photo Page
+    photo_grid = Gtk.Template.Child()
+
     # People Page
     dive_center = Gtk.Template.Child()
     dive_buddy  = Gtk.Template.Child()
@@ -288,6 +291,7 @@ class DiveDetailView(Adw.ApplicationWindow):
             self.window_title.set_title("New Dive")
             self.fill_defaults()
         self.set_label_visibilities()
+        self.populate_photo_grid()
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
@@ -395,6 +399,28 @@ class DiveDetailView(Adw.ApplicationWindow):
         hours = self.hour.get_value()
         mins = self.minute.get_value()
         self.time.set_label(f'{hours}:{mins}')
+
+    def populate_photo_grid(self):
+        row = 0
+        col = 0
+        for pic_id in self.dive.pictures:
+            picture = Picture.get_picture_by_id(pic_id)
+            # Match everything after last backslash
+            pic_id = re.search('([^\/]+$)', picture.small)[0]
+            pic_path = f'{DIVE_THUMBNAIL_PATH}/{pic_id}'
+            if not os.path.isfile(pic_path):
+                file = open(pic_path, 'wb')
+                pic = urllib.request.urlopen(picture.small)
+                file.write(pic.read())
+                file.close()
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(pic_path, 110, 110, False)
+            image = Gtk.Picture.new_for_pixbuf(pixbuf)
+            self.photo_grid.attach(image, col, row, 1, 1)
+            if col < 2:
+                col = col + 1
+            else:
+                col = 0
+                row = row + 1
 
     def save_dive(self, _btn):
         print('Implement Saving here')

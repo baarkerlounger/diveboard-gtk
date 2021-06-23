@@ -719,13 +719,10 @@
                             <property name="margin-top">10</property>
                             <property name="margin-bottom">10</property>
                             <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
+                              <object class="GtkGrid" id="photo_grid">
+                                <property name="column-spacing">5</property>
+                                <property name="row-spacing">5</property>
+                              </object>
                             </child>
                           </object>
                         </property>
