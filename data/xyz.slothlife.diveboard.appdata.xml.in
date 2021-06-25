@@ -8,5 +8,9 @@
 	</description>
   <url type="homepage">https://www.diveboard.com/</url>
   <screenshots>
+    <screenshot type="default">
+      <caption>Logbook</caption>
+      <image type="source">https://lh3.googleusercontent.com/qpeXckg4BChCu-LokWFecy1l9xWNu0PUIjQirKGD5NEPNNvOkR6bVrG2FVVEy_vJXwc2</image>
+    </screenshot>
   </screenshots>
 </component>
