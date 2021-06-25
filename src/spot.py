@@ -78,8 +78,28 @@ class Spot():
             thread_pool.map(lambda s: Spot.insert_spot(s), online_spots)
 
     @classmethod
+    def offline_spots(cls):
+        res = []
+        spots = DatabaseManager().fetch("""SELECT * FROM spots""", None)
+        for spot in spots:
+            res.append(Spot(**spot))
+        return res
+
+    @classmethod
     def get_spot_by_id(cls, spot_id):
         sql = """SELECT * FROM spots WHERE id in (?)"""
         saved_spot = DatabaseManager().fetch(sql, [str(spot_id)])
         if saved_spot:
             return Spot(**saved_spot[0])
+
+    @classmethod
+    def get_spots_in_boundary(cls, boundaries):
+        res = []
+        lngs = boundaries[0]
+        lngs.sort()
+        lats = boundaries[1]
+        lats.sort()
+        spots = DatabaseManager().fetch("""SELECT * FROM spots WHERE lng BETWEEN (?) AND(?) AND lat BETWEEN (?) AND (?)""", [lngs[0], lngs[1], lats[0], lats[1]])
+        for spot in spots:
+            res.append(Spot(**spot))
+        return res

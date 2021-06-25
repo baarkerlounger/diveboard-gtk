@@ -104,8 +104,8 @@ class DatabaseManager:
 	                                fullpermalink text,
 	                                staticmap text,
 	                                name text,
-	                                lat text,
-	                                lng text,
+	                                lat real,
+	                                lng real,
 	                            UNIQUE(id)
                                 );"""
 

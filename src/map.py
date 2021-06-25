@@ -72,6 +72,8 @@ class MapWindow(Adw.ApplicationWindow):
 
         self.set_zoom_level(9)
         self.viewport.set_min_zoom_level(2)
+        self.mark_all_spots_in_view(self.viewport, self.viewport.get_zoom_level())
+        self.viewport.connect('notify::zoom-level', self.mark_all_spots_in_view)
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
@@ -93,7 +95,7 @@ class MapWindow(Adw.ApplicationWindow):
         except GLib.Error as err:
             # If we don't have permission for geolocation let's just center on Greenwich
             lat = 51.4825766
-            lng = -0.0076589
+            lng = -0.00
         return lat, lng
 
     def center_on(self, lat, lng):
@@ -109,3 +111,15 @@ class MapWindow(Adw.ApplicationWindow):
         marker.set_child(icon)
         self.marker_layer.add_marker(marker)
         self.marker_layer.show_all_markers()
+
+    def mark_all_spots_in_view(self, _viewport, _zoom):
+        lng1, lng2, lat1, lat2 = self.calculate_map_boundaries()
+        for spot in Spot.get_spots_in_boundary([[lng1, lng2], [lat1, lat2]]):
+            self.set_marker(spot)
+
+    def calculate_map_boundaries(self):
+        lng1 = self.viewport.widget_x_to_longitude(self.view, 0)
+        lng2 = self.viewport.widget_x_to_longitude(self.view, 360)
+        lat1 = self.viewport.widget_y_to_latitude(self.view, 0)
+        lat2 = self.viewport.widget_y_to_latitude(self.view, 720)
+        return lng1, lng2, lat1, lat2
