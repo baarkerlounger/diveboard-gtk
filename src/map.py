@@ -46,6 +46,8 @@ class MapWindow(Adw.ApplicationWindow):
 
     def __init__(self, spot=None, **kwargs):
         super().__init__(**kwargs)
+        # Called in init() so set_transient for hasn't run yet
+        self.parent = self.get_group().list_windows()[-1]
         self.setup_actions()
 
         map_source_registry = Shumate.MapSourceRegistry.new_with_defaults()
@@ -114,10 +116,8 @@ class MapWindow(Adw.ApplicationWindow):
             self.set_marker(spot)
 
     def calculate_map_boundaries(self):
-        # Called in init() so set_transient for hasn't run yet
-        parent = self.get_group().list_windows()[-1]
-        lng1 = self.viewport.widget_x_to_longitude(parent, 0)
-        lng2 = self.viewport.widget_x_to_longitude(parent, 360)
-        lat1 = self.viewport.widget_y_to_latitude(parent, 0)
-        lat2 = self.viewport.widget_y_to_latitude(parent, 720)
+        lng1 = self.viewport.widget_x_to_longitude(self.parent, 0)
+        lng2 = self.viewport.widget_x_to_longitude(self.parent, 360)
+        lat1 = self.viewport.widget_y_to_latitude(self.parent, 0)
+        lat2 = self.viewport.widget_y_to_latitude(self.parent, 720)
         return lng1, lng2, lat1, lat2

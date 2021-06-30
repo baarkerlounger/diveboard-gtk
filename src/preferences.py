@@ -44,6 +44,8 @@ class DiveboardPreferencesWindow(Adw.PreferencesWindow):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # Called in init() so set_transient for hasn't run yet
+        self.parent = self.get_group().list_windows()[-1]
         self.setup()
 
     def setup(self):
@@ -59,8 +61,6 @@ class DiveboardPreferencesWindow(Adw.PreferencesWindow):
     def _switch_units(self, _row, _value):
         selected_index = self.units.get_selected()
         Settings.get().set_units(selected_index)
-        # Called in init() so set_transient for hasn't run yet
-        parent = self.get_group().list_windows()[-1]
-        parent.logbook.refresh()
+        self.parent.logbook.refresh()
 
 
