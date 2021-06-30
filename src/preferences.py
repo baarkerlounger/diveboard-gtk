@@ -42,9 +42,8 @@ class DiveboardPreferencesWindow(Adw.PreferencesWindow):
 
     units = Gtk.Template.Child()
 
-    def __init__(self, parent, **kwargs):
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.parent = parent
         self.setup()
 
     def setup(self):
@@ -60,6 +59,8 @@ class DiveboardPreferencesWindow(Adw.PreferencesWindow):
     def _switch_units(self, _row, _value):
         selected_index = self.units.get_selected()
         Settings.get().set_units(selected_index)
-        self.parent.props.active_window.logbook.refresh()
+        # Called in init() so set_transient for hasn't run yet
+        parent = self.get_group().list_windows()[-1]
+        parent.logbook.refresh()
 
 

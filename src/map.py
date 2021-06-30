@@ -54,26 +54,16 @@ class MapWindow(Adw.ApplicationWindow):
         self.view.set_map_source(map_source)
         self.viewport = self.view.get_viewport()
         self.viewport.set_reference_map_source(map_source)
-
-        tile_layer = Shumate.MapLayer.new(map_source, self.viewport)
-        self.view.add_layer(tile_layer)
-
+        self.view.add_layer(Shumate.MapLayer.new(map_source, self.viewport))
         self.marker_layer = Shumate.MarkerLayer.new(self.viewport)
         self.view.add_layer(self.marker_layer)
-
         self.map_container.append(self.view)
-        lat, lng = self.user_location()
-
-        if spot:
-            self.center_on(spot.lat, spot.lng)
-            self.set_marker(spot)
-        else:
-            self.center_on(lat, lng)
-
         self.set_zoom_level(9)
         self.viewport.set_min_zoom_level(2)
+        self.setup_location(spot)
         self.mark_all_spots_in_view(self.viewport, self.viewport.get_zoom_level())
         self.viewport.connect('notify::zoom-level', self.mark_all_spots_in_view)
+
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
@@ -85,6 +75,12 @@ class MapWindow(Adw.ApplicationWindow):
             matches = Spot.search_online(**{"name": search_text})
             spot_names = [ spot['name'] for spot in matches[0:3] ]
             print(spot_names)
+
+    def setup_location(self, spot=None):
+        if spot:
+            self.center_on(spot.lat, spot.lng)
+        else:
+            self.center_on(self.user_location())
 
     def user_location(self):
         try:
@@ -118,8 +114,10 @@ class MapWindow(Adw.ApplicationWindow):
             self.set_marker(spot)
 
     def calculate_map_boundaries(self):
-        lng1 = self.viewport.widget_x_to_longitude(self.view, 0)
-        lng2 = self.viewport.widget_x_to_longitude(self.view, 360)
-        lat1 = self.viewport.widget_y_to_latitude(self.view, 0)
-        lat2 = self.viewport.widget_y_to_latitude(self.view, 720)
+        # Called in init() so set_transient for hasn't run yet
+        parent = self.get_group().list_windows()[-1]
+        lng1 = self.viewport.widget_x_to_longitude(parent, 0)
+        lng2 = self.viewport.widget_x_to_longitude(parent, 360)
+        lat1 = self.viewport.widget_y_to_latitude(parent, 0)
+        lat2 = self.viewport.widget_y_to_latitude(parent, 720)
         return lng1, lng2, lat1, lat2
