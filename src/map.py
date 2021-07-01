@@ -31,7 +31,7 @@ import gi
 gi.require_version('Shumate', '0.0')
 gi.require_version('Geoclue', '2.0')
 
-from gi.repository import Gtk, Adw, Shumate, Geoclue
+from gi.repository import Gtk, Adw, Shumate, Geoclue, Gio, GObject
 
 from .define import RES_PATH, MAPBOX_ACCESS_TOKEN
 from .spot import Spot
@@ -49,6 +49,7 @@ class MapWindow(Adw.ApplicationWindow):
         # Called in init() so set_transient for hasn't run yet
         self.parent = self.get_group().list_windows()[-1]
         self.setup_actions()
+        self.setup_search_model()
 
         map_source_registry = Shumate.MapSourceRegistry.new_with_defaults()
         map_source = map_source_registry.get_by_id(Shumate.MAP_SOURCE_OSM_MAPNIK)
@@ -69,19 +70,31 @@ class MapWindow(Adw.ApplicationWindow):
 
     def setup_actions(self):
         self.back_btn.connect('clicked', lambda clicked: self.destroy())
-        self.spot_search.connect('search-changed', self.search)
+        #self.spot_search.connect('search-changed', self.search)
 
-    def search(self, event):
-        search_text = self.spot_search.get_text()
-        if len(search_text) > 2:
-            matches = Spot.search_online(**{"name": search_text})
-            self.popover = Gtk.Popover()
-            vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-            for spot in matches[0:5]:
-                vbox.append(Gtk.Label(label=spot['name']))
-            self.popover.set_child(vbox)
-            self.popover.set_parent(self.spot_search)
-            self.popover.popup()
+    def setup_search_model(self):
+        entry_completion = Gtk.EntryCompletion()
+        entry_completion.set_minimum_key_length(3)
+        entry_completion.set_popup_completion(True)
+        entry_completion.set_text_column(0)
+        entry_completion.set_match_func(self.search_match)
+        spot_candidates = Spot.offline_spots()
+        self.spot_list_store = Gtk.TreeStore(GObject.TYPE_STRING)
+        for spot in spot_candidates:
+            self.spot_list_store.append(None, [f'{spot.name}, {spot.location_name}'])
+        self.spot_search.set_completion(entry_completion)
+        entry_completion.set_model(self.spot_list_store)
+
+    def search_match(self, entry_completion, text, tree_iter):
+        row_spot_name = self.spot_list_store[tree_iter][0]
+        return str.lower(text) in str.lower(row_spot_name)
+
+    # def online_search(self, event):
+    #     search_text = self.spot_search.get_text()
+    #     if len(search_text) > 2:
+    #         matches = Spot.search_online(**{"name": search_text})
+    #         spot_candidates = [ f'{spot["name"][0:30]}...' for spot in matches ]
+    #         self.spot_list_store.splice(0, 0, spot_candidates, len(spot_candidates))
 
     def setup_location(self, spot=None):
         if spot:

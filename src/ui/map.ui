@@ -32,7 +32,8 @@
               </object>
             </child>
             <child type="end">
-              <object class="GtkSearchEntry" id="spot_search">
+              <object class="GtkEntry" id="spot_search">
+                <property name="primary-icon-name">edit-find-symbolic</property>
               </object>
             </child>
           </object>
