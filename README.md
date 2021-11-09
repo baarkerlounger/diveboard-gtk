@@ -1,6 +1,6 @@
 # Diveboard
 
-GTK client for https://www.diveboard.com/ designed for Linux based mobiles like the PinePhone/Librem5.
+GTK client for https://www.diveboard.com/ designed for Linux based mobiles like the PinePhone/Librem5. Currently barely functional and not remotely performant, it's really more of a WIP UI mockup. 
 
 
 ## Building
@@ -8,10 +8,10 @@ GTK client for https://www.diveboard.com/ designed for Linux based mobiles like 
 ### Requirements
 - Python 3
 - PyGObject
-- libhandy (>= 1.2)
+- libadwaita 
 - Meson
 - Ninja
-- libchamplain-gtk-0.12-0
+- libshumate
 
 ### Building from Git
 ```

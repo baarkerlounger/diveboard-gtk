@@ -29,6 +29,7 @@
 import sys
 import gi
 import os
+from concurrent import futures
 from pathlib import Path
 
 gi.require_version('Gtk', '4.0')
@@ -43,6 +44,7 @@ from .settings import Settings
 from .define import APP_ID, RES_PATH, VERSION, DIVE_THUMBNAIL_PATH
 from .database_manager import DatabaseManager
 from .dive import Dive
+from .spot import Spot
 
 
 class Application(Gtk.Application):
@@ -64,6 +66,7 @@ class Application(Gtk.Application):
             os.mkdir(DIVE_THUMBNAIL_PATH)
         self.setup_actions()
         self.load_css()
+        self.load_data()
 
     def load_css(self):
         css_provider = Gtk.CssProvider()
@@ -79,6 +82,14 @@ class Application(Gtk.Application):
         about_action = Gio.SimpleAction.new('about', None)
         about_action.connect('activate', self.on_about)
         self.add_action(about_action)
+
+    def load_data(self):
+        executor = futures.ProcessPoolExecutor(max_workers=1)
+        future = executor.submit(Spot.download_mobile_spots_file)
+        future.add_done_callback(self.on_data_load_complete)
+
+    def on_data_load_complete(self, future):
+        print(future.result())
 
     def on_preferences(self, _action, _param):
         """ Show preferences window """

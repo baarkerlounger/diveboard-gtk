@@ -103,3 +103,13 @@ class Spot():
         for spot in spots:
             res.append(Spot(**spot))
         return res
+
+    @classmethod
+    def download_mobile_spots_file(cls):
+        response_bytes = ApiManager.download_mobile_spots_file()
+        if response_bytes:
+            memory_view = memoryview(response_bytes)
+            sql = """INSERT OR IGNORE INTO spots(id,shaken_id,country_name,country_code,country_flag_big,country_flag_small,within_country_bounds,region_name, location_name,
+                             permalink, fullpermalink, staticmap, name, lat, lng)
+                 VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""
+            DatabaseManager().insert(sql, memory_view)

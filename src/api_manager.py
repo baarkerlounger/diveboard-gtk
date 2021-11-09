@@ -30,7 +30,7 @@ import requests
 import json
 import urllib
 
-from .define import API_KEY, API_URL
+from .define import API_KEY, API_URL, SERVER_URL
 from .settings import Settings
 
 class ApiManager:
@@ -86,3 +86,18 @@ class ApiManager:
             return json_response['data']
         elif response.status_code == 404:
             print('Not Found.')
+
+    @classmethod
+    def download_mobile_spots_file(cls):
+        url = SERVER_URL + 'assets/mobilespots.db.gz'
+        payload = {
+            "auth_token": Settings.get().get_auth_token(),
+            "apikey": API_KEY
+        }
+        response = requests.get(url, data=payload, stream=True)
+        if response.status_code == 200:
+            with open('/home/dan/Downloads/test.sqlite3.gz', 'wb') as f:
+                for chunk in response.raw.stream(1024, decode_content=False):
+                    if chunk:
+                        f.write(chunk)
+            return response.content
