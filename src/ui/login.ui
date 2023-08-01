@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="Login" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="AdwHeaderBar" id="header_bar">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="show-start-title-buttons">False</property>
+        <property name="show-end-title-buttons">False</property>
+        <property name="title-widget">
+          <object class="AdwWindowTitle">
+            <property name="title">Diveboard</property>
+        </object>
+        </property>
+        <child type="end">
+          <object class="GtkMenuButton" id="menu_btn">
+            <property name="direction">none</property>
+            <property name="menu_model">app-menu-initial</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGrid" id="login_grid">
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <child>
+          <object class="GtkPicture">
+            <property name="name">full_diveboard_grey</property>
+            <property name="file">resource:///xyz/slothlife/diveboard/images/full_diveboard_grey.png</property>
+            <property name="margin-top">200</property>
+            <property name="margin-bottom">15</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkEntry" id="username_entry">
+            <property name="name">username</property>
+            <property name="width-request">260</property>
+            <property name="tooltip-text" translatable="yes">Diveboard account username</property>
+            <property name="placeholder-text" translatable="yes">Username</property>
+            <property name="xalign">0.5</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">1</property>
+            </layout>
+            <style>
+              <class name="white-bg"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkPasswordEntry" id="password_entry">
+            <property name="name">password</property>
+            <property name="tooltip-text" translatable="yes">Diveboard account password</property>
+            <property name="margin-top">1</property>
+            <property name="margin-bottom">5</property>
+            <property name="placeholder-text" translatable="yes">Password</property>
+            <property name="xalign">0.5</property>
+            <style>
+              <class name="white-bg"/>
+            </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="login_btn">
+            <property name="label" translatable="yes">Login</property>
+            <property name="name">login</property>
+            <property name="receives-default">1</property>
+            <property name="tooltip-text" translatable="yes">Login</property>
+            <style>
+              <class name="dark_grey"/>
+            </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <style>
+      <class name="yellow"/>
+    </style>
+  </template>
+  <menu id="app-menu-initial">
+    <section>
+      <attribute name="id">help-section</attribute>
+      <item>
+        <attribute name="label" translatable="yes">Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">About Diveboard</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>
+

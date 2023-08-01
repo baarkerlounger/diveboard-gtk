@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/xyz/slothlife/diveboard">
+    <file compressed="true">about.ui</file>
+    <file compressed="true">preferences.ui</file>
+    <file compressed="true">window.ui</file>
+    <file compressed="true">dive_overview.ui</file>
+    <file compressed="true">dive_trip.ui</file>
+    <file compressed="true">dive_detail.ui</file>
+    <file compressed="true">map.ui</file>
+    <file compressed="true">logbook.ui</file>
+    <file compressed="true">login.ui</file>
+    <file compressed="true">statistics.ui</file>
+    <file compressed="true">wallet.ui</file>
+    <file>css/style.css</file>
+    <file>images/map_bg.png</file>
+    <file>images/full_diveboard_grey.png</file>
+    <file>images/logo.svg</file>
+    <file>images/duration.svg</file>
+    <file>images/depth.svg</file>
+    <file preprocess="xml-stripblanks">images/map-marker-symbolic.svg</file>
+    <file>images/map-marker-vector.png</file>
+  </gresource>
+  <gresource prefix="/xyz/slothlife/diveboard/icons/16x16/actions">
+    <file preprocess="xml-stripblanks" alias="system-users-symbolic.svg">images/system-users-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="accessories-text-editor-symbolic.svg">images/accessories-text-editor-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="emblem-photos-symbolic.svg">images/emblem-photos-symbolic.svg</file>
+  </gresource>
+</gresources>

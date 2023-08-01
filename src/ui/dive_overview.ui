@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="DiveOverview" parent="GtkBox">
+    <property name="can-focus">0</property>
+    <property name="margin-top">10</property>
+    <child>
+      <object class="GtkBox">
+        <property name="can-focus">0</property>
+        <property name="margin-bottom">10</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkPicture" id="thumbnail">
+            <property name="vexpand">1</property>
+            <property name="can-focus">0</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="can-focus">0</property>
+        <property name="margin-start">5</property>
+        <property name="margin-end">5</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel" id="dive_site">
+            <property name="can-focus">0</property>
+            <property name="halign">start</property>
+            <property name="margin-bottom">2</property>
+            <property name="hexpand">1</property>
+            <property name="label" translatable="yes">S.D.</property>
+            <property name="width-chars">0</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="can-focus">0</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel" id="country">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="margin-top">5</property>
+                <property name="margin-bottom">20</property>
+                <property name="hexpand">1</property>
+                <property name="label" translatable="yes">Indonesia.</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <property name="vexpand">1</property>
+            <property name="can-focus">0</property>
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">5</property>
+            <child>
+              <object class="GtkLabel" id="dive_date">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="margin-end">5</property>
+                <property name="label" translatable="yes">19 Apr 2019</property>
+                <style>
+                  <class name="small_text"/>
+                  <class name="light_grey_text"/>
+                </style>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="can-focus">0</property>
+                <property name="halign">center</property>
+                <property name="margin-start">10</property>
+                <child>
+                  <object class="GtkImage" id="depth_icon">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">2</property>
+                    <property name="margin-end">5</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="maxdepth">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">5</property>
+                    <property name="label" translatable="yes">21m</property>
+                    <style>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
+                    </style>
+                  </object>
+                </child>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="can-focus">0</property>
+                <property name="halign">center</property>
+                <property name="margin-start">10</property>
+                <child>
+                  <object class="GtkLabel" id="duration">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-end">5</property>
+                    <property name="label" translatable="yes">45min</property>
+                    <style>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkImage" id="duration_icon">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">2</property>
+                    <property name="margin-end">5</property>
+                    <property name="icon-name">document-properties</property>
+                  </object>
+                </child>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSeparator">
+            <property name="valign">center</property>
+            <property name="vexpand">1</property>
+            <property name="can-focus">0</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
+

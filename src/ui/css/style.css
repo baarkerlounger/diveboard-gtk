@@ -1,0 +1,44 @@
+.white-bg{
+  background-color: white;
+}
+
+.yellow{
+  background:url('../images/map_bg.png') repeat #fdc90c;
+}
+
+.dark_grey{
+  color: white;
+  background: #3c4245;
+}
+
+.bold_header{
+  font-weight: 600;
+}
+
+.large_text{
+  font-size: 1.5em;
+}
+
+.small_text{
+  font-size: 0.9em;
+}
+
+.tiny_text{
+  font-size: 0.7em;
+}
+
+.yellow_text{
+  color: #fdc90c;
+}
+
+.light_grey_text{
+  color: #505050;
+}
+
+.stat_card{
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-shadow: 0.2px 0.2px #505050;
+}

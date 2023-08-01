@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="adw" version="1.0"/>
+  <template class="Statistics" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="AdwHeaderBar" id="header_bar1">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="show-start-title-buttons">False</property>
+        <property name="show-end-title-buttons">False</property>
+        <property name="title-widget">
+          <object class="AdwWindowTitle">
+            <property name="title">Statistics</property>
+        </object>
+        </property>
+        <child type="end">
+          <object class="GtkMenuButton" id="menu_btn1">
+            <property name="direction">none</property>
+            <property name="menu_model">app-menu</property>
+            <child>
+              <placeholder/>
+            </child>
+            <style>
+              <class name="image-button"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+        <property name="margin-top">10</property>
+        <property name="margin-bottom">10</property>
+        <property name="orientation">vertical</property>
+        <property name="homogeneous">1</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="can-focus">0</property>
+            <property name="halign">start</property>
+            <property name="margin-start">15</property>
+            <property name="margin-top">10</property>
+            <property name="label" translatable="yes">Total Dives</property>
+            <style>
+              <class name="light_grey_text"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="dive_count">
+            <property name="can-focus">0</property>
+            <property name="halign">start</property>
+            <property name="margin-start">15</property>
+            <property name="margin-top">5</property>
+            <property name="label" translatable="yes">12</property>
+            <style>
+              <class name="bold_header"/>
+              <class name="large_text"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+        </child>
+        <style>
+          <class name="stat_card"/>
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGrid">
+        <property name="row-spacing">10</property>
+        <property name="column-spacing">10</property>
+        <property name="row-homogeneous">1</property>
+        <property name="column-homogeneous">1</property>
+        <child>
+          <object class="GtkBox">
+            <property name="margin-start">10</property>
+            <property name="vexpand">1</property>
+            <property name="orientation">vertical</property>
+            <property name="homogeneous">1</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">Countries</property>
+                <style>
+                  <class name="light_grey_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="country_count">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="large_text"/>
+                </style>
+              </object>
+            </child>
+            <style>
+              <class name="stat_card"/>
+            </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="margin-end">10</property>
+            <property name="vexpand">1</property>
+            <property name="orientation">vertical</property>
+            <property name="homogeneous">1</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">Dive Sites</property>
+                <style>
+                  <class name="light_grey_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="spot_count">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="large_text"/>
+                </style>
+              </object>
+            </child>
+            <style>
+              <class name="stat_card"/>
+            </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="margin-start">10</property>
+            <property name="vexpand">1</property>
+            <property name="orientation">vertical</property>
+            <property name="homogeneous">1</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">Total Time</property>
+                <style>
+                  <class name="light_grey_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="total_duration">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="large_text"/>
+                </style>
+              </object>
+            </child>
+            <style>
+              <class name="stat_card"/>
+            </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="margin-end">10</property>
+            <property name="vexpand">1</property>
+            <property name="orientation">vertical</property>
+            <property name="homogeneous">1</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">Most Dives in</property>
+                <style>
+                  <class name="light_grey_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="most_dives_country">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="large_text"/>
+                </style>
+              </object>
+            </child>
+            <style>
+              <class name="stat_card"/>
+            </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="margin-start">10</property>
+            <property name="orientation">vertical</property>
+            <property name="homogeneous">1</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">Max Time</property>
+                <style>
+                  <class name="light_grey_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="max_time">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="large_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLabel" id="max_time_location_1">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="label" translatable="yes">label</property>
+                    <style>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="max_time_location_2">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="label" translatable="yes">label</property>
+                    <style>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <style>
+              <class name="stat_card"/>
+            </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="margin-end">10</property>
+            <property name="orientation">vertical</property>
+            <property name="homogeneous">1</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">Max Depth</property>
+                <style>
+                  <class name="light_grey_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="max_depth">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="large_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLabel" id="max_depth_location_1">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="label" translatable="yes">label</property>
+                    <style>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="max_depth_location_2">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="label" translatable="yes">label</property>
+                    <style>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <style>
+              <class name="stat_card"/>
+            </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="margin-start">10</property>
+            <property name="margin-bottom">10</property>
+            <property name="orientation">vertical</property>
+            <property name="homogeneous">1</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">Warmest Water</property>
+                <style>
+                  <class name="light_grey_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="max_temp">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="large_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLabel" id="max_temp_location_1">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="label" translatable="yes">label</property>
+                    <style>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="max_temp_location_2">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="label" translatable="yes">label</property>
+                    <style>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <style>
+              <class name="stat_card"/>
+            </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="margin-end">10</property>
+            <property name="margin-bottom">10</property>
+            <property name="orientation">vertical</property>
+            <property name="homogeneous">1</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">Coldest Water</property>
+                <style>
+                  <class name="light_grey_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="min_temp">
+                <property name="can-focus">0</property>
+                <property name="halign">start</property>
+                <property name="margin-start">10</property>
+                <property name="label" translatable="yes">label</property>
+                <style>
+                  <class name="bold_header"/>
+                  <class name="large_text"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLabel" id="min_temp_location_1">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="label" translatable="yes">label</property>
+                    <style>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="min_temp_location_2">
+                    <property name="can-focus">0</property>
+                    <property name="halign">start</property>
+                    <property name="margin-start">10</property>
+                    <property name="label" translatable="yes">label</property>
+                    <style>
+                      <class name="small_text"/>
+                      <class name="light_grey_text"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <style>
+              <class name="stat_card"/>
+            </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">3</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+  <menu id="app-menu">
+    <section>
+      <attribute name="id">main-screen-section</attribute>
+      <item>
+        <attribute name="label" translatable="yes">Logbook</attribute>
+        <attribute name="action">win.screen_state</attribute>
+        <attribute name="target">logbook</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Statistics</attribute>
+        <attribute name="action">win.screen_state</attribute>
+        <attribute name="target">statistics</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Wallet</attribute>
+        <attribute name="action">win.screen_state</attribute>
+        <attribute name="target">wallet</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="id">help-section</attribute>
+      <item>
+        <attribute name="label" translatable="yes">Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">About Diveboard</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Sign Out</attribute>
+        <attribute name="action">win.logout</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>
+

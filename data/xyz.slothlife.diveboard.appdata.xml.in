@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+	<id>xyz.slothlife.diveboard.desktop</id>
+	<metadata_license>CC0-1.0</metadata_license>
+	<project_license>MIT</project_license>
+	<description>
+	  <p>A GTK app for Diveboard.com. A mobile Scuba Diving Logbook.</p>
+	</description>
+  <url type="homepage">https://www.diveboard.com/</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Logbook</caption>
+      <image type="source">https://lh3.googleusercontent.com/qpeXckg4BChCu-LokWFecy1l9xWNu0PUIjQirKGD5NEPNNvOkR6bVrG2FVVEy_vJXwc2</image>
+    </screenshot>
+  </screenshots>
+</component>
